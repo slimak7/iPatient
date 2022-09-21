@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "d86/hyRWBwS2xBL280XXI3XRmlkrWeumPY3Iu7L5wxgy7qfSJ199cE8ClkBsAUJihSjfAJD6j62xTr20hXHDFQ==",
+  "dgSpecHash": "7KFmAY2DNF5aSIC8Fdn88L3YhG3SgvQ7dd+LBhG6sm8lkmcy6puTVNeL5FGL13gY2LOKy6MizaFrQU2ucp5D5Q==",
   "success": true,
   "projectFilePath": "D:\\iPatientAPP\\iPatient\\iPatient\\iPatient.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\SzymonKlewicki\\.nuget\\packages\\communitytoolkit.maui\\1.3.0\\communitytoolkit.maui.1.3.0.nupkg.sha512",
+    "C:\\Users\\SzymonKlewicki\\.nuget\\packages\\communitytoolkit.maui.core\\1.3.0\\communitytoolkit.maui.core.1.3.0.nupkg.sha512",
+    "C:\\Users\\SzymonKlewicki\\.nuget\\packages\\communitytoolkit.maui.markup\\1.1.1\\communitytoolkit.maui.markup.1.1.1.nupkg.sha512",
     "C:\\Users\\SzymonKlewicki\\.nuget\\packages\\googlegson\\2.9.0.1\\googlegson.2.9.0.1.nupkg.sha512",
     "C:\\Users\\SzymonKlewicki\\.nuget\\packages\\microsoft.extensions.configuration\\6.0.1\\microsoft.extensions.configuration.6.0.1.nupkg.sha512",
     "C:\\Users\\SzymonKlewicki\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
