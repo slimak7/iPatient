@@ -44,3 +44,9 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = iPatient.Views.StartPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\StartPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\StartPage.xaml
+
+[D:/iPatientAPP/iPatient/iPatient/Views/WaitingPopupPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = iPatient.Views.WaitingPopupPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\WaitingPopupPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\WaitingPopupPage.xaml

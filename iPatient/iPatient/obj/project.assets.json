@@ -31,19 +31,6 @@
           }
         }
       },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "GoogleGson/2.9.0.1": {
         "type": "package",
         "compile": {
@@ -2013,19 +2000,6 @@
         },
         "runtime": {
           "lib/net6.0-android31.0/CommunityToolkit.Maui.Core.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
             "related": ".xml"
           }
         }
@@ -4003,19 +3977,6 @@
           }
         }
       },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "GoogleGson/2.9.0.1": {
         "type": "package",
         "compile": {
@@ -5985,19 +5946,6 @@
         },
         "runtime": {
           "lib/net6.0-android31.0/CommunityToolkit.Maui.Core.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
             "related": ".xml"
           }
         }
@@ -7975,19 +7923,6 @@
           }
         }
       },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "GoogleGson/2.9.0.1": {
         "type": "package",
         "compile": {
@@ -9957,19 +9892,6 @@
         },
         "runtime": {
           "lib/net6.0-android31.0/CommunityToolkit.Maui.Core.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
             "related": ".xml"
           }
         }
@@ -11947,19 +11869,6 @@
           }
         }
       },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "GoogleGson/2.9.0.1": {
         "type": "package",
         "compile": {
@@ -13929,19 +13838,6 @@
         },
         "runtime": {
           "lib/net6.0-android31.0/CommunityToolkit.Maui.Core.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
             "related": ".xml"
           }
         }
@@ -15923,19 +15819,6 @@
           }
         }
       },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.Extensions.Configuration/6.0.1": {
         "type": "package",
         "dependencies": {
@@ -16181,19 +16064,6 @@
         },
         "runtime": {
           "lib/net6.0-ios15.4/CommunityToolkit.Maui.Core.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
             "related": ".xml"
           }
         }
@@ -16447,19 +16317,6 @@
           }
         }
       },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.Extensions.Configuration/6.0.1": {
         "type": "package",
         "dependencies": {
@@ -16705,19 +16562,6 @@
         },
         "runtime": {
           "lib/net6.0-ios15.4/CommunityToolkit.Maui.Core.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
             "related": ".xml"
           }
         }
@@ -16971,19 +16815,6 @@
           }
         }
       },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.Extensions.Configuration/6.0.1": {
         "type": "package",
         "dependencies": {
@@ -17229,19 +17060,6 @@
         },
         "runtime": {
           "lib/net6.0-ios15.4/CommunityToolkit.Maui.Core.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
             "related": ".xml"
           }
         }
@@ -17495,19 +17313,6 @@
           }
         }
       },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.Extensions.Configuration/6.0.1": {
         "type": "package",
         "dependencies": {
@@ -17753,19 +17558,6 @@
         },
         "runtime": {
           "lib/net6.0-ios15.4/CommunityToolkit.Maui.Core.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
             "related": ".xml"
           }
         }
@@ -18019,19 +17811,6 @@
           }
         }
       },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.Extensions.Configuration/6.0.1": {
         "type": "package",
         "dependencies": {
@@ -18277,19 +18056,6 @@
         },
         "runtime": {
           "lib/net6.0-maccatalyst15.4/CommunityToolkit.Maui.Core.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
             "related": ".xml"
           }
         }
@@ -18543,19 +18309,6 @@
           }
         }
       },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.Extensions.Configuration/6.0.1": {
         "type": "package",
         "dependencies": {
@@ -18801,19 +18554,6 @@
         },
         "runtime": {
           "lib/net6.0-maccatalyst15.4/CommunityToolkit.Maui.Core.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
             "related": ".xml"
           }
         }
@@ -19067,19 +18807,6 @@
           }
         }
       },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.Extensions.Configuration/6.0.1": {
         "type": "package",
         "dependencies": {
@@ -19325,19 +19052,6 @@
         },
         "runtime": {
           "lib/net6.0-maccatalyst15.4/CommunityToolkit.Maui.Core.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
             "related": ".xml"
           }
         }
@@ -19591,19 +19305,6 @@
           }
         }
       },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.Extensions.Configuration/6.0.1": {
         "type": "package",
         "dependencies": {
@@ -19853,19 +19554,6 @@
           }
         }
       },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.Extensions.Configuration/6.0.1": {
         "type": "package",
         "dependencies": {
@@ -20107,19 +19795,6 @@
         },
         "runtime": {
           "lib/net6.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
             "related": ".xml"
           }
         }
@@ -20494,19 +20169,6 @@
           }
         }
       },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.Extensions.Configuration/6.0.1": {
         "type": "package",
         "dependencies": {
@@ -20845,19 +20507,6 @@
         },
         "runtime": {
           "lib/net6.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
             "related": ".xml"
           }
         }
@@ -21204,19 +20853,6 @@
           }
         }
       },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.Extensions.Configuration/6.0.1": {
         "type": "package",
         "dependencies": {
@@ -21555,19 +21191,6 @@
         },
         "runtime": {
           "lib/net6.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
             "related": ".xml"
           }
         }
@@ -21914,19 +21537,6 @@
           }
         }
       },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.Extensions.Configuration/6.0.1": {
         "type": "package",
         "dependencies": {
@@ -22269,19 +21879,6 @@
           }
         }
       },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.Extensions.Configuration/6.0.1": {
         "type": "package",
         "dependencies": {
@@ -22620,19 +22217,6 @@
         },
         "runtime": {
           "lib/net6.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "CommunityToolkit.Maui.Markup/1.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/CommunityToolkit.Maui.Markup.dll": {
             "related": ".xml"
           }
         }
@@ -23004,21 +22588,6 @@
         "lib/net6.0-windows10.0.19041/CommunityToolkit.Maui.Core.xml",
         "lib/net6.0/CommunityToolkit.Maui.Core.dll",
         "lib/net6.0/CommunityToolkit.Maui.Core.xml"
-      ]
-    },
-    "CommunityToolkit.Maui.Markup/1.1.1": {
-      "sha512": "nRuRXhJLygdhaTH5C0qfO0iSjhDsfqsi8caKs3H4wRNfDk8gCBvaLUxJM7mx/21qGXHYCEZx3S1fE57M4GeSeg==",
-      "type": "package",
-      "path": "communitytoolkit.maui.markup/1.1.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "ReadMe.txt",
-        "communitytoolkit.maui.markup.1.1.1.nupkg.sha512",
-        "communitytoolkit.maui.markup.nuspec",
-        "lib/net6.0/CommunityToolkit.Maui.Markup.dll",
-        "lib/net6.0/CommunityToolkit.Maui.Markup.xml",
-        "nuget.png"
       ]
     },
     "GoogleGson/2.9.0.1": {
@@ -26021,14 +25590,12 @@
     "net6.0-android31.0": [
       "CommunityToolkit.Maui >= 1.3.0",
       "CommunityToolkit.Maui.Core >= 1.3.0",
-      "CommunityToolkit.Maui.Markup >= 1.1.1",
       "Microsoft.Maui.Dependencies >= 6.0.486",
       "Microsoft.Maui.Extensions >= 6.0.486"
     ],
     "net6.0-ios15.4": [
       "CommunityToolkit.Maui >= 1.3.0",
       "CommunityToolkit.Maui.Core >= 1.3.0",
-      "CommunityToolkit.Maui.Markup >= 1.1.1",
       "Microsoft.Maui.Dependencies >= 6.0.486",
       "Microsoft.Maui.Extensions >= 6.0.486",
       "System.Runtime.InteropServices.NFloat.Internal >= 6.0.1"
@@ -26036,7 +25603,6 @@
     "net6.0-maccatalyst15.4": [
       "CommunityToolkit.Maui >= 1.3.0",
       "CommunityToolkit.Maui.Core >= 1.3.0",
-      "CommunityToolkit.Maui.Markup >= 1.1.1",
       "Microsoft.Maui.Dependencies >= 6.0.486",
       "Microsoft.Maui.Extensions >= 6.0.486",
       "System.Runtime.InteropServices.NFloat.Internal >= 6.0.1"
@@ -26044,7 +25610,6 @@
     "net6.0-windows10.0.19041": [
       "CommunityToolkit.Maui >= 1.3.0",
       "CommunityToolkit.Maui.Core >= 1.3.0",
-      "CommunityToolkit.Maui.Markup >= 1.1.1",
       "Microsoft.Maui.Dependencies >= 6.0.486",
       "Microsoft.Maui.Extensions >= 6.0.486",
       "Microsoft.Windows.SDK.BuildTools >= 10.0.22000.194"
@@ -26121,10 +25686,6 @@
             "target": "Package",
             "version": "[1.3.0, )"
           },
-          "CommunityToolkit.Maui.Markup": {
-            "target": "Package",
-            "version": "[1.1.1, )"
-          },
           "Microsoft.Maui.Dependencies": {
             "target": "Package",
             "version": "[6.0.486, )",
@@ -26176,10 +25737,6 @@
           "CommunityToolkit.Maui.Core": {
             "target": "Package",
             "version": "[1.3.0, )"
-          },
-          "CommunityToolkit.Maui.Markup": {
-            "target": "Package",
-            "version": "[1.1.1, )"
           },
           "Microsoft.Maui.Dependencies": {
             "target": "Package",
@@ -26238,10 +25795,6 @@
             "target": "Package",
             "version": "[1.3.0, )"
           },
-          "CommunityToolkit.Maui.Markup": {
-            "target": "Package",
-            "version": "[1.1.1, )"
-          },
           "Microsoft.Maui.Dependencies": {
             "target": "Package",
             "version": "[6.0.486, )",
@@ -26299,10 +25852,6 @@
           "CommunityToolkit.Maui.Core": {
             "target": "Package",
             "version": "[1.3.0, )"
-          },
-          "CommunityToolkit.Maui.Markup": {
-            "target": "Package",
-            "version": "[1.1.1, )"
           },
           "Microsoft.Maui.Dependencies": {
             "target": "Package",

@@ -3,12 +3,15 @@
   <PropertyGroup>
     <ActiveDebugFramework>net6.0-android</ActiveDebugFramework>
     <IsFirstTimeProjectOpen>False</IsFirstTimeProjectOpen>
-    <ActiveDebugProfile>pixel_5_-_api_32 (Android 12.1 - API 32)</ActiveDebugProfile>
+    <ActiveDebugProfile>Pixel 5 - API 32 (Android 12.1 - API 32)</ActiveDebugProfile>
     <SelectedPlatformGroup>Emulator</SelectedPlatformGroup>
     <DefaultDevice>pixel_5_-_api_32</DefaultDevice>
   </PropertyGroup>
   <ItemGroup>
     <MauiXaml Update="Views\StartPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Views\WaitingPopupPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>
