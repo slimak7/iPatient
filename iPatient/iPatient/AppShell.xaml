@@ -6,9 +6,10 @@
     xmlns:local="clr-namespace:iPatient.Views"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:StartPage}"
-        Route="StartPage" />
+
+    <Tab Title="Start">
+        <ShellContent ContentTemplate="{DataTemplate local:StartPage}" />
+    </Tab>
+
 
 </Shell>

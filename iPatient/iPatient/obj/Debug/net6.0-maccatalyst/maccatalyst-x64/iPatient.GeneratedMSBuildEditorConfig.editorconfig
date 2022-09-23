@@ -39,6 +39,18 @@ build_metadata.AdditionalFiles.ManifestResourceName = iPatient.Resources.Styles.
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
+[D:/iPatientAPP/iPatient/iPatient/Views/LoginView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = iPatient.Views.LoginView.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\LoginView.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\LoginView.xaml
+
+[D:/iPatientAPP/iPatient/iPatient/Views/RegisterView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = iPatient.Views.RegisterView.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\RegisterView.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\RegisterView.xaml
+
 [D:/iPatientAPP/iPatient/iPatient/Views/StartPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = iPatient.Views.StartPage.xaml

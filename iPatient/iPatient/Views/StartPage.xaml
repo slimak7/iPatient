@@ -17,15 +17,23 @@
         FontSize="Title"
         FontFamily="ReemKufRegular"
         FontAttributes="Bold"
-        Margin="0, 100, 0, 50"/>
+        Margin="0, 0, 0, 10"/>
 
 
-        <Button Text="Log in" BackgroundColor="LightSeaGreen" BorderWidth="2"
+        <Button x:Name="LogInButton" Text="Log in" BackgroundColor="LightSeaGreen" BorderWidth="2"
                 BorderColor="White" FontAttributes="Bold" Margin="5, 40, 5, 5" FontSize="Medium" CornerRadius="15"
                 Command="{Binding LogInCommand}"/>
-        <Button Text="Register" BackgroundColor="SeaGreen"
+        <Button x:Name="RegisterButton" Text="Register" BackgroundColor="SeaGreen"
                 BorderWidth="2" BorderColor="White" FontAttributes="Bold" Margin="5, 5, 5, 40" FontSize="Medium" CornerRadius="15"
                 Command="{Binding RegisterCommand}"/>
+
+        <ScrollView x:Name="LoginScrollView">
+            
+        </ScrollView>
+
+        <ScrollView x:Name="RegisterScrollView">
+
+        </ScrollView>
 
     </VerticalStackLayout>
 </ContentPage>

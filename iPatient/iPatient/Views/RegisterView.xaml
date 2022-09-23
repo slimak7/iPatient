@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="iPatient.Views.RegisterView"
+             xmlns:local="clr-namespace:iPatient.ViewModels"
+             x:DataType="local:StartPageViewModel">
+    
+    
+    <VerticalStackLayout VerticalOptions="Center">
+
+        <Entry Placeholder="Email" ReturnType="Next" Text="{Binding Email}"
+               VerticalOptions="Center" PlaceholderColor="CadetBlue"
+               Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
+        <Entry Placeholder="Username" ReturnType="Next" Text="{Binding Username}"
+               VerticalOptions="Center" PlaceholderColor="CadetBlue"
+               Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
+        <Entry Placeholder="Password" IsPassword="True" Text="{Binding Password}"
+               VerticalOptions="Center" PlaceholderColor="CadetBlue"
+               Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
+        <Entry Placeholder="Confirm password" IsPassword="True" Text="{Binding ConfirmPassword}"
+               VerticalOptions="Center" PlaceholderColor="CadetBlue"
+               Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
+        <Entry Placeholder="First name" IsPassword="True" Text="{Binding FirstName}"
+               VerticalOptions="Center" PlaceholderColor="CadetBlue"
+               Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
+        <Entry Placeholder="Last name" IsPassword="True" Text="{Binding LastName}"
+               VerticalOptions="Center" PlaceholderColor="CadetBlue"
+               Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
+
+    </VerticalStackLayout>
+</ContentView>
