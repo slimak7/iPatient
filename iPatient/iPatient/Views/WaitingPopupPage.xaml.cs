@@ -18,13 +18,7 @@ public partial class WaitingPopupPage : Popup
 		RainbowBackgroundColorAnimation animation = new RainbowBackgroundColorAnimation();
 		animation.Animate(InfoLabel);
 		
-		_popupViewModel = new WaitingPopupViewModel(actionToPerform, actionIfSuccess, actionIfFailed, ClosePopup);
+		_popupViewModel = new WaitingPopupViewModel(actionToPerform, actionIfSuccess, actionIfFailed, this);
 	}
-
-	private void ClosePopup()
-	{
-		this.Close();
-	}
-
 
 }

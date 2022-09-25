@@ -8,6 +8,9 @@
     <DefaultDevice>pixel_5_-_api_32</DefaultDevice>
   </PropertyGroup>
   <ItemGroup>
+    <MauiXaml Update="Views\InfoPopupPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Views\LoginView.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

@@ -39,6 +39,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = iPatient.Resources.Styles.
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
+[D:/iPatientAPP/iPatient/iPatient/Views/InfoPopupPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = iPatient.Views.InfoPopupPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\InfoPopupPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\InfoPopupPage.xaml
+
 [D:/iPatientAPP/iPatient/iPatient/Views/LoginView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = iPatient.Views.LoginView.xaml

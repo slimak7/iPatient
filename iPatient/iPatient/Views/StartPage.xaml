@@ -35,5 +35,9 @@
 
         </ScrollView>
 
+        <Button x:Name="ContinueButton" Text="Continue" BackgroundColor="GreenYellow"
+                BorderWidth="1" BorderColor="BlueViolet" FontAttributes="Bold" Margin="5, 5, 5, 10" FontSize="Large" CornerRadius="15"
+                Command="{Binding ContinueCommand}"/>
+
     </VerticalStackLayout>
 </ContentPage>

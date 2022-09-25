@@ -3,7 +3,7 @@ using iPatient.ViewModels;
 
 namespace iPatient.Views;
 
-public partial class StartPage : ContentPage
+public partial class StartPage : ContentPage, ViewBase
 {
 	private StartPageViewModel _startPageViewModel;
 
@@ -14,17 +14,12 @@ public partial class StartPage : ContentPage
 	{
 		InitializeComponent();
 
-		_startPageViewModel = new StartPageViewModel(ShowPopupPage, "Welcome to iPatient!", this);
+		_startPageViewModel = new StartPageViewModel("Welcome to iPatient!", this);
 		BindingContext = _startPageViewModel;
 
         LoginScrollView.Content = new LoginView(_startPageViewModel);
 		RegisterScrollView.Content = new RegisterView(_startPageViewModel);
     }
-
-	private void ShowPopupPage(WaitingPopupPage popupPage)
-	{
-		this.ShowPopup(popupPage);
-	}
 
 	public void SetLoginButton(bool clicked)
 	{
@@ -39,4 +34,14 @@ public partial class StartPage : ContentPage
 
 		RegisterScrollView.IsVisible = clicked;
     }
+
+	public void ShowPopupPage(WaitingPopupPage popupPage)
+	{
+		this.ShowPopup(popupPage);
+	}
+
+	public void ShowPopupPage(InfoPopupPage infoPopupPage)
+	{
+		this.ShowPopup(infoPopupPage);
+	}
 }

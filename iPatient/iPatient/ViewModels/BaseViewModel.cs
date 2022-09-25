@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 
 namespace iPatient.ViewModels
 {
-    public abstract class BaseViewModel : INotifyPropertyChanged
+    public abstract class BaseViewModel<M> : INotifyPropertyChanged
     {
         string _title;
-        protected Action<WaitingPopupPage> _showWaitingPopup;
+        protected M _viewPage;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public BaseViewModel(Action<WaitingPopupPage> showWaitingPopup, string title)
+        public BaseViewModel(string title, M viewPage)
         {
             Title = title;
-            _showWaitingPopup = showWaitingPopup;
+            _viewPage = viewPage;
         }
 
         public void OnPropertyChanged([CallerMemberName] string name = null) => 

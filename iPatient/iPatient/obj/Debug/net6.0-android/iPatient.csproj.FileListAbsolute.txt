@@ -953,6 +953,7 @@ D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-android\lp\144\jl\files.cache
 D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-android\lp\156\jl\files.cache
 D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-android\lp\157\jl\files.cache
 D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-android\android\assets\mscorlib.dll
+D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-android\android\assets\Newtonsoft.Json.dll
 D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-android\android\assets\System.Collections.Concurrent.dll
 D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-android\android\assets\System.Data.dll
 D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-android\android\assets\System.dll

@@ -1,0 +1,143 @@
+﻿using iPatient.Extensions;
+using iPatient.ReqModels;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace iPatient.Managers
+{
+    public static class APIManager
+    {
+        private const string _apiURL = "https://192.168.0.217:7176/";
+        private static string token;
+        private static LoginReq _loginReq;
+        private const int _timeout = 20000;
+
+        public static async Task<(bool OK, string Errors)> Register (RegisterReq registerReq)
+        {
+            Dictionary<string, string> dict = new Dictionary<string, string> ();
+
+            dict.Add("email", registerReq.Email);
+            dict.Add("password", registerReq.Password);
+            dict.Add("firstName", registerReq.FirstName);
+            dict.Add("lastName", registerReq.LastName);
+            dict.Add("phoneNumber", "");
+            dict.Add("pesel", "");
+
+            string jsonString = dict.ToJsonString();
+
+            try
+            {
+                var result = await HttpPost("Auth/Register", jsonString);
+
+                if (result.Response.Success)
+                {
+                    _loginReq = new LoginReq()
+                    {
+                        Password = registerReq.Password,
+                        EmailAddress = registerReq.Email
+                    };
+
+                    token = result.Response.token.ToString();
+
+                    return (true, null);
+                }
+                else if (result.OtherErrors == null)
+                {
+                    return (false, result.Response.Errors[0].ToString());
+                }
+                else
+                {
+                    return (false, result.OtherErrors);
+                }
+            }
+            catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+            {
+                return (false, e.Message);
+            }
+            catch (Exception e)
+            {
+                return (false, e.Message);
+            }
+        }
+
+        public static async Task<(bool OK, string Errors)> Login(LoginReq loginReq)
+        {
+            var dict = new Dictionary<string, string>();
+
+            dict.Add("email", loginReq.EmailAddress);
+            dict.Add("password", loginReq.Password);
+
+            string jsonString = dict.ToJsonString();
+
+            try
+            {
+                var result = await HttpPost("Auth/Login", jsonString);
+
+                if (result.Response.Success)
+                {
+                    _loginReq = new LoginReq()
+                    {
+                        Password = loginReq.Password,
+                        EmailAddress = loginReq.EmailAddress
+                    };
+
+                    token = result.Response.token.ToString();
+
+                    return (true, null);
+                }
+                else if (result.OtherErrors == null)
+                {
+                    return (false, result.Response.Errors[0].ToString());
+                }
+                else
+                {
+                    return (false, result.OtherErrors);
+                }
+            }
+            catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+            {
+                return (false, e.Message);
+            }
+            catch (Exception e)
+            {
+                return (false, e.Message);
+            }
+
+        }
+
+        private static async Task<(dynamic Response, string OtherErrors)> HttpPost(string endpoint, string jsonContent)
+        {
+            string url = _apiURL + endpoint;
+
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+
+            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+            request.Content = content;
+
+            var httpClientHandler = new HttpClientHandler();
+
+
+            using (var client = new HttpClient(httpClientHandler))
+            {
+                client.Timeout = TimeSpan.FromMilliseconds(_timeout);
+                var response = await client.SendAsync(request);
+
+                if (response == null)
+                {
+                    return (null, "No response from server");
+                }
+
+                var responeJsonString = await response.Content.ReadAsStringAsync();
+
+                dynamic responseJson = JsonConvert.DeserializeObject(responeJsonString);
+
+                return (responseJson, null);
+            }
+        }
+    }
+}

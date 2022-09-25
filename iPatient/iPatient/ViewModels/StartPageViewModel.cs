@@ -1,19 +1,27 @@
 ﻿
+using iPatient.Helpers;
+using iPatient.Managers;
+using iPatient.ReqModels;
 using iPatient.Views;
 
 namespace iPatient.ViewModels
 {
-    public class StartPageViewModel : BaseViewModel
+    public class StartPageViewModel : BaseViewModel<StartPage>
     {
         private string _infoText;
         private StartPage _startPage;
-        private string _login;
         private string _password;
         private string _confirmPassword;
         private string _email;
-        private string _username;
         private string _firstName;
         private string _lastName;
+
+        private enum SelectedOption
+        {
+            login, register
+        };
+
+        private SelectedOption _selectedOption;
 
         #region Properties
 
@@ -21,12 +29,6 @@ namespace iPatient.ViewModels
         {
             get { return _infoText; }
             set { SetProperty(ref _infoText, value); }
-        }
-
-        public string Login
-        {
-            get { return _login; }
-            set { SetProperty(ref _login, value); }
         }
 
         public string Password
@@ -39,12 +41,6 @@ namespace iPatient.ViewModels
         {
             get { return _email; }
             set { SetProperty(ref _email, value); }
-        }
-
-        public string Username
-        {
-            get { return _username; }
-            set { SetProperty(ref _username, value); }
         }
 
         public string FirstName
@@ -68,15 +64,19 @@ namespace iPatient.ViewModels
             set { SetProperty(ref _confirmPassword, value); }
         }
 
-        #endregion
-
         public Command LogInCommand { get; set; }
         public Command RegisterCommand { get; set; }
-        public StartPageViewModel(Action<WaitingPopupPage> showWaitingPopup, string title, StartPage startPage) : base(showWaitingPopup, title)
+
+        public Command ContinueCommand { get; set; }
+
+        #endregion
+
+        public StartPageViewModel(string title, StartPage startPage) : base(title, startPage)
         {
             _infoText = "To start log in or register";
             LogInCommand = new Command(() => LogIn());
             RegisterCommand = new Command(() => Register());
+            ContinueCommand = new Command(() => Continue());
             _startPage = startPage;
 
             LogIn();
@@ -84,14 +84,61 @@ namespace iPatient.ViewModels
 
         private void LogIn()
         {
+            _selectedOption = SelectedOption.login;
+
             _startPage.SetLoginButton(true);
             _startPage.SetRegisterButton(false);
         }
 
         private void Register()
         {
+            _selectedOption = SelectedOption.register;
+
             _startPage.SetLoginButton(false);
             _startPage.SetRegisterButton(true);
+        }
+
+        private void Continue()
+        {
+            switch(_selectedOption)
+            {
+                case SelectedOption.login:
+
+                    LoginReq loginReq = new LoginReq();
+
+                    loginReq.Password = Password;
+
+                    if (DataValidation.ValidateEmail(Email))
+                    {
+                        loginReq.EmailAddress = Email;
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                    _viewPage.ShowPopupPage(new WaitingPopupPage(async delegate ()
+                    {
+
+                        var result = await APIManager.Login(loginReq);
+
+                        if (!result.OK)
+                        {
+                            _viewPage.ShowPopupPage(new InfoPopupPage(result.Errors));
+                        }
+
+                        return result.OK;
+
+                    }, null, null, "Logging in..."));
+
+
+
+                    break;
+
+                case SelectedOption.register:
+
+                    break;
+            }
         }
     }
 }

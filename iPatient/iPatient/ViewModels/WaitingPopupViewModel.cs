@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iPatient.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace iPatient.ViewModels
 {
-    public class WaitingPopupViewModel : BaseViewModel
+    public class WaitingPopupViewModel : BaseViewModel<WaitingPopupPage>
     {
         private Func<Task<bool>> _actionToPerform;
         private Action _actionIfSuccess;
         private Action _actionIfFailure;
-        private Action _actionClosePopup;
 
         private string _info;
 
@@ -21,18 +21,18 @@ namespace iPatient.ViewModels
             set => SetProperty(ref _info, value);
         }
 
-        public WaitingPopupViewModel(Func<Task<bool>> actionToPerform , Action actionIfSuccess, Action actionIfFailure, Action actionClosePopup) : base(null, null)
+        public WaitingPopupViewModel(Func<Task<bool>> actionToPerform , Action actionIfSuccess, Action actionIfFailure, WaitingPopupPage waitingPopupPage) : base(null, waitingPopupPage)
         {
             _actionToPerform = actionToPerform;
             _actionIfSuccess = actionIfSuccess;
             _actionIfFailure = actionIfFailure;
-            _actionClosePopup = actionClosePopup;
-
 
             PerformAction();
         }
         public async void PerformAction()
         {
+            await Task.Delay(1500);
+
             bool result = await _actionToPerform();
 
             if (result)
@@ -46,7 +46,7 @@ namespace iPatient.ViewModels
                     _actionIfFailure();
             }
 
-            _actionClosePopup();
+            _viewPage.Close();
         }
     }
 }
