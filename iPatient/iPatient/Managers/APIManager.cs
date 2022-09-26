@@ -14,7 +14,7 @@ namespace iPatient.Managers
 {
     public static class APIManager
     {
-        private const string _apiURL = "https://192.168.0.217:45456/";
+        private const string _apiURL = "https://192.168.0.217:45455/";
         private static string token;
         private static LoginReq _loginReq;
         private const int _timeout = 20000;
@@ -121,7 +121,7 @@ namespace iPatient.Managers
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
             request.Content = content;
 
-            var devSslHelper = new DevHttpsConnectionHelper(sslPort: 45456);
+            var devSslHelper = new DevHttpsConnectionHelper(sslPort: 45455);
 
             using (var client = devSslHelper.HttpClient)
             {

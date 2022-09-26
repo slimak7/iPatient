@@ -3,6 +3,7 @@ using iPatient.Helpers;
 using iPatient.Managers;
 using iPatient.ReqModels;
 using iPatient.Views;
+using Microsoft.Maui.ApplicationModel.Communication;
 
 namespace iPatient.ViewModels
 {
@@ -100,20 +101,22 @@ namespace iPatient.ViewModels
 
         private void Continue()
         {
+            string validationMessage = "";
+
             switch(_selectedOption)
             {
                 case SelectedOption.login:
 
                     LoginReq loginReq = new LoginReq();
 
-                    loginReq.Password = Password;
-
-                    if (DataValidation.ValidateEmail(Email))
+                    if (ValidateData(ref validationMessage))
                     {
                         loginReq.EmailAddress = Email;
+                        loginReq.Password = Password;
                     }
                     else
                     {
+                        _viewPage.ShowPopupPage(new InfoPopupPage(validationMessage));
                         return;
                     }
 
@@ -133,12 +136,60 @@ namespace iPatient.ViewModels
 
 
 
-                    break;
+                break;
 
                 case SelectedOption.register:
 
-                    break;
+                    RegisterReq registerReq = new RegisterReq();
+
+                    if (ValidateData(ref validationMessage))
+                    {
+                        registerReq.Email = Email;
+                        registerReq.Password = Password;
+                    }
+                    else
+                    {
+                        _viewPage.ShowPopupPage(new InfoPopupPage(validationMessage));
+                        return;
+                    }
+
+                break;
             }
+        }
+
+        public override bool ValidateData(ref string message)
+        {
+            switch (_selectedOption) 
+            {
+
+                case SelectedOption.login:
+
+                    if (!DataValidation.ValidateEmail(Email))
+                    {
+                        message = "Invalid email address";
+                        return false;
+                    }
+                    
+
+                break;
+
+                case SelectedOption.register:
+
+                    if (!DataValidation.ValidateEmail(Email))
+                    {
+                        message = "Invalid email address";
+                        return false;
+                    }
+                    if (!DataValidation.ValidatePassword(Password))
+                    {
+                        message = "Password requirements: min 8. chars, min. 1 number and upper char";
+                        return false;
+                    }
+
+                break;
+
+            }   
+            return true;
         }
     }
 }

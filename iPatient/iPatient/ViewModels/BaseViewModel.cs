@@ -42,6 +42,11 @@ namespace iPatient.ViewModels
                 SetProperty(ref _title, value);
             }
         }
+
+        public virtual bool ValidateData (ref string message)
+        {
+            return true;
+        }
     }
 
 

@@ -5,12 +5,17 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              CanBeDismissedByTappingOutsideOfPopup="True">
     <VerticalStackLayout>
+        
         <Label x:Name="InfoLabel"
             VerticalOptions="CenterAndExpand" 
             HorizontalOptions="CenterAndExpand"
                Margin="10, 10, 10, 10"
                LineBreakMode="WordWrap"
                FontAutoScalingEnabled="True"
+               WidthRequest="300"
+               HeightRequest="50"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
                />
         
     </VerticalStackLayout>
