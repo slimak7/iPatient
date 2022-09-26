@@ -1,4 +1,5 @@
 ﻿using iPatient.Extensions;
+using iPatient.Helpers;
 using iPatient.ReqModels;
 using Newtonsoft.Json;
 using System;
@@ -7,12 +8,13 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace iPatient.Managers
 {
     public static class APIManager
     {
-        private const string _apiURL = "https://192.168.0.217:7176/";
+        private const string _apiURL = "https://192.168.0.217:45456/";
         private static string token;
         private static LoginReq _loginReq;
         private const int _timeout = 20000;
@@ -34,7 +36,7 @@ namespace iPatient.Managers
             {
                 var result = await HttpPost("Auth/Register", jsonString);
 
-                if (result.Response.Success)
+                if (result.Response != null && result.Response.success == "True")
                 {
                     _loginReq = new LoginReq()
                     {
@@ -46,7 +48,7 @@ namespace iPatient.Managers
 
                     return (true, null);
                 }
-                else if (result.OtherErrors == null)
+                else if (result.OtherErrors == "")
                 {
                     return (false, result.Response.Errors[0].ToString());
                 }
@@ -69,7 +71,7 @@ namespace iPatient.Managers
         {
             var dict = new Dictionary<string, string>();
 
-            dict.Add("email", loginReq.EmailAddress);
+            dict.Add("emailAddress", loginReq.EmailAddress);
             dict.Add("password", loginReq.Password);
 
             string jsonString = dict.ToJsonString();
@@ -78,7 +80,7 @@ namespace iPatient.Managers
             {
                 var result = await HttpPost("Auth/Login", jsonString);
 
-                if (result.Response.Success)
+                if (result.Response != null && result.Response.success == "True")
                 {
                     _loginReq = new LoginReq()
                     {
@@ -90,9 +92,9 @@ namespace iPatient.Managers
 
                     return (true, null);
                 }
-                else if (result.OtherErrors == null)
+                else if (result.OtherErrors == "")
                 {
-                    return (false, result.Response.Errors[0].ToString());
+                    return (false, result.Response.errors[0].ToString());
                 }
                 else
                 {
@@ -119,12 +121,12 @@ namespace iPatient.Managers
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
             request.Content = content;
 
-            var httpClientHandler = new HttpClientHandler();
+            var devSslHelper = new DevHttpsConnectionHelper(sslPort: 45456);
 
-
-            using (var client = new HttpClient(httpClientHandler))
+            using (var client = devSslHelper.HttpClient)
             {
                 client.Timeout = TimeSpan.FromMilliseconds(_timeout);
+                
                 var response = await client.SendAsync(request);
 
                 if (response == null)
@@ -136,7 +138,8 @@ namespace iPatient.Managers
 
                 dynamic responseJson = JsonConvert.DeserializeObject(responeJsonString);
 
-                return (responseJson, null);
+                return (responseJson, string.Empty);
+                
             }
         }
     }
