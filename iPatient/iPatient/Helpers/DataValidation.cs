@@ -25,6 +25,9 @@ namespace iPatient.Helpers
 
         public static bool ValidatePassword (string password)
         {
+            if (password == null)
+                return false;
+
             var hasNumber = new Regex(@"[0-9]+");
             var hasUpperChar = new Regex(@"[A-Z]+");
             var hasMinimum8Chars = new Regex(@".{8,}");

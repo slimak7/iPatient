@@ -15,10 +15,10 @@ namespace iPatient.Managers
     public static class APIManager
     {
         private const string _apiURL = "https://192.168.0.217:45455/";
-        private static string token;
+        private static string _token;
         private static LoginReq _loginReq;
         private const int _timeout = 20000;
-
+        private static string _userId;
         public static async Task<(bool OK, string Errors)> Register (RegisterReq registerReq)
         {
             Dictionary<string, string> dict = new Dictionary<string, string> ();
@@ -44,7 +44,9 @@ namespace iPatient.Managers
                         EmailAddress = registerReq.Email
                     };
 
-                    token = result.Response.token.ToString();
+                    _token = result.Response.token.ToString();
+
+                    _userId = result.Response.userId;
 
                     return (true, null);
                 }
@@ -88,7 +90,9 @@ namespace iPatient.Managers
                         EmailAddress = loginReq.EmailAddress
                     };
 
-                    token = result.Response.token.ToString();
+                    _token = result.Response.token.ToString();
+
+                    _userId = result.Response.userId;
 
                     return (true, null);
                 }

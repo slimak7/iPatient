@@ -5,17 +5,22 @@
              xmlns:viewmodel="clr-namespace:iPatient.ViewModels"
              x:DataType="viewmodel:WaitingPopupViewModel"
              x:Class="iPatient.Views.WaitingPopupPage"
-               CanBeDismissedByTappingOutsideOfPopup="False">
+               CanBeDismissedByTappingOutsideOfPopup="False"
+               Color="Transparent">
     
     <AbsoluteLayout BackgroundColor="Transparent">
        
-        <Label 
+        <Button 
             x:Name="InfoLabel"
             VerticalOptions="Center" 
             HorizontalOptions="Center" 
             FontSize="Large"
             BackgroundColor="LightBlue"
-            FontFamily="ReemKufRegular"/>
+            FontFamily="ReemKufRegular"
+            IsEnabled="False"
+            CornerRadius="20"
+            WidthRequest="300"
+            HeightRequest="100"/>
         
     </AbsoluteLayout>
 </toolkit:Popup>

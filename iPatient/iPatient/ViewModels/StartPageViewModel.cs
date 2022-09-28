@@ -146,12 +146,28 @@ namespace iPatient.ViewModels
                     {
                         registerReq.Email = Email;
                         registerReq.Password = Password;
+                        registerReq.FirstName = FirstName;
+                        registerReq.LastName = LastName;
                     }
                     else
                     {
                         _viewPage.ShowPopupPage(new InfoPopupPage(validationMessage));
                         return;
                     }
+
+                    _viewPage.ShowPopupPage(new WaitingPopupPage(async delegate ()
+                    {
+
+                        var result = await APIManager.Register(registerReq);
+
+                        if (!result.OK)
+                        {
+                            _viewPage.ShowPopupPage(new InfoPopupPage(result.Errors));
+                        }
+
+                        return result.OK;
+
+                    }, null, null, "Registration..."));
 
                 break;
             }
@@ -169,9 +185,14 @@ namespace iPatient.ViewModels
                         message = "Invalid email address";
                         return false;
                     }
-                    
+                    if (!DataValidation.ValidatePassword(Password))
+                    {
+                        message = "Password requirements: min 8. chars, min. 1 number and upper char";
+                        return false;
+                    }
 
-                break;
+
+                    break;
 
                 case SelectedOption.register:
 
@@ -183,6 +204,21 @@ namespace iPatient.ViewModels
                     if (!DataValidation.ValidatePassword(Password))
                     {
                         message = "Password requirements: min 8. chars, min. 1 number and upper char";
+                        return false;
+                    }
+                    if (Password != ConfirmPassword)
+                    {
+                        message = "Passwords do not match";
+                        return false;
+                    }
+                    if (FirstName == null || FirstName == "")
+                    {
+                        message = "First name can not be empty";
+                        return false;
+                    }
+                    if (LastName == null || LastName == "")
+                    {
+                        message = "Last name can not be empty";
                         return false;
                     }
 
