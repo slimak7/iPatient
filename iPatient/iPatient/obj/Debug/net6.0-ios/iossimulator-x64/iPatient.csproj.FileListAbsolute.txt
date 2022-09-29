@@ -200,13 +200,10 @@ D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libicui18
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libicuuc.a
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-debugger-static.a
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-debugger-stub-static.a
-D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-debugger.dylib
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-diagnostics_tracing-static.a
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-diagnostics_tracing-stub-static.a
-D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-diagnostics_tracing.dylib
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-hot_reload-static.a
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-hot_reload-stub-static.a
-D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-hot_reload.dylib
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libmonosgen-2.0.a
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libmonosgen-2.0.dylib
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\Microsoft.iOS.registrar.a
@@ -267,3 +264,4 @@ D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-ios\iossimulator-x64\refint\iP
 D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-ios\iossimulator-x64\iPatient.pdb
 D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-ios\iossimulator-x64\iPatient.genruntimeconfig.cache
 D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-ios\iossimulator-x64\ref\iPatient.dll
+D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\Newtonsoft.Json.dll

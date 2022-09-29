@@ -6,6 +6,7 @@ namespace iPatient.Views;
 public partial class StartPage : ContentPage, ViewBase
 {
 	private StartPageViewModel _startPageViewModel;
+	private AccountInfoView _accountInfoView;
 
 	private const int _borderWidthClicked = 6;
 	private const int _borderWidthUnclicked = 2;
@@ -17,8 +18,13 @@ public partial class StartPage : ContentPage, ViewBase
 		_startPageViewModel = new StartPageViewModel("Welcome to iPatient!", this);
 		BindingContext = _startPageViewModel;
 
+		_accountInfoView = new AccountInfoView(_startPageViewModel);
+
         LoginScrollView.Content = new LoginView(_startPageViewModel);
 		RegisterScrollView.Content = new RegisterView(_startPageViewModel);
+		AccountInfoScrollView.Content = _accountInfoView;
+
+
     }
 
 	public void SetLoginButton(bool clicked)
@@ -43,5 +49,14 @@ public partial class StartPage : ContentPage, ViewBase
 	public void ShowPopupPage(InfoPopupPage infoPopupPage)
 	{
 		this.ShowPopup(infoPopupPage);
+	}
+
+	public void ShowUserData()
+	{
+		AccountInfoScrollView.IsVisible = true;
+		LogInButton.IsVisible = RegisterButton.IsVisible = ContinueButton.IsVisible
+			= InfoLabel.IsVisible = RegisterScrollView.IsVisible = LoginScrollView.IsVisible = false;
+
+		_accountInfoView.SetUserInfo(_startPageViewModel._currentUser);
 	}
 }

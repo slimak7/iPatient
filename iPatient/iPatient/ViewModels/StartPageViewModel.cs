@@ -1,6 +1,7 @@
 ﻿
 using iPatient.Helpers;
 using iPatient.Managers;
+using iPatient.Model;
 using iPatient.ReqModels;
 using iPatient.Views;
 using Microsoft.Maui.ApplicationModel.Communication;
@@ -16,6 +17,10 @@ namespace iPatient.ViewModels
         private string _email;
         private string _firstName;
         private string _lastName;
+        private string _phone;
+        private string _PESEL;
+
+        public User _currentUser { get; set; }
 
         private enum SelectedOption
         {
@@ -65,6 +70,18 @@ namespace iPatient.ViewModels
             set { SetProperty(ref _confirmPassword, value); }
         }
 
+        public string Phone
+        {
+            get { return _phone; }
+            set { SetProperty(ref _phone, value); }
+        }
+
+        public string PESEL
+        {
+            get { return _PESEL; }
+            set { SetProperty(ref _PESEL, value); }
+        }
+
         public Command LogInCommand { get; set; }
         public Command RegisterCommand { get; set; }
 
@@ -81,6 +98,7 @@ namespace iPatient.ViewModels
             _startPage = startPage;
 
             LogIn();
+
         }
 
         private void LogIn()
@@ -132,7 +150,7 @@ namespace iPatient.ViewModels
 
                         return result.OK;
 
-                    }, null, null, "Logging in..."));
+                    }, LoadUserInfo, null, "Logging in..."));
 
 
 
@@ -167,7 +185,7 @@ namespace iPatient.ViewModels
 
                         return result.OK;
 
-                    }, null, null, "Registration..."));
+                    }, LoadUserInfo, null, "Registration..."));
 
                 break;
             }
@@ -185,12 +203,13 @@ namespace iPatient.ViewModels
                         message = "Invalid email address";
                         return false;
                     }
+                    /*
                     if (!DataValidation.ValidatePassword(Password))
                     {
                         message = "Password requirements: min 8. chars, min. 1 number and upper char";
                         return false;
                     }
-
+                    */
 
                     break;
 
@@ -226,6 +245,39 @@ namespace iPatient.ViewModels
 
             }   
             return true;
+        }
+
+        private void LoadUserInfo()
+        {
+            _viewPage.ShowPopupPage(new WaitingPopupPage(async delegate ()
+            {
+
+                var result = await APIManager.GetCurrentUserInfo();
+
+                if (!result.ok)
+                {
+                    _viewPage.ShowPopupPage(new InfoPopupPage(result.errors));
+                }
+                else
+                {
+                    _currentUser = result.user;
+
+                }
+
+                return result.ok;
+
+            }, ShowUserInfo, null, "Loading account info..."));
+        }
+
+        private void ShowUserInfo()
+        {
+            _viewPage.ShowUserData();
+
+            FirstName = _currentUser.FirstName;
+            LastName = _currentUser.LastName;
+            Email = _currentUser.Email;
+            Phone = _currentUser.PhoneNumber;
+            PESEL = _currentUser.PESEL;
         }
     }
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="iPatient.Views.AccountInfoView"
+             xmlns:local="clr-namespace:iPatient.ViewModels"
+             x:DataType="local:StartPageViewModel">
+            
+    <VerticalStackLayout VerticalOptions="Center">
+        <Label Text="Your account" FontSize="Large" TextColor="Black"
+                       FontAttributes="Bold" HorizontalOptions="Center"></Label>
+
+        <Label x:Name="EmailLabel" Text="{Binding Email}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Label>
+        <Label x:Name="FirstNameLabel" Text="{Binding FirstName}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Label>
+        <Label x:Name="LastNameLabel" Text="{Binding LastName}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Label>
+        <Label x:Name="PeselLabel" Text="{Binding PESEL}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Label>
+        <Label x:Name="PhoneLabel" Text="{Binding Phone}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Label>
+    </VerticalStackLayout>
+</ContentView>
