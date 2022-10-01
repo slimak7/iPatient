@@ -1,4 +1,5 @@
 using CommunityToolkit.Maui.Views;
+using iPatient.Model;
 using iPatient.ViewModels;
 
 namespace iPatient.Views;
@@ -15,7 +16,7 @@ public partial class StartPage : ContentPage, ViewBase
 	{
 		InitializeComponent();
 
-		_startPageViewModel = new StartPageViewModel("Welcome to iPatient!", this);
+		_startPageViewModel = new StartPageViewModel("Witaj w iPatient!", this);
 		BindingContext = _startPageViewModel;
 
 		_accountInfoView = new AccountInfoView(_startPageViewModel);
@@ -51,12 +52,12 @@ public partial class StartPage : ContentPage, ViewBase
 		this.ShowPopup(infoPopupPage);
 	}
 
-	public void ShowUserData()
+	public void ShowUserData(User user, Address address)
 	{
 		AccountInfoScrollView.IsVisible = true;
 		LogInButton.IsVisible = RegisterButton.IsVisible = ContinueButton.IsVisible
 			= InfoLabel.IsVisible = RegisterScrollView.IsVisible = LoginScrollView.IsVisible = false;
 
-		_accountInfoView.SetUserInfo(_startPageViewModel._currentUser);
+		_accountInfoView.SetUserInfo(user, address);
 	}
 }

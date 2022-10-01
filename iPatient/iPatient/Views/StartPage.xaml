@@ -8,22 +8,23 @@
              Title="{Binding Title}"
              BackgroundColor="LightGray">
     
-    <VerticalStackLayout VerticalOptions="Start">
+    <VerticalStackLayout VerticalOptions="Start" HorizontalOptions="Center">
 
         <Label x:Name="InfoLabel"
         Text="{Binding InfoText}"
         VerticalOptions="Center" 
         HorizontalOptions="Center" 
+        HorizontalTextAlignment="Center"
         FontSize="Title"
         FontFamily="ReemKufRegular"
         FontAttributes="Bold"
         Margin="0, 0, 0, 10"/>
 
 
-        <Button x:Name="LogInButton" Text="Log in" BackgroundColor="LightSeaGreen" BorderWidth="2"
+        <Button x:Name="LogInButton" Text="Zaloguj" BackgroundColor="LightSeaGreen" BorderWidth="2"
                 BorderColor="White" FontAttributes="Bold" Margin="5, 40, 5, 5" FontSize="Medium" CornerRadius="15"
                 Command="{Binding LogInCommand}"/>
-        <Button x:Name="RegisterButton" Text="Register" BackgroundColor="SeaGreen"
+        <Button x:Name="RegisterButton" Text="Zarejestruj" BackgroundColor="SeaGreen"
                 BorderWidth="2" BorderColor="White" FontAttributes="Bold" Margin="5, 5, 5, 40" FontSize="Medium" CornerRadius="15"
                 Command="{Binding RegisterCommand}"/>
 
@@ -35,7 +36,7 @@
 
         </ScrollView>
 
-        <Button x:Name="ContinueButton" Text="Continue" BackgroundColor="GreenYellow"
+        <Button x:Name="ContinueButton" Text="Kontynuuj" BackgroundColor="GreenYellow"
                 BorderWidth="1" BorderColor="BlueViolet" FontAttributes="Bold" Margin="5, 5, 5, 10" FontSize="Large" CornerRadius="15"
                 Command="{Binding ContinueCommand}"/>
 

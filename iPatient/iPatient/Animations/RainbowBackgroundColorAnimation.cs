@@ -14,13 +14,11 @@ namespace iPatient.Animations
         {
             while (true)
             {
-                await view.BackgroundColorTo(Colors.Red);
-                await view.BackgroundColorTo(Colors.Orange);
-                await view.BackgroundColorTo(Colors.Yellow);
-                await view.BackgroundColorTo(Colors.Green);
-                await view.BackgroundColorTo(Colors.Blue);
-                await view.BackgroundColorTo(Colors.Indigo);
-                await view.BackgroundColorTo(Colors.Violet);
+                await view.BackgroundColorTo(Color.FromHex("264653"));
+                await view.BackgroundColorTo(Color.FromHex("2A9D8F"));
+                await view.BackgroundColorTo(Color.FromHex("E9C46A"));
+                await view.BackgroundColorTo(Color.FromHex("F4A261"));
+                await view.BackgroundColorTo(Color.FromHex("E76F51"));
             }
         }
     }

@@ -20,7 +20,8 @@ namespace iPatient.ViewModels
         private string _phone;
         private string _PESEL;
 
-        public User _currentUser { get; set; }
+        private User _currentUser;
+        private Address _address;
 
         private enum SelectedOption
         {
@@ -91,7 +92,7 @@ namespace iPatient.ViewModels
 
         public StartPageViewModel(string title, StartPage startPage) : base(title, startPage)
         {
-            _infoText = "To start log in or register";
+            _infoText = "Aby rozpocząć zaloguj się lub zarejestruj";
             LogInCommand = new Command(() => LogIn());
             RegisterCommand = new Command(() => Register());
             ContinueCommand = new Command(() => Continue());
@@ -150,7 +151,7 @@ namespace iPatient.ViewModels
 
                         return result.OK;
 
-                    }, LoadUserInfo, null, "Logging in..."));
+                    }, LoadUserInfo, null, "Logowanie..."));
 
 
 
@@ -185,7 +186,7 @@ namespace iPatient.ViewModels
 
                         return result.OK;
 
-                    }, LoadUserInfo, null, "Registration..."));
+                    }, LoadUserInfo, null, "Rejestracja..."));
 
                 break;
             }
@@ -200,13 +201,13 @@ namespace iPatient.ViewModels
 
                     if (!DataValidation.ValidateEmail(Email))
                     {
-                        message = "Invalid email address";
+                        message = "Niepoprawny adres email";
                         return false;
                     }
                     /*
                     if (!DataValidation.ValidatePassword(Password))
                     {
-                        message = "Password requirements: min 8. chars, min. 1 number and upper char";
+                        message = "Wymagania hasła: min. 8 znaków, co najmniej jedna duża litera, co najmniej jedna cyfra";
                         return false;
                     }
                     */
@@ -217,27 +218,27 @@ namespace iPatient.ViewModels
 
                     if (!DataValidation.ValidateEmail(Email))
                     {
-                        message = "Invalid email address";
+                        message = "Niepoprawny adres email";
                         return false;
                     }
                     if (!DataValidation.ValidatePassword(Password))
                     {
-                        message = "Password requirements: min 8. chars, min. 1 number and upper char";
+                        message = "Wymagania hasła: min. 8 znaków, co najmniej jedna duża litera, co najmniej jedna cyfra";
                         return false;
                     }
                     if (Password != ConfirmPassword)
                     {
-                        message = "Passwords do not match";
+                        message = "Hasła nie zgadzają się";
                         return false;
                     }
                     if (FirstName == null || FirstName == "")
                     {
-                        message = "First name can not be empty";
+                        message = "Imię nie może być puste";
                         return false;
                     }
                     if (LastName == null || LastName == "")
                     {
-                        message = "Last name can not be empty";
+                        message = "Nazwisko nie może być puste";
                         return false;
                     }
 
@@ -252,26 +253,36 @@ namespace iPatient.ViewModels
             _viewPage.ShowPopupPage(new WaitingPopupPage(async delegate ()
             {
 
-                var result = await APIManager.GetCurrentUserInfo();
+                var userResponse = await APIManager.GetCurrentUserInfo();
 
-                if (!result.ok)
+                if (!userResponse.ok)
                 {
-                    _viewPage.ShowPopupPage(new InfoPopupPage(result.errors));
+                    _viewPage.ShowPopupPage(new InfoPopupPage(userResponse.errors));
+                    return false;
                 }
                 else
                 {
-                    _currentUser = result.user;
+                    _currentUser = userResponse.user;
 
+                    var addressResponse = await APIManager.GetCurrentUserAddress();
+
+                    if (!addressResponse.ok)
+                    {
+                        _viewPage.ShowPopupPage(new InfoPopupPage(userResponse.errors));
+                        return false;
+                    }
+
+                    _address = addressResponse.address;
                 }
 
-                return result.ok;
+                return true;
 
-            }, ShowUserInfo, null, "Loading account info..."));
+            }, ShowUserInfo, null, "Pobieranie informacji o koncie..."));
         }
 
         private void ShowUserInfo()
         {
-            _viewPage.ShowUserData();
+            _viewPage.ShowUserData(_currentUser, _address);
 
             FirstName = _currentUser.FirstName;
             LastName = _currentUser.LastName;

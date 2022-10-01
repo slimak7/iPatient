@@ -11,7 +11,7 @@
         <Entry Placeholder="Email" ReturnType="Next" Text="{Binding Email}"
                VerticalOptions="Center" PlaceholderColor="CadetBlue"
                Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
-        <Entry Placeholder="Password" IsPassword="True" Text="{Binding Password}"
+        <Entry Placeholder="Hasło" IsPassword="True" Text="{Binding Password}"
                VerticalOptions="Center" PlaceholderColor="CadetBlue"
                Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
         

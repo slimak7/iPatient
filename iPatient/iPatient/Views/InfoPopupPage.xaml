@@ -11,9 +11,10 @@
             HorizontalOptions="CenterAndExpand"
                Margin="10, 10, 10, 10"
                LineBreakMode="WordWrap"
-               FontAutoScalingEnabled="True"
+               FontAutoScalingEnabled="False"
+               FontSize="Small"
                WidthRequest="300"
-               HeightRequest="50"
+               HeightRequest="70"
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"
                />

@@ -11,16 +11,16 @@
         <Entry Placeholder="Email" ReturnType="Next" Text="{Binding Email}"
                VerticalOptions="Center" PlaceholderColor="CadetBlue"
                Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
-        <Entry Placeholder="Password" IsPassword="True" Text="{Binding Password}"
+        <Entry Placeholder="Hasło" IsPassword="True" Text="{Binding Password}"
                VerticalOptions="Center" PlaceholderColor="CadetBlue"
                Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
-        <Entry Placeholder="Confirm password" IsPassword="True" Text="{Binding ConfirmPassword}"
+        <Entry Placeholder="Potwierdź hasło" IsPassword="True" Text="{Binding ConfirmPassword}"
                VerticalOptions="Center" PlaceholderColor="CadetBlue"
                Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
-        <Entry Placeholder="First name" IsPassword="True" Text="{Binding FirstName}"
+        <Entry Placeholder="Imię" IsPassword="False" Text="{Binding FirstName}"
                VerticalOptions="Center" PlaceholderColor="CadetBlue"
                Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
-        <Entry Placeholder="Last name" IsPassword="True" Text="{Binding LastName}"
+        <Entry Placeholder="Nazwisko" IsPassword="False" Text="{Binding LastName}"
                VerticalOptions="Center" PlaceholderColor="CadetBlue"
                Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
 

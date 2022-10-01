@@ -57,7 +57,7 @@ namespace iPatient.Managers
                 }
                 else if (result.OtherErrors == "")
                 {
-                    return (false, result.Response.Errors[0].ToString());
+                    return (false, result.Response.errors[0].ToString());
                 }
                 else
                 {
@@ -120,6 +120,43 @@ namespace iPatient.Managers
                 return (false, e.Message);
             }
 
+        }
+
+        public static async Task<(bool ok, string errors, Address address)> GetCurrentUserAddress()
+        {
+            try
+            {
+                var result = await HttpGet("UsersInfo/UserAddress/" + _loginReq.Id);
+
+                if (result.Response != null && result.Response.success == "True")
+                {
+                    Address address = new Address()
+                    {
+                        Street = result.Response.street,
+                        StreetNumber = result.Response.streetNumber,
+                        City = result.Response.city,
+                        PostCode = result.Response.postCode
+                    };
+
+                    return (true, null, address);
+                }
+                else if (result.OtherErrors == "")
+                {
+                    return (false, result.Response.errors[0].ToString(), null);
+                }
+                else
+                {
+                    return (false, result.OtherErrors, null);
+                }
+            }
+            catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+            {
+                return (false, e.Message, null);
+            }
+            catch (Exception e)
+            {
+                return (false, e.Message, null);
+            }
         }
 
         public static async Task<(bool ok, string errors, User user)> GetCurrentUserInfo()
