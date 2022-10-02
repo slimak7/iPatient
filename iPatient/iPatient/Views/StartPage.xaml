@@ -6,12 +6,13 @@
              xmlns:viewmodel="clr-namespace:iPatient.ViewModels"
              x:DataType="viewmodel:StartPageViewModel"
              Title="{Binding Title}"
-             BackgroundColor="LightGray">
+             BackgroundColor="{StaticResource Background}">
     
     <VerticalStackLayout VerticalOptions="Start" HorizontalOptions="Center">
 
         <Label x:Name="InfoLabel"
         Text="{Binding InfoText}"
+        TextColor="{StaticResource FontBasic_1}"
         VerticalOptions="Center" 
         HorizontalOptions="Center" 
         HorizontalTextAlignment="Center"
@@ -21,11 +22,11 @@
         Margin="0, 0, 0, 10"/>
 
 
-        <Button x:Name="LogInButton" Text="Zaloguj" BackgroundColor="LightSeaGreen" BorderWidth="2"
-                BorderColor="White" FontAttributes="Bold" Margin="5, 40, 5, 5" FontSize="Medium" CornerRadius="15"
+        <Button x:Name="LogInButton" Text="Zaloguj" BackgroundColor="{StaticResource ButtonBasic_1}" BorderWidth="2"
+                BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 40, 5, 5" FontSize="Medium" CornerRadius="15"
                 Command="{Binding LogInCommand}"/>
-        <Button x:Name="RegisterButton" Text="Zarejestruj" BackgroundColor="SeaGreen"
-                BorderWidth="2" BorderColor="White" FontAttributes="Bold" Margin="5, 5, 5, 40" FontSize="Medium" CornerRadius="15"
+        <Button x:Name="RegisterButton" Text="Zarejestruj" BackgroundColor="{StaticResource ButtonBasic_2}"
+                BorderWidth="2" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 40" FontSize="Medium" CornerRadius="15"
                 Command="{Binding RegisterCommand}"/>
 
         <ScrollView x:Name="LoginScrollView">
@@ -36,9 +37,9 @@
 
         </ScrollView>
 
-        <Button x:Name="ContinueButton" Text="Kontynuuj" BackgroundColor="GreenYellow"
-                BorderWidth="1" BorderColor="BlueViolet" FontAttributes="Bold" Margin="5, 5, 5, 10" FontSize="Large" CornerRadius="15"
-                Command="{Binding ContinueCommand}"/>
+        <Button x:Name="ContinueButton" Text="Kontynuuj" BackgroundColor="{StaticResource ButtonBasic_3}"
+                BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 10" FontSize="Large" CornerRadius="15"
+                Command="{Binding ContinueCommand}" TextColor="{StaticResource FontBasic_2}"/>
 
         <ScrollView x:Name="AccountInfoScrollView" IsVisible="False">
             

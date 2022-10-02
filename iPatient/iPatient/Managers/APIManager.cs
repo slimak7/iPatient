@@ -51,7 +51,7 @@ namespace iPatient.Managers
 
                     _token = result.Response.token.ToString();
 
-                    _userId = result.Response.userId;
+                    _userId = result.Response.userID.ToString();
 
                     return (true, null);
                 }
@@ -98,7 +98,7 @@ namespace iPatient.Managers
 
                     _token = result.Response.token.ToString();
 
-                    _userId = result.Response.userId;
+                    _userId = result.Response.userID.ToString();
 
                     return (true, null);
                 }
@@ -198,6 +198,82 @@ namespace iPatient.Managers
             }
         }
 
+        public static async Task<(bool ok, string errors)> UpdateUserInfo(User user)
+        {
+            var dict = new Dictionary<string, string>();
+
+            dict.Add("userId", _userId);
+            dict.Add("phoneNumber", user.PhoneNumber);
+            dict.Add("pesel", user.PESEL);
+
+            string jsonString = dict.ToJsonString();
+
+            try
+            {
+                var result = await HttpPost("UsersInfo/UserInfo/Update", jsonString, true);
+
+                if (result.Response != null && result.Response.success == "True")
+                {                    
+                    return (true, null);
+                }
+                else if (result.OtherErrors == "")
+                {
+                    return (false, result.Response.errors[0].ToString());
+                }
+                else
+                {
+                    return (false, result.OtherErrors);
+                }
+            }
+            catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+            {
+                return (false, e.Message);
+            }
+            catch (Exception e)
+            {
+                return (false, e.Message);
+            }
+        }
+
+        public static async Task<(bool ok, string errors)> UpdateUserAddress(Address address)
+        {
+            var dict = new Dictionary<string, string>();
+
+            dict.Add("userID", _userId);
+            dict.Add("street", address.Street);
+            dict.Add("streetNumber", address.StreetNumber);
+            dict.Add("city", address.City);
+            dict.Add("postCode", address.PostCode);
+
+            string jsonString = dict.ToJsonString();
+
+            try
+            {
+                var result = await HttpPost("UsersInfo/UserAddress/Update", jsonString, true);
+
+                if (result.Response != null && result.Response.success == "True")
+                {
+                    return (true, null);
+                }
+                else if (result.OtherErrors == "")
+                {
+                    return (false, result.Response.errors[0].ToString());
+                }
+                else
+                {
+                    return (false, result.OtherErrors);
+                }
+            }
+            catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+            {
+                return (false, e.Message);
+            }
+            catch (Exception e)
+            {
+                return (false, e.Message);
+            }
+        }
+
         private static async Task<(bool ok, string errors)> RefreshToken()
         {
             return await Login(new LoginReq()
@@ -208,7 +284,7 @@ namespace iPatient.Managers
 
         }
 
-        private static async Task<(dynamic Response, string OtherErrors)> HttpPost(string endpoint, string jsonContent)
+        private static async Task<(dynamic Response, string OtherErrors)> HttpPost(string endpoint, string jsonContent, bool withAuth = false)
         {
             string url = _apiURL + endpoint;
 
@@ -223,12 +299,40 @@ namespace iPatient.Managers
             {
                 client.Timeout = TimeSpan.FromMilliseconds(_timeout);
                 
+                if (withAuth)
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
+                }
+
                 var response = await client.SendAsync(request);
 
                 if (response == null)
                 {
                     return (null, "No response from server");
                 }
+
+                if (withAuth)
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized && !_refreshTokenAttempt)
+                    {
+                        _refreshTokenAttempt = true;
+
+                        var result = await RefreshToken();
+
+                        if (result.ok)
+                        {
+                            return await HttpPost(endpoint, jsonContent, withAuth);
+                        }
+
+                    }
+                    else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                    {
+                        _refreshTokenAttempt = false;
+                        return (null, "Unauthorized");                    
+                    }
+                }
+
+                _refreshTokenAttempt = false;
 
                 var responeJsonString = await response.Content.ReadAsStringAsync();
 
@@ -274,6 +378,7 @@ namespace iPatient.Managers
                 }
                 else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
+                    _refreshTokenAttempt = false;
                     return (null, "Unauthorized");
                 }
 

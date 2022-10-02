@@ -88,6 +88,9 @@ namespace iPatient.ViewModels
 
         public Command ContinueCommand { get; set; }
 
+        public Command EditUserInfoCommand { get; set; }
+        public Command SaveUserInfoCommand { get; set; }
+
         #endregion
 
         public StartPageViewModel(string title, StartPage startPage) : base(title, startPage)
@@ -96,6 +99,8 @@ namespace iPatient.ViewModels
             LogInCommand = new Command(() => LogIn());
             RegisterCommand = new Command(() => Register());
             ContinueCommand = new Command(() => Continue());
+            EditUserInfoCommand = new Command(() => EditUserData());
+            SaveUserInfoCommand = new Command(() => SaveUserData());
             _startPage = startPage;
 
             LogIn();
@@ -268,7 +273,7 @@ namespace iPatient.ViewModels
 
                     if (!addressResponse.ok)
                     {
-                        _viewPage.ShowPopupPage(new InfoPopupPage(userResponse.errors));
+                        _viewPage.ShowPopupPage(new InfoPopupPage(addressResponse.errors));
                         return false;
                     }
 
@@ -289,6 +294,63 @@ namespace iPatient.ViewModels
             Email = _currentUser.Email;
             Phone = _currentUser.PhoneNumber;
             PESEL = _currentUser.PESEL;
+        }
+
+        private void EditUserData()
+        {
+            _viewPage.EditUserData();
+        }
+
+        private void SaveUserData()
+        {
+            if (!_viewPage.IsReadyToSave())
+            {
+                _viewPage.ShowPopupPage(new InfoPopupPage("Brak zmian do zapisu"));
+                return;
+            }
+
+            _viewPage.ShowPopupPage(new WaitingPopupPage(async delegate ()
+            {
+
+                var data = _viewPage.GetUserInfo();
+
+                var userInfoResponse = await APIManager.UpdateUserInfo(
+                    new User()
+                    {
+                        PhoneNumber = data.user.PhoneNumber,
+                        PESEL = data.user.PESEL
+                    });
+
+                if (!userInfoResponse.ok)
+                {
+                    _viewPage.ShowPopupPage(new InfoPopupPage(userInfoResponse.errors));
+                    return false;
+                }
+                else
+                {
+
+                    var addressResponse = await APIManager.UpdateUserAddress(new Address()
+                    {
+                        Street = data.address.Street,
+                        StreetNumber = data.address.StreetNumber,
+                        City = data.address.City,
+                        PostCode = data.address.PostCode
+                    });
+
+                    if (!addressResponse.ok)
+                    {
+                        _viewPage.ShowPopupPage(new InfoPopupPage(addressResponse.errors));
+                        return false;
+                    }
+
+                }
+
+                _currentUser = data.user;
+                _address = data.address;
+
+                return true;
+
+            }, _viewPage.UserInfoSavedSuccess, _viewPage.UserInfoSavedNoSuccess, "Zapisywanie zmian..."));
         }
     }
 }

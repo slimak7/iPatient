@@ -60,4 +60,29 @@ public partial class StartPage : ContentPage, ViewBase
 
 		_accountInfoView.SetUserInfo(user, address);
 	}
+
+	public void EditUserData()
+	{
+		_accountInfoView.EditUserInfo();
+	}
+
+    public (User user, Address address) GetUserInfo()
+	{
+		return _accountInfoView.GetUserInfo();
+	}
+
+	public void UserInfoSavedNoSuccess()
+	{
+		_accountInfoView.UserInfoSavedNoSuccess();
+	}
+
+	public void UserInfoSavedSuccess()
+	{
+		_accountInfoView.UserInfoSavedSuccess();
+	}
+
+	public bool IsReadyToSave()
+	{
+		return _accountInfoView.isReadyToSave();
+	}
 }

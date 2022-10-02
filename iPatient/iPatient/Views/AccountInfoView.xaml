@@ -12,20 +12,20 @@
         <Label x:Name="EmailLabel" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Label>
         <Label x:Name="FirstNameLabel" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Label>
         <Label x:Name="LastNameLabel" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Label>
-        <Entry x:Name="PeselLabel" Placeholder="PESEL" PlaceholderColor="CadetBlue" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
-        <Entry x:Name="PhoneLabel" Placeholder="Nr tel" PlaceholderColor="CadetBlue" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
-        <Entry x:Name="StreetLabel" Placeholder="Ulica" PlaceholderColor="CadetBlue" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
-        <Entry x:Name="StreetNumberLabel" Placeholder="Nr ulicy/mieszkania" PlaceholderColor="CadetBlue" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
-        <Entry x:Name="CityLabel" Placeholder="Miasto" PlaceholderColor="CadetBlue" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
-        <Entry x:Name="PostCodeLabel" Placeholder="Kod pocztowy" PlaceholderColor="CadetBlue" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
+        <Entry x:Name="PeselLabel" Placeholder="PESEL" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
+        <Entry x:Name="PhoneLabel" Placeholder="Nr tel" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
+        <Entry x:Name="StreetLabel" Placeholder="Ulica" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
+        <Entry x:Name="StreetNumberLabel" Placeholder="Nr ulicy/mieszkania" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
+        <Entry x:Name="CityLabel" Placeholder="Miasto" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
+        <Entry x:Name="PostCodeLabel" Placeholder="Kod pocztowy" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
         
         <HorizontalStackLayout HorizontalOptions="Center">
-            <Button x:Name="LogInButton" Text="Edytuj" BackgroundColor="LightSeaGreen" BorderWidth="2"
-                BorderColor="White" FontAttributes="Bold" Margin="5, 5, 5, 5" FontSize="Medium" CornerRadius="15"
-                Command="{Binding LogInCommand}"/>
-            <Button x:Name="RegisterButton" Text="Zapisz" BackgroundColor="SeaGreen"
-                BorderWidth="2" BorderColor="White" FontAttributes="Bold" Margin="5, 5, 5, 5" FontSize="Medium" CornerRadius="15"
-                Command="{Binding RegisterCommand}"/>
+            <Button x:Name="EditButton" Text="Edytuj" BackgroundColor="{StaticResource ButtonBasic_1}" BorderWidth="2"
+                BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 5" FontSize="Medium" CornerRadius="15"
+                Command="{Binding EditUserInfoCommand}"/>
+            <Button x:Name="SaveButton" Text="Zapisz" BackgroundColor="{StaticResource ButtonBasic_2}"
+                BorderWidth="2" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 5" FontSize="Medium" CornerRadius="15"
+                Command="{Binding SaveUserInfoCommand}"/>
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentView>
