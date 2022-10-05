@@ -1,5 +1,6 @@
 using iPatient.Model;
 using iPatient.ViewModels;
+using System.Net;
 
 namespace iPatient.Views;
 
@@ -9,6 +10,7 @@ public partial class AccountInfoView : ContentView
     private const int _borderWidthUnclicked = 2;
 
 	private bool _isInEdit;
+	private bool _userInfoCollapsed;
 
 	private User _user;
 	private Address _address;
@@ -22,12 +24,15 @@ public partial class AccountInfoView : ContentView
 		InitializeComponent();
 
 		_isInEdit = false;
+		_userInfoCollapsed = true;
 
 		BindingContext = startPageViewModel;
 	}
 
 	public void SetUserInfo(User user, Address address)
 	{
+		LogOutButton.IsVisible = true;
+
 		_user = user;
 		_address = address;
 
@@ -48,7 +53,7 @@ public partial class AccountInfoView : ContentView
 		if (!_isInEdit)
 		{
 			PeselLabel.IsReadOnly = PhoneLabel.IsReadOnly = 
-				StreetLabel.IsReadOnly = CityLabel.IsReadOnly = 
+				StreetLabel.IsReadOnly = CityLabel.IsReadOnly = StreetNumberLabel.IsReadOnly =
 				PostCodeLabel.IsReadOnly = false;
 
 			PeselLabel.BackgroundColor = PhoneLabel.BackgroundColor =
@@ -64,7 +69,7 @@ public partial class AccountInfoView : ContentView
 		else
 		{
             PeselLabel.IsReadOnly = PhoneLabel.IsReadOnly =
-                StreetLabel.IsReadOnly = CityLabel.IsReadOnly =
+                StreetLabel.IsReadOnly = CityLabel.IsReadOnly = StreetNumberLabel.IsReadOnly =
                 PostCodeLabel.IsReadOnly = true;
 
 			PeselLabel.BackgroundColor = PhoneLabel.BackgroundColor =
@@ -113,7 +118,7 @@ public partial class AccountInfoView : ContentView
 			Street = StreetLabel.Text,
 			City = CityLabel.Text,
 			PostCode = PostCodeLabel.Text,
-			StreetNumber = StreetLabel.Text
+			StreetNumber = StreetNumberLabel.Text
 		};
 
 		return (userInfo, addresInfo);
@@ -123,4 +128,48 @@ public partial class AccountInfoView : ContentView
 	{
 		return _isInEdit;
 	}
+
+	public void ExpandCollapseUserInfo()
+	{
+		if (_isInEdit)
+		{
+			return;
+		}
+
+        _userInfoCollapsed = !_userInfoCollapsed;
+
+		DetailsView.IsVisible = !_userInfoCollapsed;
+
+		EditButton.IsVisible = SaveButton.IsVisible = !_userInfoCollapsed;
+
+		ExpandCollapseDetails.Text = (!_userInfoCollapsed) ? "Zwiñ" : "Rozwiñ";
+
+    }
+
+	public void Reset()
+	{
+		_userInfoCollapsed = true;
+		_isInEdit = false;
+
+		DetailsView.IsVisible = false;
+
+		FirstNameLabel.Text = "";
+		LastNameLabel.Text = "";
+		EmailLabel.Text = "";
+		PeselLabel.Text = "";
+		PhoneLabel.Text = "";
+
+		StreetLabel.Text = "";
+		StreetNumberLabel.Text = "";
+		CityLabel.Text = "";
+		PostCodeLabel.Text = "";
+
+		_user = null;
+		_address = null;
+
+		EditButton.IsVisible = SaveButton.IsVisible = false;
+
+        ExpandCollapseDetails.Text = "Rozwiñ";
+    }
+	
 }

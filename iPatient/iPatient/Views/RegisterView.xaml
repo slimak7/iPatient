@@ -7,21 +7,21 @@
              BackgroundColor="{StaticResource Background}">
     
     
-    <VerticalStackLayout VerticalOptions="Center">
+    <VerticalStackLayout VerticalOptions="Center" x:Name="Content">
 
-        <Entry Placeholder="Email" ReturnType="Next" Text="{Binding Email}"
+        <Entry x:Name="EmailLabel" Placeholder="Email" ReturnType="Next" Text="{Binding Email}"
                VerticalOptions="Center" PlaceholderColor="{StaticResource FontBasic_3}"
                Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
-        <Entry Placeholder="Hasło" IsPassword="True" Text="{Binding Password}"
+        <Entry x:Name="PasswLabel" Placeholder="Hasło" IsPassword="True" Text="{Binding Password}"
                VerticalOptions="Center" PlaceholderColor="{StaticResource FontBasic_3}"
                Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
-        <Entry Placeholder="Potwierdź hasło" IsPassword="True" Text="{Binding ConfirmPassword}"
+        <Entry x:Name="ConfPasswLabel" Placeholder="Potwierdź hasło" IsPassword="True" Text="{Binding ConfirmPassword}"
                VerticalOptions="Center" PlaceholderColor="{StaticResource FontBasic_3}"
                Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
-        <Entry Placeholder="Imię" IsPassword="False" Text="{Binding FirstName}"
+        <Entry x:Name="FisrtNameLabel" Placeholder="Imię" IsPassword="False" Text="{Binding FirstName}"
                VerticalOptions="Center" PlaceholderColor="{StaticResource FontBasic_3}"
                Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
-        <Entry Placeholder="Nazwisko" IsPassword="False" Text="{Binding LastName}"
+        <Entry x:Name="LastNameLabel" Placeholder="Nazwisko" IsPassword="False" Text="{Binding LastName}"
                VerticalOptions="Center" PlaceholderColor="{StaticResource FontBasic_3}"
                Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
 

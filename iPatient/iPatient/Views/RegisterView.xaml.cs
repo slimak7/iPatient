@@ -15,4 +15,12 @@ public partial class RegisterView : ContentView
 
 		BindingContext = startPageViewModel;
 	}
+
+	public void Reset()
+	{
+		foreach (var element in Content.Children)
+		{
+			((Entry)element).Text = "";
+		}
+	}
 }

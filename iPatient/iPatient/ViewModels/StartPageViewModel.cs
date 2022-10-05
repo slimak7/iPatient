@@ -4,14 +4,13 @@ using iPatient.Managers;
 using iPatient.Model;
 using iPatient.ReqModels;
 using iPatient.Views;
-using Microsoft.Maui.ApplicationModel.Communication;
+
 
 namespace iPatient.ViewModels
 {
     public class StartPageViewModel : BaseViewModel<StartPage>
     {
         private string _infoText;
-        private StartPage _startPage;
         private string _password;
         private string _confirmPassword;
         private string _email;
@@ -91,36 +90,69 @@ namespace iPatient.ViewModels
         public Command EditUserInfoCommand { get; set; }
         public Command SaveUserInfoCommand { get; set; }
 
+        public Command ExpandCollapseUserInfoCommand { get; set; }
+
+        public Command ShowFacilitiesCommand { get; set; }
+        public Command LogOutCommand { get; set; }
+
         #endregion
 
         public StartPageViewModel(string title, StartPage startPage) : base(title, startPage)
         {
             _infoText = "Aby rozpocząć zaloguj się lub zarejestruj";
-            LogInCommand = new Command(() => LogIn());
-            RegisterCommand = new Command(() => Register());
+            LogInCommand = new Command(() => SelectLogIn());
+            RegisterCommand = new Command(() => SelectRegister());
             ContinueCommand = new Command(() => Continue());
             EditUserInfoCommand = new Command(() => EditUserData());
             SaveUserInfoCommand = new Command(() => SaveUserData());
-            _startPage = startPage;
+            ExpandCollapseUserInfoCommand = new Command(() => ExpandeCollapseUserInfo());
+            ShowFacilitiesCommand = new Command(() => ShowFacilities());
+            LogOutCommand = new Command(() => LogOut());
+            
 
-            LogIn();
+            SelectLogIn();
 
+            AutoLogin();
         }
 
-        private void LogIn()
+        private async void AutoLogin()
+        {
+            var resultEmail = await Xamarin.Essentials.SecureStorage.GetAsync("email");
+
+            if (resultEmail == null)
+            {
+                return;
+            }
+
+            var resultPassw = await Xamarin.Essentials.SecureStorage.GetAsync("password");
+
+            if (resultPassw == null)
+            {
+                return;
+            }
+            
+            await Task.Delay(500);
+            
+            Email = resultEmail;
+            Password = resultPassw;
+
+            Continue();
+        }
+
+        private void SelectLogIn()
         {
             _selectedOption = SelectedOption.login;
 
-            _startPage.SetLoginButton(true);
-            _startPage.SetRegisterButton(false);
+            _viewPage.SetLoginButton(true);
+            _viewPage.SetRegisterButton(false);
         }
 
-        private void Register()
+        private void SelectRegister()
         {
             _selectedOption = SelectedOption.register;
 
-            _startPage.SetLoginButton(false);
-            _startPage.SetRegisterButton(true);
+            _viewPage.SetLoginButton(false);
+            _viewPage.SetRegisterButton(true);
         }
 
         private void Continue()
@@ -152,6 +184,11 @@ namespace iPatient.ViewModels
                         if (!result.OK)
                         {
                             _viewPage.ShowPopupPage(new InfoPopupPage(result.Errors));
+                        }
+                        else
+                        {
+                            await Xamarin.Essentials.SecureStorage.SetAsync("email", Email);
+                            await Xamarin.Essentials.SecureStorage.SetAsync("password", Password);
                         }
 
                         return result.OK;
@@ -187,6 +224,11 @@ namespace iPatient.ViewModels
                         if (!result.OK)
                         {
                             _viewPage.ShowPopupPage(new InfoPopupPage(result.Errors));
+                        }
+                        else
+                        {
+                            await Xamarin.Essentials.SecureStorage.SetAsync("email", Email);
+                            await Xamarin.Essentials.SecureStorage.SetAsync("password", Password);
                         }
 
                         return result.OK;
@@ -282,12 +324,13 @@ namespace iPatient.ViewModels
 
                 return true;
 
-            }, ShowUserInfo, null, "Pobieranie informacji o koncie..."));
+            }, ProcessUserInfo, null, "Pobieranie informacji o koncie..."));
         }
 
-        private void ShowUserInfo()
+        private void ProcessUserInfo()
         {
             _viewPage.ShowUserData(_currentUser, _address);
+            _viewPage.SetMenuButtons(_currentUser.UserRole);
 
             FirstName = _currentUser.FirstName;
             LastName = _currentUser.LastName;
@@ -351,6 +394,42 @@ namespace iPatient.ViewModels
                 return true;
 
             }, _viewPage.UserInfoSavedSuccess, _viewPage.UserInfoSavedNoSuccess, "Zapisywanie zmian..."));
+        }
+
+        private void ExpandeCollapseUserInfo()
+        {
+            _viewPage.ExpandCollapseUserInfo();
+        }
+
+        private void ShowFacilities()
+        {
+            Shell.Current.GoToAsync("Facilities", true);
+        }
+
+        private void LogOut()
+        {
+            _viewPage.ShowPopupPage(new WaitingPopupPage(async delegate ()
+            {
+
+                Xamarin.Essentials.SecureStorage.Remove("password");
+                Xamarin.Essentials.SecureStorage.Remove("email");
+
+                ResetVariables();
+
+                _selectedOption = SelectedOption.login;
+
+                _viewPage.LogOut();
+
+                return true;
+
+            }, null, null, "Wylogowywanie..."));
+        }
+
+        private void ResetVariables()
+        {
+            _currentUser = _currentUser = null;
+            FirstName = LastName = Password = Email = Phone = Password = ConfirmPassword
+                = PESEL = null;
         }
     }
 }

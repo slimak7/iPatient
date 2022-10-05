@@ -174,7 +174,7 @@ namespace iPatient.Managers
                         PhoneNumber = result.Response.phoneNumber,
                         Email = result.Response.email,
                         PESEL = result.Response.pesel,
-                        UserRole = result.Response.role
+                        UserRole = Dictionaries.Dictionary.UserRoles.GetRole(result.Response.role.ToString())
                     };
 
                     return (true, null, user);

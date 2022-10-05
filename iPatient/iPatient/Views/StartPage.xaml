@@ -21,7 +21,6 @@
         FontAttributes="Bold"
         Margin="0, 0, 0, 10"/>
 
-
         <Button x:Name="LogInButton" Text="Zaloguj" BackgroundColor="{StaticResource ButtonBasic_1}" BorderWidth="2"
                 BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 40, 5, 5" FontSize="Medium" CornerRadius="15"
                 Command="{Binding LogInCommand}"/>
@@ -44,6 +43,12 @@
         <ScrollView x:Name="AccountInfoScrollView" IsVisible="False">
             
         </ScrollView>
+
+        <VerticalStackLayout x:Name="MenuView" IsVisible="False">
+            <Button x:Name="FacilitiesButton" Text="Placówki" BackgroundColor="{StaticResource ButtonBasic_1}"
+                BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 10" FontSize="Large" CornerRadius="15"
+                Command="{Binding ShowFacilitiesCommand}" TextColor="{StaticResource FontBasic_2}" IsVisible="False"/>
+        </VerticalStackLayout>
         
     </VerticalStackLayout>
 </ContentPage>

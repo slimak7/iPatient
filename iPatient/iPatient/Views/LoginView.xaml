@@ -9,10 +9,10 @@
     <VerticalStackLayout VerticalOptions="Center">
 
         
-        <Entry Placeholder="Email" ReturnType="Next" Text="{Binding Email}"
+        <Entry x:Name="EmailLabel" Placeholder="Email" ReturnType="Next" Text="{Binding Email, Mode=TwoWay}"
                VerticalOptions="Center" PlaceholderColor="{StaticResource FontBasic_3}"
                Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
-        <Entry Placeholder="Hasło" IsPassword="True" Text="{Binding Password}"
+        <Entry x:Name="PasswLabel" Placeholder="Hasło" IsPassword="True" Text="{Binding Password, Mode=TwoWay}"
                VerticalOptions="Center" PlaceholderColor="{StaticResource FontBasic_3}"
                Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
         

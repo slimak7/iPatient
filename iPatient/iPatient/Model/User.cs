@@ -15,6 +15,6 @@ namespace iPatient.Model
         public string Email { get; set; }
         public string Password { get; set; }
         public string PESEL { get; set; }
-        public string UserRole { get; set; }
+        public Dictionaries.Dictionary.UserRoles.Roles UserRole { get; set; }
     }
 }

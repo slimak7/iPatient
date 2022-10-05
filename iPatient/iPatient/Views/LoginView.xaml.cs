@@ -15,4 +15,9 @@ public partial class LoginView : ContentView
 
 		BindingContext = startPageViewModel;
 	}
+
+	public void Reset()
+	{
+		PasswLabel.Text = EmailLabel.Text = "";
+	}
 }
