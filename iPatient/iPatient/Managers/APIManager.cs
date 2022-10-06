@@ -2,15 +2,10 @@
 using iPatient.Helpers;
 using iPatient.ReqModels;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
-using System.Net.Http;
 using iPatient.Model;
 using System.Net.Http.Headers;
+using System.Collections.ObjectModel;
 
 namespace iPatient.Managers
 {
@@ -132,6 +127,7 @@ namespace iPatient.Managers
                 {
                     Address address = new Address()
                     {
+                        ID = result.Response.addressID.ToString(),
                         Street = result.Response.street,
                         StreetNumber = result.Response.streetNumber,
                         City = result.Response.city,
@@ -271,6 +267,61 @@ namespace iPatient.Managers
             catch (Exception e)
             {
                 return (false, e.Message);
+            }
+        }
+
+        public static async Task<(bool ok, string errors, ObservableCollection<Facility> facilities)> GetAllEditableFacilities()
+        {
+            try
+            {
+                var result = await HttpGet("Facilities/AllFacilities/Edit/GetAll/" + _loginReq.Id);
+
+                if (result.Response != null && result.Response.success == "True")
+                {
+                    ObservableCollection<Facility> facilities = new ObservableCollection<Facility>();
+
+                    if (result.Response.facilities != null)
+                    {
+                        for (int i = 0; i < result.Response.facilities.Length; i++)
+                        {
+                            var facility = result.Response.facilities[i];
+
+                            Facility facilityModel = new Facility()
+                            {
+                                Id = facility.facilityID,
+                                Name = facility.facilityName,
+                                Address = new Address()
+                                {
+                                    ID = facility.addressInfo.addressID,
+                                    Street = facility.addressInfo.street,
+                                    StreetNumber = facility.addressInfo.streetNumber,
+                                    City = facility.addressInfo.city,
+                                    PostCode = facility.addressInfo.postCode
+                                }
+                            };
+
+                            facilities.Add(facilityModel);
+                        }
+                    }
+
+                    return (true, null, facilities);
+                }
+                else if (result.OtherErrors == "")
+                {
+                    return (false, result.Response.errors[0].ToString(), null);
+                }
+                else
+                {
+                    return (false, result.OtherErrors, null);
+                }
+            }
+            catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+            {
+                return (false, e.Message, null);
+            }
+            catch (Exception e)
+            {
+                return (false, e.Message, null);
             }
         }
 

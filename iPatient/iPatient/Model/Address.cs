@@ -8,6 +8,7 @@ namespace iPatient.Model
 {
     public class Address
     {
+        public Guid ID { get; set; }
         public string Street { get; set; }
         public string StreetNumber { get; set; }
         public string City { get; set; }

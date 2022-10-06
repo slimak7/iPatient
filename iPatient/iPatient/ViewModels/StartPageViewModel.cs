@@ -329,6 +329,8 @@ namespace iPatient.ViewModels
 
         private void ProcessUserInfo()
         {
+            InstanceManager.CurrentUserRole = _currentUser.UserRole;
+
             _viewPage.ShowUserData(_currentUser, _address);
             _viewPage.SetMenuButtons(_currentUser.UserRole);
 

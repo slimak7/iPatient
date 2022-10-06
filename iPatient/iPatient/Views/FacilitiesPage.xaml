@@ -3,9 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="iPatient.Views.FacilitiesPage"
              xmlns:local="clr-namespace:iPatient.ViewModels"
+             xmlns:models="clr-namespace:iPatient.Model"
              x:DataType="local:FacilitiesViewModel"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource Background}">
+
     <VerticalStackLayout>
+
+        <Button x:Name="AddNewButton" Text="Nowa..." BackgroundColor="{StaticResource Accent_2}" BorderWidth="0"
+                    BorderColor="{StaticResource BorderColorBasic}" FontAttributes="None" FontSize="Medium" Margin="5, 5, 5, 5" CornerRadius="15"
+                    Command="{Binding AddNewFacilityCommand}" HorizontalOptions="Center"/>
+        
+        <CollectionView x:Name="FacilitiesCollectionView" ItemsSource="{Binding Facilities}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Facility">
+                    <StackLayout Margin="3, 3, 3, 3" BackgroundColor="{StaticResource Accent_1}">
+                        <Label
+                        Text="{Binding Name}"
+                        FontSize="Header"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
         
     </VerticalStackLayout>
 </ContentPage>

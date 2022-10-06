@@ -11,5 +11,6 @@ namespace iPatient.Managers
     {
         public static StartPageViewModel StartPageViewModel { get; set; }
         public static FacilitiesViewModel FacilitiesViewModel { get; set; }
+        public static Dictionaries.Dictionary.UserRoles.Roles CurrentUserRole { get; set; }
     }
 }
