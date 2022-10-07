@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="iPatient.Views.FacilitiesPage"
              xmlns:local="clr-namespace:iPatient.ViewModels"
-             xmlns:models="clr-namespace:iPatient.Model"
-             x:DataType="local:FacilitiesViewModel"
+             xmlns:models="clr-namespace:iPatient.Model"             
              Title="{Binding Title}"
              BackgroundColor="{StaticResource Background}">
 
@@ -13,17 +12,56 @@
         <Button x:Name="AddNewButton" Text="Nowa..." BackgroundColor="{StaticResource Accent_2}" BorderWidth="0"
                     BorderColor="{StaticResource BorderColorBasic}" FontAttributes="None" FontSize="Medium" Margin="5, 5, 5, 5" CornerRadius="15"
                     Command="{Binding AddNewFacilityCommand}" HorizontalOptions="Center"/>
-        
-        <CollectionView x:Name="FacilitiesCollectionView" ItemsSource="{Binding Facilities}">
+
+        <CollectionView x:DataType="local:FacilitiesViewModel" x:Name="FacilitiesCollectionView" ItemsSource="{Binding Facilities}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Facility">
-                    <StackLayout Margin="3, 3, 3, 3" BackgroundColor="{StaticResource Accent_1}">
-                        <Label
-                        Text="{Binding Name}"
-                        FontSize="Header"
-                        VerticalOptions="Center" 
-                        HorizontalOptions="Center" />
-                    </StackLayout>
+                    <VerticalStackLayout Margin="3, 3, 3, 3" BackgroundColor="{StaticResource Accent_1}" MinimumHeightRequest="100">
+                        <VerticalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding 
+                           Source={RelativeSource AncestorType={x:Type local:FacilitiesViewModel}}, Path=FacilityClickedCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                        </VerticalStackLayout.GestureRecognizers>
+
+                        <VerticalStackLayout>
+                            <Label
+                            Text="{Binding Name}"
+                            FontSize="Large"
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Center"
+                            TextColor="{StaticResource FontBasic_2}"/>
+
+                            <HorizontalStackLayout HorizontalOptions="Center">
+                                <Label Text="{Binding Address.Street}"
+                                       HorizontalOptions="Center"
+                                       FontSize="Medium"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="{StaticResource FontBasic_2}"
+                                       Margin="0, 0, 5, 0"></Label>
+                                <Label Text="{Binding Address.StreetNumber}"
+                                       HorizontalOptions="Center"
+                                       FontSize="Medium"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Start"
+                                       TextColor="{StaticResource FontBasic_2}"></Label>
+                            </HorizontalStackLayout>
+
+                            <Label Text="{Binding Address.City}"
+                                       HorizontalOptions="Center"
+                                       FontSize="Medium"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Start"
+                                       TextColor="{StaticResource FontBasic_2}"></Label>
+                            <Label Text="{Binding Address.PostCode}"
+                                       HorizontalOptions="Center"
+                                       FontSize="Medium"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Start"
+                                       TextColor="{StaticResource FontBasic_2}"></Label>
+                        </VerticalStackLayout>
+                            
+                        
+                    </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

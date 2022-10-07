@@ -18,6 +18,13 @@ public partial class FacilitiesPage : ContentPage, PageBase
 		BindingContext = _facilitiesViewModel;
 	}
 
+	protected override void OnNavigatedTo(NavigatedToEventArgs args)
+	{
+		base.OnNavigatedTo(args);
+
+		_facilitiesViewModel.Load();
+    }
+
 	public void ShowPopupPage(WaitingPopupPage popupPage)
 	{
         this.ShowPopup(popupPage);

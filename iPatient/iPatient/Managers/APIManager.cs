@@ -6,6 +6,7 @@ using System.Text;
 using iPatient.Model;
 using System.Net.Http.Headers;
 using System.Collections.ObjectModel;
+using System.Net;
 
 namespace iPatient.Managers
 {
@@ -15,7 +16,6 @@ namespace iPatient.Managers
         private static string _token;
         private static LoginReq _loginReq;
         private const int _timeout = 20000;
-        private static string _userId;
         private const int _port = 45455;
         private static bool _refreshTokenAttempt = false;
         public static async Task<(bool OK, string Errors)> Register (RegisterReq registerReq)
@@ -46,7 +46,6 @@ namespace iPatient.Managers
 
                     _token = result.Response.token.ToString();
 
-                    _userId = result.Response.userID.ToString();
 
                     return (true, null);
                 }
@@ -93,7 +92,6 @@ namespace iPatient.Managers
 
                     _token = result.Response.token.ToString();
 
-                    _userId = result.Response.userID.ToString();
 
                     return (true, null);
                 }
@@ -198,7 +196,7 @@ namespace iPatient.Managers
         {
             var dict = new Dictionary<string, string>();
 
-            dict.Add("userId", _userId);
+            dict.Add("userId", _loginReq.Id);
             dict.Add("phoneNumber", user.PhoneNumber);
             dict.Add("pesel", user.PESEL);
 
@@ -235,7 +233,7 @@ namespace iPatient.Managers
         {
             var dict = new Dictionary<string, string>();
 
-            dict.Add("userID", _userId);
+            dict.Add("userID", _loginReq.Id);
             dict.Add("street", address.Street);
             dict.Add("streetNumber", address.StreetNumber);
             dict.Add("city", address.City);
@@ -282,7 +280,7 @@ namespace iPatient.Managers
 
                     if (result.Response.facilities != null)
                     {
-                        for (int i = 0; i < result.Response.facilities.Length; i++)
+                        for (int i = 0; i < result.Response.facilities.Count; i++)
                         {
                             var facility = result.Response.facilities[i];
 
@@ -322,6 +320,48 @@ namespace iPatient.Managers
             catch (Exception e)
             {
                 return (false, e.Message, null);
+            }
+        }
+
+        public static async Task<(bool ok, string errors)> UpdateFacility(Facility facility)
+        {
+            var dict = new Dictionary<string, string>();
+
+            dict.Add("facilityID", (facility.Id == "") ? Guid.Empty.ToString() : facility.Id);
+            dict.Add("userID", _loginReq.Id);
+            dict.Add("addressID", (facility.Address.ID == "") ? Guid.Empty.ToString() : facility.Address.ID);
+            dict.Add("name", facility.Name);
+            dict.Add("streetName", facility.Address.Street);
+            dict.Add("streetNumber", facility.Address.StreetNumber);
+            dict.Add("city", facility.Address.City);
+            dict.Add("postCode", facility.Address.PostCode);
+
+            string jsonString = dict.ToJsonString();
+
+            try
+            {
+                var result = await HttpPost("Facilities/AllFacilities/Edit/AddUpdate", jsonString, true);
+
+                if (result.Response != null && result.Response.success == "True")
+                {
+                    return (true, null);
+                }
+                else if (result.OtherErrors == "")
+                {
+                    return (false, result.Response.errors[0].ToString());
+                }
+                else
+                {
+                    return (false, result.OtherErrors);
+                }
+            }
+            catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+            {
+                return (false, e.Message);
+            }
+            catch (Exception e)
+            {
+                return (false, e.Message);
             }
         }
 

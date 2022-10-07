@@ -12,6 +12,8 @@ namespace iPatient.ViewModels
 {
     public class FacilitiesViewModel : BaseViewModel<FacilitiesPage>
     {
+        private bool _isNeedToLoadFacilities;
+        private Facility _currentFacility;
 
         #region Properties
 
@@ -19,20 +21,44 @@ namespace iPatient.ViewModels
 
         public Command AddNewFacilityCommand { get; set; }
 
+        public Command<Facility> FacilityClickedCommand { get; set; }
+
+        public Facility CurrentFacility
+        {
+            get => _currentFacility;
+        }
+
+        public bool IsNeedToLoadFacilities
+        {
+            get => _isNeedToLoadFacilities;
+            set => _isNeedToLoadFacilities = value;
+        }
+
         #endregion
         public FacilitiesViewModel(string title, FacilitiesPage viewPage) : base(title, viewPage)
         {
-            AddNewFacilityCommand = new Command(() => AddNewFacility());
+            AddNewFacilityCommand = new Command(() => AddUpdateFacility());
+
+            FacilityClickedCommand = new Command<Facility>((Facility f) => FacilityClicked(f));
 
             Facilities = new ObservableCollection<Facility>();
 
-            LoadFacilities();
+            _currentFacility = null;
+
+            IsNeedToLoadFacilities = true;
         }
 
-        private async void LoadFacilities()
+        public void Load()
         {
-            await Task.Delay(500);
+            if (IsNeedToLoadFacilities)
+            {
+                LoadFacilities();
+                IsNeedToLoadFacilities = false;
+            }
+        }
 
+        private void LoadFacilities()
+        {
             _viewPage.ShowPopupPage(new WaitingPopupPage(async delegate ()
             {
                 var result = await APIManager.GetAllEditableFacilities();
@@ -43,6 +69,7 @@ namespace iPatient.ViewModels
                     return false;
                 }
 
+                Facilities.Clear();
                 foreach(var facility in result.facilities)
                 {
                     Facilities.Add(facility);
@@ -53,12 +80,17 @@ namespace iPatient.ViewModels
             }, null, null, "Pobieranie danych..."));
         }
 
-        private async void AddNewFacility()
+        private async void AddUpdateFacility(Facility facility = null)
         {
-            Dictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters.Add("facility", null);
+            _currentFacility = facility;
 
-            await Shell.Current.GoToAsync("NewFacility", true, parameters);
+            await Shell.Current.GoToAsync("NewFacility", true);
         }
+
+        private void FacilityClicked(Facility facility)
+        {
+            AddUpdateFacility(facility);
+        }
+
     }
 }

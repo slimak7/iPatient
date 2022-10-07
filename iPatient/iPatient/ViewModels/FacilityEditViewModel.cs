@@ -1,4 +1,5 @@
-﻿using iPatient.Model;
+﻿using iPatient.Managers;
+using iPatient.Model;
 using iPatient.Views;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace iPatient.ViewModels
         private string _city;
         private string _streetNumber;
         private string _postCode;
+
+        private Facility _facility;
 
         #region Properties
 
@@ -64,11 +67,39 @@ namespace iPatient.ViewModels
             }
 
             SaveInfoCommand = new Command(() => SaveInfo());
+
+            _facility = facility;
         }
 
         private void SaveInfo()
         {
+            _viewPage.ShowPopupPage(new WaitingPopupPage(async delegate ()
+            {
+                var result = await APIManager.UpdateFacility(new Facility()
+                {
+                    Id = _facility?.Id ?? "",
+                    Name = _facilityName,
+                    Address = new Address()
+                    {
+                        ID = _facility?.Address?.ID ?? "",
+                        Street = _streetName,
+                        StreetNumber = _streetNumber,
+                        City = _city,
+                        PostCode = _postCode
+                    }
+                });
 
+                if (!result.ok)
+                {
+                    _viewPage.ShowPopupPage(new InfoPopupPage(result.errors));
+                    return false;
+                }
+
+
+                return true;
+
+            }, () => InstanceManager.FacilitiesViewModel.IsNeedToLoadFacilities = true, null, "Zapisywanie..."));
         }
+
     }
 }

@@ -4,7 +4,8 @@
              x:Class="iPatient.Views.FacilityEditView"
              xmlns:local="clr-namespace:iPatient.ViewModels"
              x:DataType="local:FacilityEditViewModel"
-             BackgroundColor="{StaticResource Background}">
+             BackgroundColor="{StaticResource Background}"
+             Title="{Binding Title}">
 
     <VerticalStackLayout HorizontalOptions="Center">
         <Entry 
@@ -12,12 +13,13 @@
             Placeholder="Nazwa placówki"
             PlaceholderColor="{StaticResource FontBasic_3}"
             FontSize="Header"
+            HorizontalTextAlignment="Center"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Entry x:Name="StreetLabel" Text="{Binding StreetName}" HorizontalOptions="Fill" Placeholder="Ulica" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
-        <Entry x:Name="StreetNumberLabel" Text="{Binding StreetNumber}" Placeholder="Nr ulicy/mieszkania" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
-        <Entry x:Name="CityLabel" Text="{Binding City}" Placeholder="Miasto" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
-        <Entry x:Name="PostCodeLabel" Text="{Binding PostCode}" Placeholder="Kod pocztowy" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
+        <Entry x:Name="StreetLabel" Text="{Binding StreetName}" HorizontalOptions="Fill" Placeholder="Ulica" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
+        <Entry x:Name="StreetNumberLabel" Text="{Binding StreetNumber}" Placeholder="Nr ulicy/mieszkania" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
+        <Entry x:Name="CityLabel" Text="{Binding City}" Placeholder="Miasto" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
+        <Entry x:Name="PostCodeLabel" Text="{Binding PostCode}" Placeholder="Kod pocztowy" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
         <HorizontalStackLayout HorizontalOptions="Center">
             <Button x:Name="SaveButton" Text="Zapisz" BackgroundColor="{StaticResource ButtonBasic_2}"
                 BorderWidth="2" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 5" FontSize="Medium" CornerRadius="15"
