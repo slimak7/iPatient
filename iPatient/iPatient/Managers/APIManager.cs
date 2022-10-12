@@ -12,7 +12,7 @@ namespace iPatient.Managers
 {
     public static class APIManager
     {
-        private const string _apiURL = "https://192.168.0.217:45455/";
+        private const string _apiURL = "https://192.168.0.126:45455/";
         private static string _token;
         private static LoginReq _loginReq;
         private const int _timeout = 20000;
@@ -362,6 +362,84 @@ namespace iPatient.Managers
             catch (Exception e)
             {
                 return (false, e.Message);
+            }
+        }
+
+        public static async Task<(bool ok, string errors, List<Doctor> doctors, List<Specialization> specializations)> GetDoctorsAndSpecializations(string FacilityID)
+        {
+            try
+            {
+                var result = await HttpGet("Facilities/AllFacilities/GetAllSpecializations");
+
+                List<Specialization> specializations = new List<Specialization>();
+
+                if (result.Response != null && result.Response.success == "True")
+                {
+                    
+                    for (int i = 0; i < result.Response.specializations.Count; i++)
+                    {
+                        var specialization = result.Response.specializations[i];
+
+                        Specialization spec = new Specialization()
+                        {
+                            ID = specialization.specializationID,
+                            Name = specialization.specializationName
+                        };
+
+                        specializations.Add(spec);
+                    }
+
+                    var resultDoctors = await HttpGet("Facilities/AllFacilities/" + FacilityID + "/GetAllDoctors");
+
+                    if (resultDoctors.Response != null && resultDoctors.Response.success == "True")
+                    {
+                        List<Doctor> doctors = new List<Doctor>();
+
+                        if (resultDoctors.Response.doctorInfo != null)
+                        {
+                            for (int i = 0; i < resultDoctors.Response.doctorInfo.Count; i++)
+                            {
+                                var doctor = resultDoctors.Response.doctorInfo[i];
+
+                                Doctor doct = new Doctor()
+                                {
+                                    ID = doctor.doctorID,
+                                    Specialization = specializations.Find(x => x.ID == doctor.specializationID),
+                                    FirstName = doctor.firstName,
+                                    LastName = doctor.lastName
+                                };
+
+                                doctors.Add(doct);
+                            }
+                        }
+
+                        return (true, null, doctors, specializations);
+                    }
+                    else if (resultDoctors.OtherErrors == "")
+                    {
+                        return (false, result.Response.errors[0].ToString(), null, null);
+                    }
+                    else
+                    {
+                        return (false, result.OtherErrors, null, null);
+                    }
+                }
+                else if (result.OtherErrors == "")
+                {
+                    return (false, result.Response.errors[0].ToString(), null, null);
+                }
+                else
+                {
+                    return (false, result.OtherErrors, null, null);
+                }
+            }
+            catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+            {
+                return (false, e.Message, null, null);
+            }
+            catch (Exception e)
+            {
+                return (false, e.Message, null, null);
             }
         }
 

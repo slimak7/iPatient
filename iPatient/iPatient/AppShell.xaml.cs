@@ -9,7 +9,8 @@ public partial class AppShell : Shell
 		InitializeComponent();
 
         Routing.RegisterRoute("Facilities", typeof(FacilitiesPage));
-		Routing.RegisterRoute("NewFacility", typeof(FacilityEditView));
+		Routing.RegisterRoute("Facilities/Facility", typeof(FacilityEditView));
+		Routing.RegisterRoute("Facilities/Facility/ManageDoctors", typeof(FacilityDoctorsPage));
 
     }
 }

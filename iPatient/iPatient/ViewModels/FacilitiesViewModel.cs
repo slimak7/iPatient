@@ -84,7 +84,7 @@ namespace iPatient.ViewModels
         {
             _currentFacility = facility;
 
-            await Shell.Current.GoToAsync("NewFacility", true);
+            await Shell.Current.GoToAsync("Facilities/Facility", true);
         }
 
         private void FacilityClicked(Facility facility)

@@ -53,6 +53,8 @@ namespace iPatient.ViewModels
 
         public Command SaveInfoCommand { get; set; }
 
+        public Command ManageDoctorsCommand { get; set; }
+
         #endregion
 
         public FacilityEditViewModel(string title, FacilityEditView viewPage, Facility facility) : base(title, viewPage)
@@ -67,6 +69,7 @@ namespace iPatient.ViewModels
             }
 
             SaveInfoCommand = new Command(() => SaveInfo());
+            ManageDoctorsCommand = new Command(() => ManageDoctors());
 
             _facility = facility;
         }
@@ -101,5 +104,9 @@ namespace iPatient.ViewModels
             }, () => InstanceManager.FacilitiesViewModel.IsNeedToLoadFacilities = true, null, "Zapisywanie..."));
         }
 
+        private void ManageDoctors()
+        {
+            Shell.Current.GoToAsync("Facilities/Facility/ManageDoctors");
+        }
     }
 }

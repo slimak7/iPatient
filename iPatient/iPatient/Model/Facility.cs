@@ -8,11 +8,6 @@ namespace iPatient.Model
 {
     public class Facility
     {
-        public Facility()
-        {
-
-        }
-
         public string Id { get; set; }
         public string Name { get; set; }
         public Address Address { get; set; }
