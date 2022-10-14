@@ -4,8 +4,70 @@
              x:Class="iPatient.Views.FacilityDoctorsPage"
              xmlns:local="clr-namespace:iPatient.ViewModels"
              x:DataType="local:FacilityDoctorsViewModel"
-             Title="{Binding Title}">
+             xmlns:models="clr-namespace:iPatient.Model"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource Background}">
     <VerticalStackLayout>
-        
+
+        <Button x:Name="AddNewButton" Text="Nowy lekarz..." BackgroundColor="{StaticResource Accent_2}" BorderWidth="0"
+                    BorderColor="{StaticResource BorderColorBasic}" FontAttributes="None" FontSize="Medium" Margin="5, 5, 5, 5" CornerRadius="15"
+                    Command="{Binding AddNewDoctorCommand}" HorizontalOptions="Center"/>
+
+        <CollectionView x:DataType="local:FacilityDoctorsViewModel" x:Name="FacilityDoctorsCollectionView" ItemsSource="{Binding Doctors}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Doctor">
+                    <VerticalStackLayout Margin="3, 3, 3, 3" BackgroundColor="{StaticResource Accent_1}" MinimumHeightRequest="100">
+                        
+                        <VerticalStackLayout>
+
+                            <HorizontalStackLayout HorizontalOptions="Center">
+
+                                <Label
+                                Text="{Binding FirstName}"
+                                FontSize="Large"
+                                VerticalOptions="Center" 
+                                HorizontalOptions="Center"
+                                TextColor="{StaticResource FontBasic_2}"
+                                Margin="0, 0, 5, 0"/>
+
+                                <Label
+                                Text="{Binding LastName}"
+                                FontSize="Large"
+                                VerticalOptions="Center" 
+                                HorizontalOptions="Center"
+                                TextColor="{StaticResource FontBasic_2}"/>
+
+                            </HorizontalStackLayout>
+
+
+                            <Label Text="{Binding Specialization.Name}"
+                                    HorizontalOptions="Center"
+                                    FontSize="Medium"
+                                    VerticalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource FontBasic_2}"
+                                    Margin="0, 0, 5, 0"></Label>
+
+
+                            <Label Text="{Binding OfficeNumber}"
+                                       HorizontalOptions="Center"
+                                       FontSize="Medium"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Start"
+                                       TextColor="{StaticResource FontBasic_2}"></Label>
+                            <Label Text="{Binding FloorNumber}"
+                                       HorizontalOptions="Center"
+                                       FontSize="Medium"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Start"
+                                       TextColor="{StaticResource FontBasic_2}"></Label>
+                        </VerticalStackLayout>
+
+
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
     </VerticalStackLayout>
 </ContentPage>

@@ -11,6 +11,8 @@ namespace iPatient.Model
         public string ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string OfficeNumber { get; set; }
+        public string FloorNumber { get; set; }
         public Specialization Specialization { get; set; }
 
     }

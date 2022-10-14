@@ -12,25 +12,52 @@ namespace iPatient.ViewModels
 {
     public class FacilityDoctorsViewModel : BaseViewModel<FacilityDoctorsPage>
     {
-        public ObservableCollection<Doctor> doctors { get; set; }
+        #region Properties
 
-        public ObservableCollection<Specialization> specializations { get; set; }
+        public ObservableCollection<Doctor> Doctors { get; set; }
 
-        public bool IsNeetToLoadDoctors { get; set; }
+        public ObservableCollection<Specialization> Specializations { get; set; }
 
+        public Command AddNewDoctorCommand { get; set; }
+
+        public Command<Doctor> DoctorClickedCommand { get; set; }
+
+        public bool IsNeedToLoadDoctors
+        {
+            get { return _isNeedToLoadFacilities; }
+            set { _isNeedToLoadFacilities = value; }
+        }
+
+        public Doctor CurrentDoctor
+        {
+            get { return _currentDoctor; }
+            set { _currentDoctor = value; }
+        }
+
+        #endregion
+
+        private bool _isNeedToLoadFacilities;
+        private Doctor _currentDoctor;
         private Facility _currentFacility;
         public FacilityDoctorsViewModel(string title, FacilityDoctorsPage viewPage, Facility facility) : base(title, viewPage)
         {
             _currentFacility = facility;
 
+            CurrentDoctor = null;
+
             InstanceManager.FacilityDoctorsViewModel = this;
 
-            IsNeetToLoadDoctors = true;
+            IsNeedToLoadDoctors = true;
+
+            Doctors = new ObservableCollection<Doctor>();
+
+            AddNewDoctorCommand = new Command(() => AddNewDoctor());
+            DoctorClickedCommand = new Command<Doctor>((Doctor doctor) => DoctorClicked(doctor));
         }
 
         public void Load()
         {
-            if (!IsNeetToLoadDoctors)
+            if (!IsNeedToLoadDoctors)
                 return;
 
             _viewPage.ShowPopupPage(new WaitingPopupPage(async delegate ()
@@ -44,23 +71,34 @@ namespace iPatient.ViewModels
                     return false;
                 }
 
-                doctors = new ObservableCollection<Doctor>();
-                specializations = new ObservableCollection<Specialization>();
+                Doctors.Clear();
+                Specializations = new ObservableCollection<Specialization>();
 
                 foreach(var doctor in result.doctors)
                 {
-                    doctors.Add(doctor);
+                    Doctors.Add(doctor);
                 }
 
                 foreach(var spec in result.specializations)
                 {
-                    specializations.Add(spec);
+                    Specializations.Add(spec);
                 }
 
 
                 return true;
 
-            }, () => IsNeetToLoadDoctors = false, null, "Pobieranie danych..."));
+            }, () => IsNeedToLoadDoctors = false, null, "Pobieranie danych..."));
+        }
+
+        private void AddNewDoctor()
+        {
+            DoctorClicked(null);
+        }
+
+        private void DoctorClicked(Doctor doctor)
+        {
+            CurrentDoctor = doctor;
+            Shell.Current.GoToAsync("Facilities/Facility/ManageDoctors/Doctor");
         }
     }
 }

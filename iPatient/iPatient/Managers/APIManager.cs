@@ -404,9 +404,11 @@ namespace iPatient.Managers
                                 Doctor doct = new Doctor()
                                 {
                                     ID = doctor.doctorID,
-                                    Specialization = specializations.Find(x => x.ID == doctor.specializationID),
+                                    Specialization = specializations.Find(x => x.ID == doctor.specializationID.ToString()),
                                     FirstName = doctor.firstName,
-                                    LastName = doctor.lastName
+                                    LastName = doctor.lastName,
+                                    OfficeNumber = doctor.officeNumber,
+                                    FloorNumber = doctor.floorNumber
                                 };
 
                                 doctors.Add(doct);
@@ -442,6 +444,48 @@ namespace iPatient.Managers
                 return (false, e.Message, null, null);
             }
         }
+
+        public static async Task<(bool ok, string errors)> UpdateDoctor(Doctor doctor, string FacilityID)
+        {
+            var dict = new Dictionary<string, string>();
+
+            dict.Add("doctorID", (doctor.ID == "") ? Guid.Empty.ToString() : doctor.ID);
+            dict.Add("facilityID", FacilityID);
+            dict.Add("specializationID", doctor.Specialization.ID);
+            dict.Add("firstName", doctor.FirstName);
+            dict.Add("lastName", doctor.LastName);
+            dict.Add("officeNumber", doctor.OfficeNumber);
+            dict.Add("floorNumber", doctor.FloorNumber);
+
+            string jsonString = dict.ToJsonString();
+
+            try
+            {
+                var result = await HttpPost("Facilities/AllFacilities/Edit/AddUpdateDoctor", jsonString, true);
+
+                if (result.Response != null && result.Response.success == "True")
+                {
+                    return (true, null);
+                }
+                else if (result.OtherErrors == "")
+                {
+                    return (false, result.Response.errors[0].ToString());
+                }
+                else
+                {
+                    return (false, result.OtherErrors);
+                }
+            }
+            catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+            {
+                return (false, e.Message);
+            }
+            catch (Exception e)
+            {
+                return (false, e.Message);
+            }
+        }
+
 
         private static async Task<(bool ok, string errors)> RefreshToken()
         {

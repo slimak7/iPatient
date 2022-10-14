@@ -76,6 +76,7 @@ namespace iPatient.ViewModels
 
         private void SaveInfo()
         {
+            
             _viewPage.ShowPopupPage(new WaitingPopupPage(async delegate ()
             {
                 var result = await APIManager.UpdateFacility(new Facility()
@@ -98,15 +99,17 @@ namespace iPatient.ViewModels
                     return false;
                 }
 
-
                 return true;
 
-            }, () => InstanceManager.FacilitiesViewModel.IsNeedToLoadFacilities = true, null, "Zapisywanie..."));
+            }, () => { 
+                InstanceManager.FacilitiesViewModel.IsNeedToLoadFacilities = true;
+                Shell.Current.SendBackButtonPressed();
+            }, null, "Zapisywanie..."));
         }
 
         private void ManageDoctors()
-        {
-            Shell.Current.GoToAsync("Facilities/Facility/ManageDoctors");
+        {        
+            Shell.Current.GoToAsync("Facilities/Facility/ManageDoctors");            
         }
     }
 }

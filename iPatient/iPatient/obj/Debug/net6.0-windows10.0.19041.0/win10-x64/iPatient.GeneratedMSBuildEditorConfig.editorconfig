@@ -45,6 +45,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = iPatient.Views.AccountInfo
 build_metadata.AdditionalFiles.TargetPath = Views\AccountInfoView.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\AccountInfoView.xaml
 
+[D:/iPatientAPP/iPatient/iPatient/Views/DoctorEditPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = iPatient.Views.DoctorEditPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\DoctorEditPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\DoctorEditPage.xaml
+
 [D:/iPatientAPP/iPatient/iPatient/Views/FacilitiesPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = iPatient.Views.FacilitiesPage.xaml

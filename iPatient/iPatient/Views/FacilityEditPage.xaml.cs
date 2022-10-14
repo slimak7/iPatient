@@ -16,6 +16,8 @@ public partial class FacilityEditView : ContentPage, PageBase
         _facilityEditViewModel = new FacilityEditViewModel("Edytuj dane placówki", this, 
 			InstanceManager.FacilitiesViewModel.CurrentFacility);
 
+		ManageDoctorsButton.IsVisible = InstanceManager.FacilitiesViewModel.CurrentFacility != null;
+
         BindingContext = _facilityEditViewModel;
     }
 

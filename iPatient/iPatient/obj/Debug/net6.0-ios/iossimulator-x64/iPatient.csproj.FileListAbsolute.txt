@@ -1,3 +1,4 @@
+D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libicuuc.a
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\iPatient.runtimeconfig.json
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\iPatient.dll
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\iPatient.pdb
@@ -12,6 +13,8 @@ D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\Microsoft
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\Microsoft.Extensions.Options.dll
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\Microsoft.Extensions.Primitives.dll
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\Microsoft.Maui.Graphics.dll
+D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\Newtonsoft.Json.dll
+D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\Xamarin.Essentials.dll
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\Microsoft.CSharp.dll
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\Microsoft.VisualBasic.Core.dll
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\Microsoft.VisualBasic.dll
@@ -197,7 +200,6 @@ D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libSystem
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libSystem.Security.Cryptography.Native.Apple.dylib
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libicudata.a
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libicui18n.a
-D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libicuuc.a
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-debugger-static.a
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-debugger-stub-static.a
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-diagnostics_tracing-static.a
@@ -264,4 +266,3 @@ D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-ios\iossimulator-x64\refint\iP
 D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-ios\iossimulator-x64\iPatient.pdb
 D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-ios\iossimulator-x64\iPatient.genruntimeconfig.cache
 D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-ios\iossimulator-x64\ref\iPatient.dll
-D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\Newtonsoft.Json.dll

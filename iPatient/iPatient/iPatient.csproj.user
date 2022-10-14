@@ -15,6 +15,9 @@
     <MauiXaml Update="Views\AccountInfoView.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Views\DoctorEditPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Views\FacilitiesPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
