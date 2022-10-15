@@ -17,7 +17,10 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Doctor">
                     <VerticalStackLayout Margin="3, 3, 3, 3" BackgroundColor="{StaticResource Accent_1}" MinimumHeightRequest="100">
-                        
+                        <VerticalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding 
+                           Source={RelativeSource AncestorType={x:Type local:FacilityDoctorsViewModel}}, Path=DoctorClickedCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                        </VerticalStackLayout.GestureRecognizers>
                         <VerticalStackLayout>
 
                             <HorizontalStackLayout HorizontalOptions="Center">
