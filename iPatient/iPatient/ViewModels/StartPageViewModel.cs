@@ -82,6 +82,11 @@ namespace iPatient.ViewModels
             set { SetProperty(ref _PESEL, value); }
         }
 
+        public string City
+        {
+            get => _address?.City ?? null;
+        }
+
         public Command LogInCommand { get; set; }
         public Command RegisterCommand { get; set; }
 
@@ -94,6 +99,8 @@ namespace iPatient.ViewModels
 
         public Command ShowFacilitiesCommand { get; set; }
         public Command LogOutCommand { get; set; }
+
+        public Command BookVisitCommand { get; set; }
 
         #endregion
 
@@ -108,6 +115,7 @@ namespace iPatient.ViewModels
             ExpandCollapseUserInfoCommand = new Command(() => ExpandeCollapseUserInfo());
             ShowFacilitiesCommand = new Command(() => ShowFacilities());
             LogOutCommand = new Command(() => LogOut());
+            BookVisitCommand = new Command(() => BookVisit());
             
 
             SelectLogIn();
@@ -432,6 +440,11 @@ namespace iPatient.ViewModels
             _currentUser = _currentUser = null;
             FirstName = LastName = Password = Email = Phone = Password = ConfirmPassword
                 = PESEL = null;
+        }
+
+        private void BookVisit()
+        {
+            Shell.Current.GoToAsync("BookingOptions");
         }
     }
 }

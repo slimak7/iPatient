@@ -12,7 +12,7 @@ namespace iPatient.Dictionaries
         {
             public enum Roles
             {
-                Patient, Staff, Doctor
+                Patient, Staff, Doctor, None
             }
 
             public static Roles GetRole(string roleName)

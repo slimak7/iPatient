@@ -27,6 +27,7 @@ public partial class AccountInfoView : ContentView
 		_userInfoCollapsed = true;
 
 		BindingContext = startPageViewModel;
+
 	}
 
 	public void SetUserInfo(User user, Address address)
@@ -46,7 +47,9 @@ public partial class AccountInfoView : ContentView
 		StreetNumberLabel.Text = address.StreetNumber;
 		CityLabel.Text = address.City;
 		PostCodeLabel.Text = address.PostCode;
-	}
+
+        ExpandCollapseDetails.IsVisible = user.UserRole == Dictionaries.Dictionary.UserRoles.Roles.Patient;
+    }
 
 	public void EditUserInfo()
 	{

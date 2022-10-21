@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="iPatient.Views.FindDoctorPage"
+             xmlns:local="clr-namespace:iPatient.ViewModels"
+             xmlns:models="clr-namespace:iPatient.Model"
+             x:DataType="local:FindDoctorViewModel"
+             Title="{Binding Title}">
+    <VerticalStackLayout>
+
+        <StackLayout HorizontalOptions="Center">
+            <Picker Title="Wybierz specjalizację"
+            ItemsSource="{Binding Specializations}"
+            ItemDisplayBinding="{Binding Name}"
+            SelectedIndex="{Binding SelectedSpecIndex, Mode=TwoWay}"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"/>
+        </StackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Entry x:Name="CityLabel" Placeholder="Miejscowość" Text="{Binding City, Mode=TwoWay}"
+               VerticalOptions="Center" PlaceholderColor="{StaticResource FontBasic_3}"
+               Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
+
+            <Button x:Name="SearchButton" Text="Szukaj" BackgroundColor="{StaticResource Accent_2}"
+                BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="None" Margin="1, 1, 1, 1" FontSize="Small" CornerRadius="15"
+                Command="{Binding SearchCommand}"/>
+
+        </HorizontalStackLayout>
+
+        <CollectionView x:DataType="local:FindDoctorViewModel" x:Name="FindDoctorsCollectionView" ItemsSource="{Binding Doctors}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:DoctorExtended">
+                    <VerticalStackLayout Margin="3, 3, 3, 3" BackgroundColor="{StaticResource Accent_1}" MinimumHeightRequest="100">
+                       
+                        <VerticalStackLayout>
+
+                            <HorizontalStackLayout HorizontalOptions="Center">
+
+                                <Label
+                                Text="{Binding FirstName}"
+                                FontSize="Large"
+                                VerticalOptions="Center" 
+                                HorizontalOptions="Center"
+                                TextColor="{StaticResource FontBasic_2}"
+                                Margin="0, 0, 5, 0"/>
+
+                                <Label
+                                Text="{Binding LastName}"
+                                FontSize="Large"
+                                VerticalOptions="Center" 
+                                HorizontalOptions="Center"
+                                TextColor="{StaticResource FontBasic_2}"/>
+
+                            </HorizontalStackLayout>
+
+                        </VerticalStackLayout>
+
+
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>

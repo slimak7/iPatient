@@ -445,6 +445,49 @@ namespace iPatient.Managers
             }
         }
 
+        public static async Task<(bool ok, string errors, List<Specialization> specializations)> GetAllSpecializations()
+        {
+            try
+            {
+                var result = await HttpGet("Facilities/AllFacilities/GetAllSpecializations");
+
+                List<Specialization> specializations = new List<Specialization>();
+
+                if (result.Response != null && result.Response.success == "True")
+                {
+                    for (int i = 0; i < result.Response.specializations.Count; i++)
+                    {
+                        var specialization = result.Response.specializations[i];
+
+                        Specialization spec = new Specialization()
+                        {
+                            ID = specialization.specializationID,
+                            Name = specialization.specializationName
+                        };
+
+                        specializations.Add(spec);
+                    }
+                    return (true, null, specializations);
+                }
+                else if (result.OtherErrors == "")
+                {
+                    return (false, result.Response.errors[0].ToString(), null);
+                }
+                else
+                {
+                    return (false, result.OtherErrors, null);
+                }
+            }
+            catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+            {
+                return (false, e.Message, null);
+            }
+            catch (Exception e)
+            {
+                return (false, e.Message, null);
+            }
+        }
+
         public static async Task<(bool ok, string errors)> UpdateDoctor(Doctor doctor, string FacilityID)
         {
             var dict = new Dictionary<string, string>();

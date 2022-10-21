@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="iPatient.Views.BookingOptionsPage"
+             xmlns:local="clr-namespace:iPatient.ViewModels"
+             x:DataType="local:BookingOptionsViewModel"
+             Title="{Binding Title}">
+    <VerticalStackLayout>
+        <Button x:Name="FindDoctorsButton" Text="Szukaj lekarzy" BackgroundColor="{StaticResource ButtonBasic_1}"
+                BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 10" FontSize="Large" CornerRadius="15"
+                Command="{Binding FindDoctorsCommand}" TextColor="{StaticResource FontBasic_2}" IsVisible="True" IsEnabled="True"/>
+        <Button x:Name="FindDoctorsByFacilityButton" Text="Wybierz placówkę" BackgroundColor="{StaticResource ButtonBasic_1}"
+                BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 10" FontSize="Large" CornerRadius="15"
+                Command="{Binding FindDoctorsByFacilityCommand}" TextColor="{StaticResource FontBasic_2}" IsVisible="True" IsEnabled="True"/>
+    </VerticalStackLayout>
+</ContentPage>

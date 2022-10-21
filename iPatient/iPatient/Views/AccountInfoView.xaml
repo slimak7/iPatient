@@ -31,7 +31,7 @@
             <Entry x:Name="PhoneLabel" Placeholder="Nr tel" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
             <Entry x:Name="StreetLabel" HorizontalOptions="Fill" Placeholder="Ulica" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
             <Entry x:Name="StreetNumberLabel" Placeholder="Nr ulicy/mieszkania" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
-            <Entry x:Name="CityLabel" Placeholder="Miasto" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
+            <Entry x:Name="CityLabel" Placeholder="Miejscowość" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
             <Entry x:Name="PostCodeLabel" Placeholder="Kod pocztowy" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
             <HorizontalStackLayout HorizontalOptions="Center">
                 <Button x:Name="EditButton" Text="Edytuj" BackgroundColor="{StaticResource ButtonBasic_1}" BorderWidth="2"

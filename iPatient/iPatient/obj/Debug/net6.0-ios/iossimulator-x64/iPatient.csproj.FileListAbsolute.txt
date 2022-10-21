@@ -1,4 +1,3 @@
-D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libicuuc.a
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\iPatient.runtimeconfig.json
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\iPatient.dll
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\iPatient.pdb
@@ -200,6 +199,7 @@ D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libSystem
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libSystem.Security.Cryptography.Native.Apple.dylib
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libicudata.a
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libicui18n.a
+D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libicuuc.a
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-debugger-static.a
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-debugger-stub-static.a
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-diagnostics_tracing-static.a

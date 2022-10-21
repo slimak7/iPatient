@@ -1,4 +1,3 @@
-D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\coreclr.dll
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\iPatient.exe
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.xbf
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\iPatient.deps.json
@@ -251,6 +250,7 @@ D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\api-ms-win-crt-utility-l1-1-0.dll
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\clretwrc.dll
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\clrjit.dll
+D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\coreclr.dll
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\createdump.exe
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\dbgshim.dll
 D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\hostfxr.dll

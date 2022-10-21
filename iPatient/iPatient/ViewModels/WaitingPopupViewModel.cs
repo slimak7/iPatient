@@ -31,7 +31,7 @@ namespace iPatient.ViewModels
         }
         public async void PerformAction()
         {
-            await Task.Delay(1500);
+            await Task.Delay(1000);
 
             bool result = await _actionToPerform();
 

@@ -12,6 +12,8 @@ public partial class AppShell : Shell
 		Routing.RegisterRoute("Facilities/Facility", typeof(FacilityEditView));
 		Routing.RegisterRoute("Facilities/Facility/ManageDoctors", typeof(FacilityDoctorsPage));
         Routing.RegisterRoute("Facilities/Facility/ManageDoctors/Doctor", typeof(DoctorEditPage));
+        Routing.RegisterRoute("BookingOptions", typeof(BookingOptionsPage));
+        Routing.RegisterRoute("BookingOptions/FindDoctor", typeof(FindDoctorPage));
 
     }
 }
