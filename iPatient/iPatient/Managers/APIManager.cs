@@ -7,6 +7,7 @@ using iPatient.Model;
 using System.Net.Http.Headers;
 using System.Collections.ObjectModel;
 using System.Net;
+using System.Numerics;
 
 namespace iPatient.Managers
 {
@@ -468,6 +469,88 @@ namespace iPatient.Managers
                         specializations.Add(spec);
                     }
                     return (true, null, specializations);
+                }
+                else if (result.OtherErrors == "")
+                {
+                    return (false, result.Response.errors[0].ToString(), null);
+                }
+                else
+                {
+                    return (false, result.OtherErrors, null);
+                }
+            }
+            catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+            {
+                return (false, e.Message, null);
+            }
+            catch (Exception e)
+            {
+                return (false, e.Message, null);
+            }
+        }
+
+        public static async Task<(bool ok, string errors, List<DoctorExtended> doctors)> FindDoctors(string FacilityID, string SpecializationID, string city)
+        {
+            var dict = new Dictionary<string, string>();
+
+            dict.Add("specializationID", (SpecializationID == null || SpecializationID == "") ? Guid.Empty.ToString() : SpecializationID);
+            dict.Add("facilityID", (FacilityID == null || FacilityID == "") ? Guid.Empty.ToString() : FacilityID);
+            dict.Add("city", city);
+
+            string jsonString = dict.ToJsonString();
+
+            try
+            {
+                var result = await HttpPost("Facilities/AllFacilities/FindDoctors", jsonString, true);
+
+                if (result.Response != null && result.Response.success == "True")
+                {
+                    List<DoctorExtended> doctors = new List<DoctorExtended>();
+                    List<Facility> facilities = new List<Facility>();
+
+                    if (result.Response.facilities != null)
+                    {
+                        for (int i = 0; i < result.Response.facilities.Count; i++)
+                        {
+                            var facility = result.Response.facilities[i];
+
+                            facilities.Add(new Facility()
+                            {
+                                Id = facility.facilityID,
+                                Name = facility.facilityName,
+                                Address = new Address()
+                                {
+                                    Street = facility.addressInfo.street,
+                                    StreetNumber = facility.addressInfo.streetNumber,
+                                    City = facility.addressInfo.city,
+                                    PostCode = facility.addressInfo.postCode
+                                }
+                            });
+                        }
+                    }
+
+                    if (result.Response.doctors != null)
+                    {
+                        for (int i = 0; i < result.Response.doctors.Count; i++)
+                        {
+                            var doctor = result.Response.doctors[i];
+
+                            doctors.Add(new DoctorExtended()
+                            {
+                                Facility = facilities.Count > 0 ? facilities.Find(x => x.Id == doctor.facilityID.ToString()) : null,
+                                FirstName = doctor.firstName,
+                                LastName = doctor.lastName,
+                                Specialization = new Specialization()
+                                {
+                                    ID = doctor.specializationID
+                                },
+                                FloorNumber = doctor.floorNumber,
+                                OfficeNumber = doctor.officeNumber,
+                                ID = doctor.doctorID
+                            });
+                        }
+                    }
+                    return (true, null, doctors);
                 }
                 else if (result.OtherErrors == "")
                 {

@@ -15,9 +15,12 @@ namespace iPatient.ViewModels
         private Facility _currentFacility;
         private string _city;
         private int _selectedSpecIndex;
+        private Specialization _specialization;
         public ObservableCollection<Specialization> Specializations { get; set; }
         public ObservableCollection<DoctorExtended> Doctors { get; set; }
         public Command SearchCommand { get; set; }
+
+
         public string City
         {
             get { return _city; }
@@ -27,7 +30,11 @@ namespace iPatient.ViewModels
         public int SelectedSpecIndex
         {
             get { return _selectedSpecIndex; }
-            set { SetProperty(ref _selectedSpecIndex, value); }
+            set
+            { 
+                SetProperty(ref _selectedSpecIndex, value);
+                _specialization = Specializations[_selectedSpecIndex];
+            }
         }
 
         public FindDoctorViewModel(string title, FindDoctorPage viewPage, Facility facility, string city) : base(title, viewPage)
@@ -74,7 +81,29 @@ namespace iPatient.ViewModels
 
         private void Search()
         {
+            _viewPage.ShowPopupPage(new WaitingPopupPage(async delegate ()
+            {
 
+                var result = await APIManager.FindDoctors(_currentFacility?.Id ?? null, _specialization?.ID ?? null, City);
+
+                if (!result.ok)
+                {
+                    _viewPage.ShowPopupPage(new InfoPopupPage(result.errors));
+                    return false;
+                }
+
+                Doctors.Clear();
+
+                foreach (var doctor in result.doctors)
+                {
+                    doctor.Specialization.Name = Specializations.ToList().Find(x => x.ID == doctor.Specialization.ID).Name;
+                    Doctors.Add(doctor);
+                }
+
+                return true;
+
+
+            }, null, null, "Szukam..."));
         }
     }
 }
