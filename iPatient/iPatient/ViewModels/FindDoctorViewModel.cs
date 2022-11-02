@@ -15,11 +15,19 @@ namespace iPatient.ViewModels
         private Facility _currentFacility;
         private string _city;
         private int _selectedSpecIndex;
+        private int _selectedDoctorIndex;
         private Specialization _specialization;
+        private DoctorExtended _currentDoctor;
         public ObservableCollection<Specialization> Specializations { get; set; }
         public ObservableCollection<DoctorExtended> Doctors { get; set; }
         public Command SearchCommand { get; set; }
+        public Command<DoctorExtended> DoctorClickedCommand { get; set; }
 
+        public DoctorExtended CurrentDoctor
+        {
+            get { return _currentDoctor; }
+            set { _currentDoctor = value; }
+        }
 
         public string City
         {
@@ -44,6 +52,7 @@ namespace iPatient.ViewModels
             _city = city;
 
             SearchCommand = new Command(() => Search());
+            DoctorClickedCommand = new Command<DoctorExtended>((DoctorExtended doctor) => DoctorClick(doctor));   
 
             Doctors = new ObservableCollection<DoctorExtended>();
             Specializations = new ObservableCollection<Specialization>();
@@ -104,6 +113,12 @@ namespace iPatient.ViewModels
 
 
             }, null, null, "Szukam..."));
+        }
+
+        private void DoctorClick(DoctorExtended doctor)
+        {
+            CurrentDoctor = doctor;
+            Shell.Current.GoToAsync("BookingOptions/FindDoctor/Doctor");
         }
     }
 }

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="iPatient.Views.DoctorVisitBookingPage"
+             xmlns:local="clr-namespace:iPatient.ViewModels"
+             x:DataType="local:DoctorVisitBookingViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource Background}">
+    <VerticalStackLayout>
+
+        <VerticalStackLayout HorizontalOptions="Center" Margin="5, 5, 5, 5">
+
+            <Label
+            Text="{Binding Name}"
+            FontSize="Large"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            TextColor="{StaticResource FontBasic_1}"
+            FontAttributes="Bold"
+            Margin="1, 1, 1, 1"/>
+
+            <Label
+                Text="{Binding Specialization}"
+                FontSize="Medium"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                TextColor="{StaticResource FontBasic_1}"
+                FontAttributes="Bold"
+                Margin="0, 0, 0, 0"/>
+
+        </VerticalStackLayout>
+
+
+        <VerticalStackLayout HorizontalOptions="Center" Margin="5, 5, 5, 5">
+
+            <Label
+                Text="Wybierz termin aby zarezerwować wizytę:"
+                FontSize="Small"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                TextColor="{StaticResource FontBasic_3}"
+                FontAttributes="Bold"
+                Margin="0, 0, 0, 0"/>
+
+            <DatePicker 
+                Date="{Binding SelectedDate}"
+                MinimumDate="{Binding MinDate}"
+                MaximumDate="{Binding MaxDate}"
+                Margin="0, 0, 0, 0"
+                HorizontalOptions="Center"
+                FontSize="Medium"
+                />
+
+        </VerticalStackLayout>
+        
+        
+
+    </VerticalStackLayout>
+</ContentPage>

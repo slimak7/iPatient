@@ -4,7 +4,8 @@
              x:Class="iPatient.Views.BookingOptionsPage"
              xmlns:local="clr-namespace:iPatient.ViewModels"
              x:DataType="local:BookingOptionsViewModel"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource Background}">
     <VerticalStackLayout>
         <Button x:Name="FindDoctorsButton" Text="Szukaj lekarzy" BackgroundColor="{StaticResource ButtonBasic_1}"
                 BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 10" FontSize="Large" CornerRadius="15"

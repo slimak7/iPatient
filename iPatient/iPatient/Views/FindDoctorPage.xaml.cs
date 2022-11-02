@@ -12,6 +12,7 @@ public partial class FindDoctorPage : ContentPage, PageBase
 		InitializeComponent();
 
 		_findDoctorViewModel = new FindDoctorViewModel("Znajdü lekarza dla siebie", this, InstanceManager.FacilitiesViewModel?.CurrentFacility ?? null, InstanceManager.StartPageViewModel.City);
+		InstanceManager.FindDoctorViewModel = _findDoctorViewModel;
 
 		BindingContext = _findDoctorViewModel;
 	}
