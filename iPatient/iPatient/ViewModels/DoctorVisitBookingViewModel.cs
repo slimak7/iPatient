@@ -1,4 +1,5 @@
-﻿using iPatient.Model;
+﻿using iPatient.Managers;
+using iPatient.Model;
 using iPatient.Views;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,8 @@ namespace iPatient.ViewModels
         private DateTime _minDate;
         private DateTime _maxDate;
 
-        public ObservableCollection<DateTime> VisitsTime { get; set; }
+        public ObservableCollection<Visit> VisitsTime { get; set; }
+        public Command ShowVisitsCommand { get; set; }
         public string Name
         {
             get => _currentDoctor.FirstName + " " + _currentDoctor.LastName;
@@ -52,6 +54,28 @@ namespace iPatient.ViewModels
             SelectedDate = DateTime.Today.AddDays(1).Date;
             MinDate = DateTime.Today.Date;
             MaxDate = DateTime.Today.AddDays(50);
+
+            ShowVisitsCommand = new Command(ShowVisits);
+        }
+
+        private void ShowVisits()
+        {
+            _viewPage.ShowPopupPage(new WaitingPopupPage(async delegate ()
+            {
+
+                var result = await APIManager.GetDoctorVisitsInfo(_currentDoctor.ID, SelectedDate);
+
+                if (!result.ok)
+                {
+                    _viewPage.ShowPopupPage(new InfoPopupPage(result.errors));
+                    return false;
+                }
+
+                VisitsTime = new ObservableCollection<Visit>();
+
+                return true;
+
+            }, null, null, "Pobieranie danych..."));
         }
     }
 }

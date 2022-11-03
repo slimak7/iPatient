@@ -489,6 +489,52 @@ namespace iPatient.Managers
             }
         }
 
+        public static async Task<(bool ok, string errors, DoctorVisitsInfo visitsInfo)> GetDoctorVisitsInfo(string DoctorID, DateTime date)
+        {
+            try
+            {
+                var result = await HttpGet("Facilities/AllFacilities/Doctors/" + DoctorID + "/" + date.ToString("MM-dd-yyyy"));
+
+                if (result.Response != null && result.Response.success == "True")
+                {
+                    DoctorVisitsInfo visitsInfo = new DoctorVisitsInfo()
+                    {
+                        StartTime = result.Response.startTime,
+                        EndTime = result.Response.endTime,
+                        MinutesPerVisit = result.Response.minutesPerVisit,
+                        NotAvailableVisits = new List<string>()
+                    };
+
+                    if (result.Response.notAvailableVisits != null)
+                    {
+                        for (int i = 0; i < result.Response.notAvailableVisits.Count; i++)
+                        {
+                            visitsInfo.NotAvailableVisits.Add(result.Response.notAvailableVisits[i]);
+                        }
+                    }
+
+                    return (true, null, visitsInfo);
+
+                }
+                else if (result.OtherErrors == "")
+                {
+                    return (false, result.Response.errors[0].ToString(), null);
+                }
+                else
+                {
+                    return (false, result.OtherErrors, null);
+                }
+            }
+            catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+            {
+                return (false, e.Message, null);
+            }
+            catch (Exception e)
+            {
+                return (false, e.Message, null);
+            }
+        }
+
         public static async Task<(bool ok, string errors, List<DoctorExtended> doctors)> FindDoctors(string FacilityID, string SpecializationID, string city)
         {
             var dict = new Dictionary<string, string>();

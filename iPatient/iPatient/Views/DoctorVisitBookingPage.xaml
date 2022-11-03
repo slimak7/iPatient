@@ -52,8 +52,11 @@
                 />
 
         </VerticalStackLayout>
-        
-        
+
+        <Button x:Name="ShowVisitsButton" Text="Zobacz terminy" BackgroundColor="{StaticResource ButtonBasic_1}"
+                BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 10" FontSize="Large" CornerRadius="15"
+                Command="{Binding ShowVisitsCommand}" TextColor="{StaticResource FontBasic_2}"/>
+
 
     </VerticalStackLayout>
 </ContentPage>
