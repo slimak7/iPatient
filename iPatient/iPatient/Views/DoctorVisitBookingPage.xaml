@@ -3,12 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="iPatient.Views.DoctorVisitBookingPage"
              xmlns:local="clr-namespace:iPatient.ViewModels"
+             xmlns:models="clr-namespace:iPatient.Model"
              x:DataType="local:DoctorVisitBookingViewModel"
              Title="{Binding Title}"
              BackgroundColor="{StaticResource Background}">
-    <VerticalStackLayout>
-
-        <VerticalStackLayout HorizontalOptions="Center" Margin="5, 5, 5, 5">
+    <VerticalStackLayout HorizontalOptions="Center" Margin="5, 5, 5, 5">
 
             <Label
             Text="{Binding Name}"
@@ -28,10 +27,10 @@
                 FontAttributes="Bold"
                 Margin="0, 0, 0, 0"/>
 
-        </VerticalStackLayout>
+        
 
-
-        <VerticalStackLayout HorizontalOptions="Center" Margin="5, 5, 5, 5">
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <VerticalStackLayout HorizontalOptions="Center" Margin="5, 5, 5, 5">
 
             <Label
                 Text="Wybierz termin aby zarezerwować wizytę:"
@@ -53,10 +52,36 @@
 
         </VerticalStackLayout>
 
-        <Button x:Name="ShowVisitsButton" Text="Zobacz terminy" BackgroundColor="{StaticResource ButtonBasic_1}"
-                BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 10" FontSize="Large" CornerRadius="15"
-                Command="{Binding ShowVisitsCommand}" TextColor="{StaticResource FontBasic_2}"/>
+            <Button x:Name="ShowVisitsButton" Text="Szukaj" BackgroundColor="{StaticResource ButtonBasic_1}"
+                    BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 10" FontSize="Large" CornerRadius="15"
+                    Command="{Binding ShowVisitsCommand}" TextColor="{StaticResource FontBasic_2}"/>
 
+        </HorizontalStackLayout>
+
+        <CollectionView x:DataType="local:DoctorVisitBookingViewModel" x:Name="VisitsCollectionView" ItemsSource="{Binding VisitsTime}" Margin="5, 5, 5, 5" HeightRequest="600">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Visit">
+                    <VerticalStackLayout Margin="3, 3, 3, 3" BackgroundColor="{StaticResource Accent_3}">
+                        <VerticalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding 
+                           Source={RelativeSource AncestorType={x:Type local:DoctorVisitBookingViewModel}}, Path=TimeClickedCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                        </VerticalStackLayout.GestureRecognizers>
+
+                        <Label Text="{Binding Time}"
+                            HorizontalOptions="Center"
+                            FontSize="Large"
+                            VerticalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            TextColor="{StaticResource FontBasic_1}"
+                            Margin="1, 1, 1, 1"
+                            IsEnabled="{Binding isAvailable}"></Label>
+
+
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
     </VerticalStackLayout>
+
 </ContentPage>

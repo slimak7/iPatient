@@ -19,6 +19,7 @@ namespace iPatient.ViewModels
 
         public ObservableCollection<Visit> VisitsTime { get; set; }
         public Command ShowVisitsCommand { get; set; }
+        public Command<Visit> TimeClickedCommand { get; set; }
         public string Name
         {
             get => _currentDoctor.FirstName + " " + _currentDoctor.LastName;
@@ -56,6 +57,9 @@ namespace iPatient.ViewModels
             MaxDate = DateTime.Today.AddDays(50);
 
             ShowVisitsCommand = new Command(ShowVisits);
+            TimeClickedCommand = new Command<Visit>(x => TimeClicked(x));
+
+            VisitsTime = new ObservableCollection<Visit>();
         }
 
         private void ShowVisits()
@@ -71,11 +75,32 @@ namespace iPatient.ViewModels
                     return false;
                 }
 
-                VisitsTime = new ObservableCollection<Visit>();
+                VisitsTime.Clear();
+
+                DateTime time = result.visitsInfo.StartTime;
+
+                while(time.TimeOfDay < result.visitsInfo.EndTime.TimeOfDay)
+                {
+                    VisitsTime.Add(new Visit()
+                    {
+                        Time = time.ToString("HH:mm"),
+                        isAvailable = !result.visitsInfo.NotAvailableVisits.Contains(time.ToString("HH:mm"))
+                    });
+
+                    time = time.AddMinutes(result.visitsInfo.MinutesPerVisit);
+                }
 
                 return true;
 
             }, null, null, "Pobieranie danych..."));
+        }
+
+        private void TimeClicked(Visit visit)
+        {
+            if (!visit.isAvailable)
+                return;
+
+
         }
     }
 }

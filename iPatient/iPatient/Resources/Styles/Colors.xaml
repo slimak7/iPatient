@@ -47,6 +47,7 @@
     <Color x:Key="Background">#CAD2C5</Color>
     <Color x:Key="Accent_1">#354F52</Color>
     <Color x:Key="Accent_2">#2F3E46</Color>
+    <Color x:Key="Accent_3">#98cf78</Color>
     <Color x:Key="FontBasic_1">#03071e</Color>
     <Color x:Key="FontBasic_2">#cbf3f0</Color>
     <Color x:Key="FontBasic_3">#5f9ea0</Color>
