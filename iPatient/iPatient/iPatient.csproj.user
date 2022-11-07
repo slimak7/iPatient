@@ -18,6 +18,9 @@
     <MauiXaml Update="Views\BookingOptionsPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Views\ConfirmPopupPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Views\DoctorEditPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

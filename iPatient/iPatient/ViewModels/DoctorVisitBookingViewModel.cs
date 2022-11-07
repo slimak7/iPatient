@@ -13,6 +13,7 @@ namespace iPatient.ViewModels
     public class DoctorVisitBookingViewModel : BaseViewModel<DoctorVisitBookingPage>
     {
         private DoctorExtended _currentDoctor;
+        private Visit _currentVisit;
         private DateTime _selectedDate;
         private DateTime _minDate;
         private DateTime _maxDate;
@@ -77,17 +78,21 @@ namespace iPatient.ViewModels
 
                 VisitsTime.Clear();
 
-                DateTime time = result.visitsInfo.StartTime;
-
-                while(time.TimeOfDay < result.visitsInfo.EndTime.TimeOfDay)
+                if (result.visitsInfo != null)
                 {
-                    VisitsTime.Add(new Visit()
-                    {
-                        Time = time.ToString("HH:mm"),
-                        isAvailable = !result.visitsInfo.NotAvailableVisits.Contains(time.ToString("HH:mm"))
-                    });
 
-                    time = time.AddMinutes(result.visitsInfo.MinutesPerVisit);
+                    DateTime time = result.visitsInfo.StartTime;
+
+                    while (time.TimeOfDay < result.visitsInfo.EndTime.TimeOfDay)
+                    {
+                        VisitsTime.Add(new Visit()
+                        {
+                            Time = time.ToString("HH:mm"),
+                            isAvailable = !result.visitsInfo.NotAvailableVisits.Contains(time.ToString("HH:mm").Trim())
+                        });
+
+                        time = time.AddMinutes(result.visitsInfo.MinutesPerVisit);
+                    }
                 }
 
                 return true;
@@ -100,7 +105,35 @@ namespace iPatient.ViewModels
             if (!visit.isAvailable)
                 return;
 
+            _currentVisit = visit;
 
+            _viewPage.ShowPopupPage(new ConfirmPopupPage("Czy chcesz zarezerwować?", () => BookVisit()));
+
+        }
+
+        private void BookVisit()
+        {
+            _viewPage.ShowPopupPage(new WaitingPopupPage(async delegate ()
+            {
+                string dateTime = SelectedDate.ToString("yyyy-MM-dd") + "T";
+                dateTime += _currentVisit.Time;
+
+                var result = await APIManager.BookVisit(_currentDoctor.ID, dateTime);
+
+                if (!result.ok)
+                {
+                    _viewPage.ShowPopupPage(new InfoPopupPage(result.errors));
+                    return false;
+                }
+                else
+                {
+                    _viewPage.ShowPopupPage(new InfoPopupPage("Rezerwacja zakończona pomyślnie"));
+                    _currentVisit.isAvailable = false;
+                    return true;
+
+                }
+
+            }, ShowVisits, null, "Rezerwacja..."));
         }
     }
 }

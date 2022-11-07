@@ -25,4 +25,9 @@ public partial class DoctorVisitBookingPage : ContentPage, PageBase
 	{
 		this.ShowPopup(infoPopupPage);
 	}
+
+	public void ShowPopupPage(ConfirmPopupPage confirmPopupPage)
+	{
+		this.ShowPopup(confirmPopupPage);
+	}
 }

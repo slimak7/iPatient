@@ -61,7 +61,7 @@
         <CollectionView x:DataType="local:DoctorVisitBookingViewModel" x:Name="VisitsCollectionView" ItemsSource="{Binding VisitsTime}" Margin="5, 5, 5, 5" HeightRequest="600">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Visit">
-                    <VerticalStackLayout Margin="3, 3, 3, 3" BackgroundColor="{StaticResource Accent_3}">
+                    <VerticalStackLayout Margin="3, 3, 3, 3" BackgroundColor="{Binding Color}">
                         <VerticalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding 
                            Source={RelativeSource AncestorType={x:Type local:DoctorVisitBookingViewModel}}, Path=TimeClickedCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
@@ -73,8 +73,7 @@
                             VerticalOptions="Center"
                             HorizontalTextAlignment="Center"
                             TextColor="{StaticResource FontBasic_1}"
-                            Margin="1, 1, 1, 1"
-                            IsEnabled="{Binding isAvailable}"></Label>
+                            Margin="1, 1, 1, 1"></Label>
 
 
                     </VerticalStackLayout>

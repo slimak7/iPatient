@@ -10,5 +10,13 @@ namespace iPatient.Model
     {
         public string Time { get; set; }
         public bool isAvailable { get; set; }
+
+        public Color Color
+        {
+            get
+            {
+                return isAvailable ? Color.FromHex("#50bf9e") : Color.FromHex("#adc9c1");
+            }
+        }
     }
 }

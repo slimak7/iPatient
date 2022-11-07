@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:iPatient.ViewModels"
+            x:DataType="local:ConfirmPopupViewModel"
+            x:Class="iPatient.Views.ConfirmPopupPage"
+            xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               CanBeDismissedByTappingOutsideOfPopup="False"
+               Color="Transparent">
+    <VerticalStackLayout BackgroundColor="{StaticResource Background}">
+        <Label 
+            Text="{Binding Title}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="Large"/>
+        
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Button x:Name="ConfirmButton" Text="Kontynuuj" BackgroundColor="{StaticResource ButtonBasic_1}"
+                BorderWidth="2" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 5" FontSize="Medium" CornerRadius="15"
+                Command="{Binding ContinueCommand}"/>
+
+            <Button x:Name="CancelButton" Text="Anuluj" BackgroundColor="{StaticResource ButtonBasic_3}"
+                BorderWidth="2" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 5" FontSize="Medium" CornerRadius="15"
+                Command="{Binding CancelCommand}"/>
+        </HorizontalStackLayout>
+        
+    </VerticalStackLayout>
+</toolkit:Popup>

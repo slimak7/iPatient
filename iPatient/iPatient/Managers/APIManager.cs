@@ -493,10 +493,15 @@ namespace iPatient.Managers
         {
             try
             {
-                var result = await HttpGet("Facilities/AllFacilities/Doctors/" + DoctorID + "/" + date.ToString("MM-dd-yyyy"));
+                var result = await HttpGet("Facilities/AllFacilities/Doctors/Visits/Available/" + DoctorID + "/" + date.ToString("MM-dd-yyyy"));
 
                 if (result.Response != null && result.Response.success == "True")
                 {
+                    if (result.Response.startTime == "0")
+                    {
+                        return (true, null, null);
+                    }
+
                     DoctorVisitsInfo visitsInfo = new DoctorVisitsInfo()
                     {
                         StartTime = result.Response.startTime,
@@ -509,7 +514,9 @@ namespace iPatient.Managers
                     {
                         for (int i = 0; i < result.Response.notAvailableVisits.Count; i++)
                         {
-                            visitsInfo.NotAvailableVisits.Add(result.Response.notAvailableVisits[i]);
+                            string visit = result.Response.notAvailableVisits[i].ToString();
+                            visit = visit.Trim();
+                            visitsInfo.NotAvailableVisits.Add(visit);
                         }
                     }
 
@@ -634,6 +641,43 @@ namespace iPatient.Managers
             try
             {
                 var result = await HttpPost("Facilities/AllFacilities/Edit/AddUpdateDoctor", jsonString, true);
+
+                if (result.Response != null && result.Response.success == "True")
+                {
+                    return (true, null);
+                }
+                else if (result.OtherErrors == "")
+                {
+                    return (false, result.Response.errors[0].ToString());
+                }
+                else
+                {
+                    return (false, result.OtherErrors);
+                }
+            }
+            catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+            {
+                return (false, e.Message);
+            }
+            catch (Exception e)
+            {
+                return (false, e.Message);
+            }
+        }
+
+        public static async Task<(bool ok, string errors)> BookVisit(string DoctorID, string dateTime)
+        {
+            var dict = new Dictionary<string, string>();
+
+            dict.Add("userID", _loginReq.Id);
+            dict.Add("doctorID", DoctorID);
+            dict.Add("dateAndTime", dateTime);
+
+            string jsonString = dict.ToJsonString();
+
+            try
+            {
+                var result = await HttpPost("Facilities/AllFacilities/Doctors/Visits/Book", jsonString, true);
 
                 if (result.Response != null && result.Response.success == "True")
                 {
