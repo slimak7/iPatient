@@ -103,12 +103,14 @@ public partial class StartPage : ContentPage, PageBase
 
 				FacilitiesButton.IsVisible = true;
 				BookVisitButton.IsVisible = false;
+				ScanQRCodeButton.IsVisible = false;
 
 			break;
 
 			case Dictionaries.Dictionary.UserRoles.Roles.Patient:
 
 				BookVisitButton.IsVisible = true;
+				ScanQRCodeButton.IsVisible = true;
 				FacilitiesButton.IsVisible = false;
 
 			break;

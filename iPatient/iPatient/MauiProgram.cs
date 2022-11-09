@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Core;
+using ZXing.Net.Maui;
 
 namespace iPatient;
 
@@ -11,6 +12,7 @@ public static class MauiProgram
 		builder
 			.UseMauiApp<App>()
 			.UseMauiCommunityToolkit()
+			.UseBarcodeReader()
 			.UseMauiCommunityToolkitCore()
 			.ConfigureFonts(fonts =>
 			{

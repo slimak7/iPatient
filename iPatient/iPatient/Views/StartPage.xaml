@@ -51,6 +51,9 @@
             <Button x:Name="BookVisitButton" Text="Zarezerwuj wizytę" BackgroundColor="{StaticResource ButtonBasic_1}"
                 BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 10" FontSize="Large" CornerRadius="15"
                 Command="{Binding BookVisitCommand}" TextColor="{StaticResource FontBasic_2}" IsVisible="False"/>
+            <Button x:Name="ScanQRCodeButton" Text="Odbierz wizytę" BackgroundColor="{StaticResource ButtonBasic_1}"
+                BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 10" FontSize="Large" CornerRadius="15"
+                Command="{Binding ScanQRCodeCommand}" TextColor="{StaticResource FontBasic_2}" IsVisible="False"/>
         </VerticalStackLayout>
         
     </VerticalStackLayout>

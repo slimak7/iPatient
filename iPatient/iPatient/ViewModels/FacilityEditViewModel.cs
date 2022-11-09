@@ -55,6 +55,8 @@ namespace iPatient.ViewModels
 
         public Command ManageDoctorsCommand { get; set; }
 
+        public Command GenerateQRCommand { get; set; }
+
         #endregion
 
         public FacilityEditViewModel(string title, FacilityEditView viewPage, Facility facility) : base(title, viewPage)
@@ -70,6 +72,7 @@ namespace iPatient.ViewModels
 
             SaveInfoCommand = new Command(() => SaveInfo());
             ManageDoctorsCommand = new Command(() => ManageDoctors());
+            GenerateQRCommand = new Command(() => GenerateQR());
 
             _facility = facility;
         }
@@ -110,6 +113,11 @@ namespace iPatient.ViewModels
         private void ManageDoctors()
         {        
             Shell.Current.GoToAsync("Facilities/Facility/ManageDoctors");            
+        }
+
+        private void GenerateQR()
+        {
+            Shell.Current.GoToAsync("Facilities/Facility/GenerateQRCode");
         }
     }
 }
