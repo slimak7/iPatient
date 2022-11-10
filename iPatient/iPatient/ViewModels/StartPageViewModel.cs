@@ -450,8 +450,8 @@ namespace iPatient.ViewModels
         }
 
         private void ScanQRCode() 
-        { 
-
+        {
+            Shell.Current.GoToAsync("ScanQRCode");
         }
     }
 }

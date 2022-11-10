@@ -624,6 +624,52 @@ namespace iPatient.Managers
             }
         }
 
+        public static async Task<(bool ok, string errors, VisitReceived visit)> ReceiveVisit(string facilityID)
+        {
+            var dict = new Dictionary<string, string>();
+
+            dict.Add("userID", _loginReq.Id);
+            dict.Add("facilityID", facilityID);
+
+            string jsonString = dict.ToJsonString();
+
+            try
+            {
+                var result = await HttpPost("Facilities/AllFacilities/Doctors/Visits/Receive", jsonString, true);
+
+                if (result.Response != null && result.Response.success == "True")
+                {
+                    VisitReceived visit = new VisitReceived()
+                    {
+                        DoctorName = result.Response.result.doctorName,
+                        SpecializationName = result.Response.result.specializationName,
+                        Time = result.Response.result.time,
+                        FloorLevel = result.Response.result.floorLevel,
+                        VisitID = result.Response.result.visitID,
+                        OfficeNumber = result.Response.result.officeNumber
+                    };
+
+                    return (true, null, visit);
+                }
+                else if (result.OtherErrors == "")
+                {
+                    return (false, result.Response.errors[0].ToString(), null);
+                }
+                else
+                {
+                    return (false, result.OtherErrors, null);
+                }
+            }
+            catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+            {
+                return (false, e.Message, null);
+            }
+            catch (Exception e)
+            {
+                return (false, e.Message, null);
+            }
+        }
+
         public static async Task<(bool ok, string errors)> UpdateDoctor(Doctor doctor, string FacilityID)
         {
             var dict = new Dictionary<string, string>();

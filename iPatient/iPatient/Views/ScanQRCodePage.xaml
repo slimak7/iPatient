@@ -7,6 +7,6 @@
              xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI"
              Title="{Binding Title}">
     <VerticalStackLayout>
-        <zxing:CameraBarcodeReaderView BarcodesDetected="CameraBarcodeReaderView_BarcodesDetected"></zxing:CameraBarcodeReaderView>
+        <zxing:CameraBarcodeReaderView x:Name="Scanner" BarcodesDetected="CameraBarcodeReaderView_BarcodesDetected"></zxing:CameraBarcodeReaderView>
     </VerticalStackLayout>
 </ContentPage>
