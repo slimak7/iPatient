@@ -39,8 +39,31 @@ namespace iPatient.ViewModels
 
                     return true;
 
-                }, null, null, "Pobieranie danych..."));
+                }, () => _viewPage.ShowPopupPage(new ConfirmPopupPage(
+                    _visit.DoctorName + "\nGodzina: " + _visit.Time.Substring(0, 5) + "\nPietro: " + _visit.FloorLevel + ", gabinet nr: " + _visit.OfficeNumber, ConfirmVisit)), null, "Pobieranie danych..."));
             }
         }
-    }
+
+        private void ConfirmVisit()
+        {
+            _viewPage.ShowPopupPage(new WaitingPopupPage(async delegate ()
+            {
+
+                var result = await APIManager.ConfirmReceivedVisit(_visit.VisitID);
+
+                if (!result.ok)
+                {
+                    _viewPage.ShowPopupPage(new InfoPopupPage(result.errors));
+                    return false;
+                }
+                else
+                {
+                    _viewPage.ShowPopupPage(new InfoPopupPage("Potwierdzono ;)"));
+                    return true;
+                }
+
+
+            }, null, null, "Potwierdzanie odebrania wizyty"));
+        }
+    } 
 }

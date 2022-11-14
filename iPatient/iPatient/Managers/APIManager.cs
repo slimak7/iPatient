@@ -641,12 +641,12 @@ namespace iPatient.Managers
                 {
                     VisitReceived visit = new VisitReceived()
                     {
-                        DoctorName = result.Response.result.doctorName,
-                        SpecializationName = result.Response.result.specializationName,
-                        Time = result.Response.result.time,
-                        FloorLevel = result.Response.result.floorLevel,
-                        VisitID = result.Response.result.visitID,
-                        OfficeNumber = result.Response.result.officeNumber
+                        DoctorName = result.Response.doctorName,
+                        SpecializationName = result.Response.specializationName,
+                        Time = result.Response.time,
+                        FloorLevel = result.Response.floorLevel,
+                        VisitID = result.Response.visitID,
+                        OfficeNumber = result.Response.officeNumber
                     };
 
                     return (true, null, visit);
@@ -724,6 +724,41 @@ namespace iPatient.Managers
             try
             {
                 var result = await HttpPost("Facilities/AllFacilities/Doctors/Visits/Book", jsonString, true);
+
+                if (result.Response != null && result.Response.success == "True")
+                {
+                    return (true, null);
+                }
+                else if (result.OtherErrors == "")
+                {
+                    return (false, result.Response.errors[0].ToString());
+                }
+                else
+                {
+                    return (false, result.OtherErrors);
+                }
+            }
+            catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+            {
+                return (false, e.Message);
+            }
+            catch (Exception e)
+            {
+                return (false, e.Message);
+            }
+        }
+
+        public static async Task<(bool ok, string errors)> ConfirmReceivedVisit(string VisitID)
+        {
+            var dict = new Dictionary<string, string>();
+
+            dict.Add("visitID", VisitID);
+            
+            string jsonString = dict.ToJsonString();
+
+            try
+            {
+                var result = await HttpPost("Facilities/AllFacilities/Doctors/Visits/Receive/Confirm", jsonString, true);
 
                 if (result.Response != null && result.Response.success == "True")
                 {

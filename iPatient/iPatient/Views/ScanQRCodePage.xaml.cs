@@ -25,7 +25,12 @@ public partial class ScanQRCodePage : ContentPage, PageBase
 		this.ShowPopup(infoPopupPage);
 	}
 
-	private void CameraBarcodeReaderView_BarcodesDetected(object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
+    public void ShowPopupPage(ConfirmPopupPage confirmPopupPage)
+    {
+        this.ShowPopup(confirmPopupPage);
+    }
+
+    private void CameraBarcodeReaderView_BarcodesDetected(object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
 	{
 		Scanner.IsDetecting = false;
 		Dispatcher.Dispatch(() =>_scanQRCodeViewModel.QRCodeReaded(e.Results[0].Value));
