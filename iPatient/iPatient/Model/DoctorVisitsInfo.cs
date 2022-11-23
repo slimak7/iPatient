@@ -12,5 +12,6 @@ namespace iPatient.Model
         public DateTime EndTime { get; set; }
         public int MinutesPerVisit { get; set; }
         public List<string> NotAvailableVisits { get; set; }
+        public List<string> UserVisits { get; set; }
     }
 }

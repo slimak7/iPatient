@@ -440,12 +440,19 @@ namespace iPatient.ViewModels
         private void ResetVariables()
         {
             _currentUser = _currentUser = null;
+            _address = null;
             FirstName = LastName = Password = Email = Phone = Password = ConfirmPassword
                 = PESEL = null;
         }
 
         private void BookVisit()
         {
+            if (_address == null || _address.City == null || _address.City == "")
+            {
+                _viewPage.ShowPopupPage(new InfoPopupPage("Uzupełnij informacje"));
+                return;
+            }
+
             Shell.Current.GoToAsync("BookingOptions");
         }
 

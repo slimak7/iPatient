@@ -16,6 +16,8 @@ public partial class DoctorEditPage : ContentPage, PageBase
 			InstanceManager.FacilityDoctorsViewModel.Specializations);
 
 		BindingContext = _doctorEditViewModel;
+
+		ManageDoctorsScheduleButton.IsVisible = InstanceManager.FacilityDoctorsViewModel.CurrentDoctor != null;
 	}
 
 	public void ShowPopupPage(WaitingPopupPage popupPage)

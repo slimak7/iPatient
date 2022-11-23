@@ -88,7 +88,8 @@ namespace iPatient.ViewModels
                         VisitsTime.Add(new Visit()
                         {
                             Time = time.ToString("HH:mm"),
-                            isAvailable = !result.visitsInfo.NotAvailableVisits.Contains(time.ToString("HH:mm").Trim())
+                            isAvailable = !result.visitsInfo.NotAvailableVisits.Contains(time.ToString("HH:mm").Trim()),
+                            isUserVisit = !result.visitsInfo.UserVisits.Contains(time.ToString("HH:mm").Trim())
                         });
 
                         time = time.AddMinutes(result.visitsInfo.MinutesPerVisit);
@@ -102,7 +103,7 @@ namespace iPatient.ViewModels
 
         private void TimeClicked(Visit visit)
         {
-            if (!visit.isAvailable)
+            if (!visit.isAvailable || visit.isUserVisit)
                 return;
 
             _currentVisit = visit;

@@ -493,7 +493,7 @@ namespace iPatient.Managers
         {
             try
             {
-                var result = await HttpGet("Facilities/AllFacilities/Doctors/Visits/Available/" + DoctorID + "/" + date.ToString("MM-dd-yyyy"));
+                var result = await HttpGet("Facilities/AllFacilities/Doctors/Visits/Available/" + DoctorID + "/" + date.ToString("MM-dd-yyyy") + "/" + _loginReq.Id);
 
                 if (result.Response != null && result.Response.success == "True")
                 {
@@ -507,7 +507,8 @@ namespace iPatient.Managers
                         StartTime = result.Response.startTime,
                         EndTime = result.Response.endTime,
                         MinutesPerVisit = result.Response.minutesPerVisit,
-                        NotAvailableVisits = new List<string>()
+                        NotAvailableVisits = new List<string>(),
+                        UserVisits = new List<string>()
                     };
 
                     if (result.Response.notAvailableVisits != null)
@@ -517,6 +518,16 @@ namespace iPatient.Managers
                             string visit = result.Response.notAvailableVisits[i].ToString();
                             visit = visit.Trim();
                             visitsInfo.NotAvailableVisits.Add(visit);
+                        }
+                    }
+
+                    if (result.Response.userVisits != null)
+                    {
+                        for (int i = 0; i < result.Response.userVisits.Count; i++)
+                        {
+                            string visit = result.Response.userVisits[i].ToString();
+                            visit = visit.Trim();
+                            visitsInfo.UserVisits.Add(visit);
                         }
                     }
 

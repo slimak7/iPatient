@@ -19,6 +19,10 @@ public partial class FacilityEditView : ContentPage, PageBase
 		ManageDoctorsButton.IsVisible = InstanceManager.FacilitiesViewModel.CurrentFacility != null;
 
         BindingContext = _facilityEditViewModel;
+
+		bool isNewFacility = InstanceManager.FacilitiesViewModel.CurrentFacility != null;
+
+		GenerateQRButton.IsVisible = ManageDoctorsButton.IsVisible = isNewFacility;
     }
 
     public void ShowPopupPage(WaitingPopupPage popupPage)
