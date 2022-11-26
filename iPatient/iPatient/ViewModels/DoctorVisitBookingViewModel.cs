@@ -89,7 +89,7 @@ namespace iPatient.ViewModels
                         {
                             Time = time.ToString("HH:mm"),
                             isAvailable = !result.visitsInfo.NotAvailableVisits.Contains(time.ToString("HH:mm").Trim()),
-                            isUserVisit = !result.visitsInfo.UserVisits.Contains(time.ToString("HH:mm").Trim())
+                            isUserVisit = result.visitsInfo.UserVisits.Contains(time.ToString("HH:mm").Trim())
                         });
 
                         time = time.AddMinutes(result.visitsInfo.MinutesPerVisit);

@@ -17,7 +17,7 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Entry x:Name="StreetLabel" Text="{Binding StreetName}" HorizontalOptions="Fill" Placeholder="Ulica" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
-        <Entry x:Name="StreetNumberLabel" Text="{Binding StreetNumber}" Placeholder="Nr ulicy/mieszkania" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
+        <Entry x:Name="StreetNumberLabel" Text="{Binding StreetNumber}" Placeholder="Nr ulicy" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
         <Entry x:Name="CityLabel" Text="{Binding City}" Placeholder="Miasto" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
         <Entry x:Name="PostCodeLabel" Text="{Binding PostCode}" Placeholder="Kod pocztowy" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
         <HorizontalStackLayout HorizontalOptions="Center">
