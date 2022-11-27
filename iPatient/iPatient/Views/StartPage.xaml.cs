@@ -104,6 +104,7 @@ public partial class StartPage : ContentPage, PageBase
 				FacilitiesButton.IsVisible = true;
 				BookVisitButton.IsVisible = false;
 				ScanQRCodeButton.IsVisible = false;
+				ShowMyVisitsButton.IsVisible = false;
 
 			break;
 
@@ -111,6 +112,7 @@ public partial class StartPage : ContentPage, PageBase
 
 				BookVisitButton.IsVisible = true;
 				ScanQRCodeButton.IsVisible = true;
+				ShowMyVisitsButton.IsVisible = true;
 				FacilitiesButton.IsVisible = false;
 
 			break;
@@ -137,7 +139,6 @@ public partial class StartPage : ContentPage, PageBase
 
 
         MenuView.IsVisible = false;
-		FacilitiesButton.IsVisible = false;
 
     }
 }

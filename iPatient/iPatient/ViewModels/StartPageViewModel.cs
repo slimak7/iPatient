@@ -104,6 +104,8 @@ namespace iPatient.ViewModels
 
         public Command ScanQRCodeCommand { get; set; }
 
+        public Command ShowMyVisitsCommand { get; set; }
+
         #endregion
 
         public StartPageViewModel(string title, StartPage startPage) : base(title, startPage)
@@ -119,6 +121,7 @@ namespace iPatient.ViewModels
             LogOutCommand = new Command(() => LogOut());
             BookVisitCommand = new Command(() => BookVisit());
             ScanQRCodeCommand = new Command(() => ScanQRCode());
+            ShowMyVisitsCommand = new Command(() => ShowMyVisits());
 
             SelectLogIn();
 
@@ -459,6 +462,11 @@ namespace iPatient.ViewModels
         private void ScanQRCode() 
         {
             Shell.Current.GoToAsync("ScanQRCode");
+        }
+
+        private void ShowMyVisits()
+        {
+            Shell.Current.GoToAsync("MyVisits");
         }
     }
 }

@@ -794,6 +794,61 @@ namespace iPatient.Managers
             }
         }
 
+        public static async Task<(bool ok, string errors, List<UserVisit> visits)> GetAllUserVisits()
+        {
+            try
+            {
+                var result = await HttpGet("Facilities/AllFacilities/Visits/GetAll/" + _loginReq.Id);
+
+                if (result.Response != null && result.Response.success == "True")
+                {
+                    List<UserVisit> visits = new List<UserVisit>();
+
+                    if (result.Response.visits != null)
+                    {
+                        for (int i = 0; i < result.Response.visits.Count; i++)
+                        {
+                            var visit = result.Response.visits[i];
+
+                            visits.Add(new UserVisit()
+                            {
+                                DateAndTime = visit.dateAndTime,
+                                FloorLevel = visit.floorLevel,
+                                OfficeNumber = visit.officeNumber,
+                                DoctorName = visit.doctorName,
+                                SpecializationName = visit.specializationName,
+                                VisitID = visit.visitID,
+                                Address = new Address()
+                                {
+                                    City = visit.address.city,
+                                    PostCode = visit.address.postCode,
+                                    Street = visit.address.street,
+                                    StreetNumber = visit.address.streetNumber
+                                }
+                            });
+                        }
+                    }
+
+                    return (true, null, visits);
+                }
+                else if (result.OtherErrors == "")
+                {
+                    return (false, result.Response.errors[0].ToString(), null);
+                }
+                else
+                {
+                    return (false, result.OtherErrors, null);
+                }
+            }
+            catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+            {
+                return (false, e.Message, null);
+            }
+            catch (Exception e)
+            {
+                return (false, e.Message, null);
+            }
+        }
 
         private static async Task<(bool ok, string errors)> RefreshToken()
         {

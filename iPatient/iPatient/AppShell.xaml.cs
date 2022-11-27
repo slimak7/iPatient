@@ -17,6 +17,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute("BookingOptions/FindDoctor", typeof(FindDoctorPage));
         Routing.RegisterRoute("BookingOptions/FindDoctor/Doctor", typeof(DoctorVisitBookingPage));
         Routing.RegisterRoute("ScanQRCode", typeof(ScanQRCodePage));
+        Routing.RegisterRoute("MyVisits", typeof(MyVisitsPage));
 
     }
 }
