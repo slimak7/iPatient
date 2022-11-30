@@ -25,7 +25,7 @@ namespace iPatient.ViewModels
 
         private void FindDoctorsByFacility()
         {
-
+            Shell.Current.GoToAsync("BookingOptions/FindFacility");
         }
     }
 }

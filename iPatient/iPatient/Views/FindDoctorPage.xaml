@@ -9,6 +9,37 @@
              BackgroundColor="{StaticResource Background}">
     <VerticalStackLayout>
 
+        <VerticalStackLayout HorizontalOptions="Center" x:Name="SelectedFacilityInfo" IsVisible="false" BackgroundColor="{StaticResource Accent_2}" Margin="5, 5, 5, 5">
+            <Label
+                            Text="{Binding FacilityName}"
+                            FontSize="Large"
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Center"
+                            TextColor="{StaticResource FontBasic_2}"/>
+
+            <Label Text="{Binding FacilityCity}"
+                                       HorizontalOptions="Center"
+                                       FontSize="Medium"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Start"
+                                       TextColor="{StaticResource FontBasic_2}"></Label>
+
+            <Label Text="{Binding Street}"
+                                    HorizontalOptions="Center"
+                                    FontSize="Medium"
+                                    VerticalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource FontBasic_2}"></Label>
+
+
+            <Label Text="{Binding PostCode}"
+                                       HorizontalOptions="Center"
+                                       FontSize="Medium"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Start"
+                                       TextColor="{StaticResource FontBasic_2}"></Label>
+        </VerticalStackLayout>
+        
         <StackLayout HorizontalOptions="Center">
             <Picker Title="Wybierz specjalizację"
             ItemsSource="{Binding Specializations}"
@@ -32,7 +63,7 @@
         <CollectionView x:DataType="local:FindDoctorViewModel" x:Name="FindDoctorsCollectionView" ItemsSource="{Binding Doctors}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:DoctorExtended">
-                    <VerticalStackLayout Margin="3, 3, 3, 3" BackgroundColor="{StaticResource Accent_1}" MinimumHeightRequest="100">
+                    <VerticalStackLayout Margin="3, 3, 3, 3" BackgroundColor="{StaticResource Accent_1}" MinimumHeightRequest="10">
 
                         <VerticalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding 
@@ -70,9 +101,10 @@
                             FontSize="Large"
                             VerticalOptions="Center" 
                             HorizontalOptions="Center"
-                            TextColor="{StaticResource FontBasic_2}"/>
+                            TextColor="{StaticResource FontBasic_2}"
+                            IsVisible="{Binding DisplayFacilityInfo}"/>
 
-                        <HorizontalStackLayout HorizontalOptions="Center">
+                        <HorizontalStackLayout HorizontalOptions="Center" IsVisible="{Binding DisplayFacilityInfo}">
                             <Label
                                 Text="{Binding Facility.Address.Street}"
                                 FontSize="Medium"

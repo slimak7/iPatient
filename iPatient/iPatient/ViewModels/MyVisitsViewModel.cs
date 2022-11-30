@@ -12,10 +12,12 @@ namespace iPatient.ViewModels
 {
     public class MyVisitsViewModel : BaseViewModel<MyVisitsPage>
     {
+        public Command<UserVisit> VisitClickedCommand { get; set; }
         public ObservableCollection<UserVisit> Visits { get; set; }
         public MyVisitsViewModel(string title, MyVisitsPage viewPage) : base(title, viewPage)
         {
             Visits = new ObservableCollection<UserVisit>();
+            VisitClickedCommand = new Command<UserVisit>(VisitClicked);
         }
 
         public void Load()
@@ -41,6 +43,11 @@ namespace iPatient.ViewModels
                 return true;
 
             }, null, null, "Pobieranie danych..."));
+        }
+
+        private void VisitClicked(UserVisit userVisit)
+        {
+            _viewPage.ShowPopupPage(new InfoPopupPage(userVisit.FacilityInfoToString())); 
         }
     }
 }

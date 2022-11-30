@@ -39,6 +39,9 @@
     <MauiXaml Update="Views\FindDoctorPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Views\FindFacilityPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Views\GenerateQRCodePage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

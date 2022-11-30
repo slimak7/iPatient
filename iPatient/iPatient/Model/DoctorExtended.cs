@@ -9,5 +9,13 @@ namespace iPatient.Model
     public class DoctorExtended : Doctor
     {
         public Facility Facility { get; set; }
+
+        public bool DisplayFacilityInfo
+        {
+            get
+            {
+                return Facility != null;
+            }
+        }
     }
 }

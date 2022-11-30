@@ -324,6 +324,61 @@ namespace iPatient.Managers
             }
         }
 
+        public static async Task<(bool ok, string errors, ObservableCollection<Facility> facilities)> GetAllFacilitiesByCity(string city)
+        {
+            try
+            {
+                var result = await HttpGet("Facilities/AllFacilities/GetAll/" + city);
+
+                if (result.Response != null && result.Response.success == "True")
+                {
+                    ObservableCollection<Facility> facilities = new ObservableCollection<Facility>();
+
+                    if (result.Response.facilities != null)
+                    {
+                        for (int i = 0; i < result.Response.facilities.Count; i++)
+                        {
+                            var facility = result.Response.facilities[i];
+
+                            Facility facilityModel = new Facility()
+                            {
+                                Id = facility.facilityID,
+                                Name = facility.facilityName,
+                                Address = new Address()
+                                {
+                                    ID = facility.addressInfo.addressID,
+                                    Street = facility.addressInfo.street,
+                                    StreetNumber = facility.addressInfo.streetNumber,
+                                    City = facility.addressInfo.city,
+                                    PostCode = facility.addressInfo.postCode
+                                }
+                            };
+
+                            facilities.Add(facilityModel);
+                        }
+                    }
+
+                    return (true, null, facilities);
+                }
+                else if (result.OtherErrors == "")
+                {
+                    return (false, result.Response.errors[0].ToString(), null);
+                }
+                else
+                {
+                    return (false, result.OtherErrors, null);
+                }
+            }
+            catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+            {
+                return (false, e.Message, null);
+            }
+            catch (Exception e)
+            {
+                return (false, e.Message, null);
+            }
+        }
+
         public static async Task<(bool ok, string errors)> UpdateFacility(Facility facility)
         {
             var dict = new Dictionary<string, string>();
@@ -817,6 +872,7 @@ namespace iPatient.Managers
                                 OfficeNumber = visit.officeNumber,
                                 DoctorName = visit.doctorName,
                                 SpecializationName = visit.specializationName,
+                                FacilityName = visit.facilityName,
                                 VisitID = visit.visitID,
                                 Address = new Address()
                                 {

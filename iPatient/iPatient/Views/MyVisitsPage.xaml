@@ -3,9 +3,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="iPatient.Views.MyVisitsPage"
              xmlns:local="clr-namespace:iPatient.ViewModels"
+             xmlns:models="clr-namespace:iPatient.Model"
              x:DataType="local:MyVisitsViewModel"
              Title="{Binding Title}">
     <VerticalStackLayout>
-        
+        <CollectionView x:DataType="local:MyVisitsViewModel" x:Name="MyVisitsCollectionView" ItemsSource="{Binding Visits}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:UserVisit">
+                    <VerticalStackLayout Margin="3, 3, 3, 3" BackgroundColor="{StaticResource Accent_1}" MinimumHeightRequest="100">
+                        <VerticalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding 
+                           Source={RelativeSource AncestorType={x:Type local:MyVisitsViewModel}}, Path=VisitClickedCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                        </VerticalStackLayout.GestureRecognizers>
+
+                        <VerticalStackLayout>
+                            <Label
+                            Text="{Binding DoctorName}"
+                            FontSize="Large"
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Center"
+                            TextColor="{StaticResource FontBasic_2}"/>
+
+                            <Label Text="{Binding SpecializationName}"
+                                       HorizontalOptions="Center"
+                                       FontSize="Medium"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Start"
+                                       TextColor="{StaticResource FontBasic_2}"></Label>
+                            <Label Text="{Binding Date}"
+                                       HorizontalOptions="Center"
+                                       FontSize="Medium"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Start"
+                                       TextColor="{StaticResource FontBasic_2}"></Label>
+                            <Label Text="{Binding Time}"
+                                       HorizontalOptions="Center"
+                                       FontSize="Medium"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Start"
+                                       TextColor="{StaticResource FontBasic_2}"></Label>
+                        </VerticalStackLayout>
+
+
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </VerticalStackLayout>
 </ContentPage>

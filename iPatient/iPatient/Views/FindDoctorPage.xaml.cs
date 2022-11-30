@@ -11,10 +11,16 @@ public partial class FindDoctorPage : ContentPage, PageBase
 	{
 		InitializeComponent();
 
-		_findDoctorViewModel = new FindDoctorViewModel("Znajdü lekarza dla siebie", this, InstanceManager.FacilitiesViewModel?.CurrentFacility ?? null, InstanceManager.StartPageViewModel.City);
+		_findDoctorViewModel = new FindDoctorViewModel("Znajdü lekarza dla siebie", this, InstanceManager.CurrentSelectedFacility, InstanceManager.StartPageViewModel.City);
 		InstanceManager.FindDoctorViewModel = _findDoctorViewModel;
 
 		BindingContext = _findDoctorViewModel;
+
+		if (InstanceManager.CurrentSelectedFacility != null)
+		{
+			CityLabel.IsVisible = false;
+			SelectedFacilityInfo.IsVisible = true;
+		}
 	}
 
 	protected override void OnNavigatedTo(NavigatedToEventArgs args)

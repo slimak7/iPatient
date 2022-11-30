@@ -1,4 +1,5 @@
-﻿using iPatient.ViewModels;
+﻿using iPatient.Model;
+using iPatient.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,6 @@ namespace iPatient.Managers
         public static FacilityDoctorsViewModel FacilityDoctorsViewModel { get; set; }
         public static FindDoctorViewModel FindDoctorViewModel { get; set; }
         public static Dictionaries.Dictionary.UserRoles.Roles CurrentUserRole { get; set; }
+        public static Facility CurrentSelectedFacility { get; set; }
     }
 }

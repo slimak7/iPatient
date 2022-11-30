@@ -15,13 +15,44 @@ namespace iPatient.ViewModels
         private Facility _currentFacility;
         private string _city;
         private int _selectedSpecIndex;
-        private int _selectedDoctorIndex;
         private Specialization _specialization;
         private DoctorExtended _currentDoctor;
         public ObservableCollection<Specialization> Specializations { get; set; }
         public ObservableCollection<DoctorExtended> Doctors { get; set; }
         public Command SearchCommand { get; set; }
         public Command<DoctorExtended> DoctorClickedCommand { get; set; }
+
+        public string FacilityName
+        {
+            get
+            {
+                return _currentFacility?.Name ?? "";
+            }
+        }
+
+        public string FacilityCity
+        {
+            get
+            {
+                return _currentFacility?.Address.City ?? "";
+            }
+        }
+
+        public string Street
+        {
+            get
+            {
+                return _currentFacility != null ? _currentFacility.Address.Street + " " + _currentFacility.Address.StreetNumber : "";
+            }
+        }
+
+        public string PostCode
+        {
+            get
+            {
+                return _currentFacility?.Address.PostCode ?? "";
+            }
+        }
 
         public DoctorExtended CurrentDoctor
         {
