@@ -10,7 +10,7 @@
         <VerticalStackLayout HorizontalOptions="CenterAndExpand">
 
             <HorizontalStackLayout HorizontalOptions="Center">
-                <Button x:Name="LogOutButton" IsVisible="False" Text="Wyloguj" BackgroundColor="{StaticResource Accent_2}" BorderWidth="0"
+                <Button x:Name="LogOutButton" IsVisible="False" Text="Wyloguj" BackgroundColor="{StaticResource ButtonBasic_1}" BorderWidth="0"
                     BorderColor="{StaticResource BorderColorBasic}" FontAttributes="None" FontSize="Small" Margin="3, 3, 3, 3" CornerRadius="15"
                     Command="{Binding LogOutCommand}" HorizontalOptions="Center"/>
                 <Label Text="Twoje konto" FontSize="Large" TextColor="Black"
@@ -19,7 +19,7 @@
 
             <Label x:Name="EmailLabel" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" FontAttributes="Bold"></Label>
 
-            <Button x:Name="ExpandCollapseDetails" Text="Rozwiń" BackgroundColor="{StaticResource Accent_2}"
+            <Button x:Name="ExpandCollapseDetails" Text="Rozwiń" BackgroundColor="{StaticResource ButtonBasic_2}"
                 BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="None" Margin="1, 1, 1, 1" FontSize="Small" CornerRadius="15"
                 Command="{Binding ExpandCollapseUserInfoCommand}"/>
         </VerticalStackLayout>
@@ -34,10 +34,10 @@
             <Entry x:Name="CityLabel" Placeholder="Miejscowość" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
             <Entry x:Name="PostCodeLabel" Placeholder="Kod pocztowy" PlaceholderColor="{StaticResource FontBasic_3}" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" IsReadOnly="True"></Entry>
             <HorizontalStackLayout HorizontalOptions="Center">
-                <Button x:Name="EditButton" Text="Edytuj" BackgroundColor="{StaticResource ButtonBasic_1}" BorderWidth="2"
+                <Button x:Name="EditButton" Text="Edytuj" BackgroundColor="{StaticResource ButtonBasic_3}" BorderWidth="2"
                 BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 5" FontSize="Medium" CornerRadius="15"
                 Command="{Binding EditUserInfoCommand}"/>
-                <Button x:Name="SaveButton" Text="Zapisz" BackgroundColor="{StaticResource ButtonBasic_2}"
+                <Button x:Name="SaveButton" Text="Zapisz" BackgroundColor="{StaticResource ButtonBasic_3}"
                 BorderWidth="2" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 5" FontSize="Medium" CornerRadius="15"
                 Command="{Binding SaveUserInfoCommand}"/>
             </HorizontalStackLayout>

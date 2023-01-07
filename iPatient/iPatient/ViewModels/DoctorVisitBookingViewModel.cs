@@ -54,8 +54,8 @@ namespace iPatient.ViewModels
             _currentDoctor = doctor;
 
             SelectedDate = DateTime.Today.AddDays(1).Date;
-            MinDate = DateTime.Today.Date;
-            MaxDate = DateTime.Today.AddDays(50);
+            MinDate = DateTime.Today.Date.AddDays(1).Date;
+            MaxDate = DateTime.Today.AddDays(14);
 
             ShowVisitsCommand = new Command(ShowVisits);
             TimeClickedCommand = new Command<Visit>(x => TimeClicked(x));

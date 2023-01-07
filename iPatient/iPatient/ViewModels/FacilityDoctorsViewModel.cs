@@ -74,11 +74,26 @@ namespace iPatient.ViewModels
                 Doctors.Clear();
                 Specializations = new ObservableCollection<Specialization>();
 
-                foreach(var doctor in result.doctors)
+                result.doctors.Sort(delegate (Doctor d1, Doctor d2)
+                {
+                    int r = string.Compare(d1.FloorNumber, d2.FloorNumber);
+
+                    if (r != 0)
+                        return r;
+                    else
+                    {
+                        return string.Compare(d1.OfficeNumber, d2.OfficeNumber);
+                    }
+                });
+                foreach (var doctor in result.doctors)
                 {
                     Doctors.Add(doctor);
                 }
 
+                result.specializations.Sort(delegate (Specialization s1, Specialization s2)
+                {
+                    return string.Compare(s1.Name, s2.Name);
+                });
                 foreach(var spec in result.specializations)
                 {
                     Specializations.Add(spec);

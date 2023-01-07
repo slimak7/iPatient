@@ -23,8 +23,5 @@
                 BorderWidth="2" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 5" FontSize="Medium" CornerRadius="15"
                 Command="{Binding SaveInfoCommand}"/>
         </HorizontalStackLayout>
-        <Button x:Name="ManageDoctorsScheduleButton" Text="Zarządzaj grafikiem" BackgroundColor="{StaticResource ButtonBasic_3}"
-                BorderWidth="2" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 5" FontSize="Medium" CornerRadius="15"
-                />
     </VerticalStackLayout>
 </ContentPage>

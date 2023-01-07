@@ -52,7 +52,7 @@
 
         </VerticalStackLayout>
 
-            <Button x:Name="ShowVisitsButton" Text="Szukaj" BackgroundColor="{StaticResource ButtonBasic_1}"
+            <Button x:Name="ShowVisitsButton" Text="Szukaj" BackgroundColor="{StaticResource ButtonBasic_2}"
                     BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 10" FontSize="Large" CornerRadius="15"
                     Command="{Binding ShowVisitsCommand}" TextColor="{StaticResource FontBasic_2}"/>
 

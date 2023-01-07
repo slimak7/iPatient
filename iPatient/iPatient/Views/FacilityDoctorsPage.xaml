@@ -52,13 +52,13 @@
                                     Margin="0, 0, 5, 0"></Label>
 
 
-                            <Label Text="{Binding OfficeNumber}"
+                            <Label Text="{Binding OfficeNumberToString}"
                                        HorizontalOptions="Center"
                                        FontSize="Medium"
                                        VerticalOptions="Center"
                                        HorizontalTextAlignment="Start"
                                        TextColor="{StaticResource FontBasic_2}"></Label>
-                            <Label Text="{Binding FloorNumber}"
+                            <Label Text="{Binding FloorNumberToString}"
                                        HorizontalOptions="Center"
                                        FontSize="Medium"
                                        VerticalOptions="Center"

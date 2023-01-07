@@ -107,8 +107,11 @@ namespace iPatient.ViewModels
                     return false;
                 }
 
-               
-                foreach(var spec in result.specializations)
+                result.specializations.Sort(delegate (Specialization s1, Specialization s2)
+                {
+                    return string.Compare(s1.Name, s2.Name);
+                });
+                foreach (var spec in result.specializations)
                 {
                     Specializations.Add(spec);
                 }

@@ -15,5 +15,15 @@ namespace iPatient.Model
         public string FloorNumber { get; set; }
         public Specialization Specialization { get; set; }
 
+        public string OfficeNumberToString
+        {
+            get => "Gabinet nr. " + OfficeNumber;
+        }
+
+        public string FloorNumberToString
+        {
+            get => FloorNumber != "0" ? "Piętro nr. " + FloorNumber : "Parter";
+        }
+
     }
 }
