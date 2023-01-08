@@ -63,7 +63,7 @@ public partial class StartPage : ContentPage, PageBase
 	{
 		AccountInfoScrollView.IsVisible = true;
 		LogInButton.IsVisible = RegisterButton.IsVisible = ContinueButton.IsVisible
-			= InfoLabel.IsVisible = RegisterScrollView.IsVisible = LoginScrollView.IsVisible = false;
+			= RegisterScrollView.IsVisible = LoginScrollView.IsVisible = false;
 
 		_accountInfoView.SetUserInfo(user, address);
 
@@ -124,6 +124,11 @@ public partial class StartPage : ContentPage, PageBase
 		_accountInfoView.ExpandCollapseUserInfo();
 	}
 
+	public void AutoExpandUserInfo()
+	{
+		_accountInfoView.ExpandUserInfo();
+	}
+
 	public void LogOut()
 	{
 		_loginView.Reset();
@@ -135,7 +140,7 @@ public partial class StartPage : ContentPage, PageBase
 
         AccountInfoScrollView.IsVisible = false;
         LogInButton.IsVisible = RegisterButton.IsVisible = ContinueButton.IsVisible
-            = InfoLabel.IsVisible = LoginScrollView.IsVisible = true;
+            = LoginScrollView.IsVisible = true;
 
 
         MenuView.IsVisible = false;

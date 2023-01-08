@@ -108,7 +108,7 @@ namespace iPatient.ViewModels
 
             _currentVisit = visit;
 
-            _viewPage.ShowPopupPage(new ConfirmPopupPage("Czy chcesz zarezerwować?", () => BookVisit()));
+            _viewPage.ShowPopupPage(new ConfirmPopupPage("Dzień: " + SelectedDate.ToString("dd-MM-yyyy") + "\nGodzina: " + visit.Time + "\nCzy na pewno chcesz zarezerwować?", () => BookVisit()));
 
         }
 

@@ -13,13 +13,10 @@
                 <Button x:Name="LogOutButton" IsVisible="False" Text="Wyloguj" BackgroundColor="{StaticResource ButtonBasic_1}" BorderWidth="0"
                     BorderColor="{StaticResource BorderColorBasic}" FontAttributes="None" FontSize="Small" Margin="3, 3, 3, 3" CornerRadius="15"
                     Command="{Binding LogOutCommand}" HorizontalOptions="Center"/>
-                <Label Text="Twoje konto" FontSize="Large" TextColor="Black"
-                       FontAttributes="Bold" HorizontalOptions="Center" Margin="5, 8, 5, 5"></Label>
+                <Label x:Name="EmailLabel" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" FontAttributes="Bold"></Label>
             </HorizontalStackLayout>
 
-            <Label x:Name="EmailLabel" VerticalOptions="Center" Margin="5, 5, 5, 5" HorizontalTextAlignment="Center" FontAttributes="Bold"></Label>
-
-            <Button x:Name="ExpandCollapseDetails" Text="Rozwiń" BackgroundColor="{StaticResource ButtonBasic_2}"
+            <Button x:Name="ExpandCollapseDetails" Text="Rozwiń" BackgroundColor="{StaticResource ButtonBasic_2}" HorizontalOptions="Center"
                 BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="None" Margin="1, 1, 1, 1" FontSize="Small" CornerRadius="15"
                 Command="{Binding ExpandCollapseUserInfoCommand}"/>
         </VerticalStackLayout>

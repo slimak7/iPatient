@@ -9,7 +9,8 @@
              BackgroundColor="{StaticResource Background}">
     <VerticalStackLayout>
 
-        <VerticalStackLayout HorizontalOptions="Center" x:Name="SelectedFacilityInfo" IsVisible="false" BackgroundColor="{StaticResource Accent_2}" Margin="5, 5, 5, 5">
+        <Frame x:Name="SelectedFacilityInfo" BackgroundColor="{StaticResource Accent_1}" BorderColor="Transparent" Margin="5, 5, 5, 5" CornerRadius="15" Padding="10, 10, 10, 10" HorizontalOptions="Center" IsVisible="false">
+            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent">
             <Label
                             Text="{Binding FacilityName}"
                             FontSize="Large"
@@ -39,7 +40,7 @@
                                        HorizontalTextAlignment="Start"
                                        TextColor="{StaticResource FontBasic_2}"></Label>
         </VerticalStackLayout>
-        
+        </Frame>
         <StackLayout HorizontalOptions="Center">
             <Picker Title="Wybierz specjalizację"
             ItemsSource="{Binding Specializations}"
@@ -54,74 +55,79 @@
                VerticalOptions="Center" PlaceholderColor="{StaticResource FontBasic_3}"
                Margin="5, 5, 5, 5" HorizontalTextAlignment="Center"></Entry>
 
-            <Button x:Name="SearchButton" Text="Szukaj" BackgroundColor="{StaticResource ButtonBasic_2}"
+            <Button x:Name="SearchButton" Text="Szukaj" BackgroundColor="{StaticResource ButtonBasic_2}" TextColor="{StaticResource FontBasic_2}"
                 BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="None" Margin="1, 1, 1, 1" FontSize="Small" CornerRadius="15"
                 Command="{Binding SearchCommand}"/>
 
         </HorizontalStackLayout>
 
-        <CollectionView x:DataType="local:FindDoctorViewModel" x:Name="FindDoctorsCollectionView" ItemsSource="{Binding Doctors}">
+        <CollectionView x:DataType="local:FindDoctorViewModel" x:Name="FindDoctorsCollectionView" ItemsSource="{Binding Doctors}" HeightRequest="550">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:DoctorExtended">
-                    <VerticalStackLayout Margin="3, 3, 3, 3" BackgroundColor="{StaticResource Accent_1}" MinimumHeightRequest="10">
+                    <VerticalStackLayout Margin="3, 3, 3, 3" BackgroundColor="Transparent" MinimumHeightRequest="10" CompressedLayout.IsHeadless="False">
+                        <Frame CornerRadius="40" BorderColor="Transparent" BackgroundColor="{StaticResource Accent_1}" Margin="2, 2, 2, 2" Padding="10, 10, 10, 10" IsEnabled="True">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding 
+                                Source={RelativeSource AncestorType={x:Type local:FindDoctorViewModel}}, Path=DoctorClickedCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
 
-                        <VerticalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding 
-                           Source={RelativeSource AncestorType={x:Type local:FindDoctorViewModel}}, Path=DoctorClickedCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
-                        </VerticalStackLayout.GestureRecognizers>
+                            <VerticalStackLayout HorizontalOptions="Center">
 
-                        <HorizontalStackLayout HorizontalOptions="Center">
+                                <HorizontalStackLayout HorizontalOptions="Center">
+                                    <Label
+                                    Text="{Binding FirstName}"
+                                    FontSize="Large"
+                                    VerticalOptions="Center" 
+                                    HorizontalOptions="Center"
+                                    TextColor="{StaticResource FontBasic_2}"
+                                    Margin="0, 0, 5, 0"/>
 
-                            <Label
-                            Text="{Binding FirstName}"
-                            FontSize="Large"
-                            VerticalOptions="Center" 
-                            HorizontalOptions="Center"
-                            TextColor="{StaticResource FontBasic_2}"
-                            Margin="0, 0, 5, 0"/>
+                                    <Label
+                                    Text="{Binding LastName}"
+                                    FontSize="Large"
+                                    VerticalOptions="Center" 
+                                    HorizontalOptions="Center"
+                                    TextColor="{StaticResource FontBasic_2}"/>
+                                </HorizontalStackLayout>
+                                
 
-                            <Label
-                            Text="{Binding LastName}"
-                            FontSize="Large"
-                            VerticalOptions="Center" 
-                            HorizontalOptions="Center"
-                            TextColor="{StaticResource FontBasic_2}"/>
+                                <VerticalStackLayout>
 
-                        </HorizontalStackLayout>
+                                <Label
+                                    Text="{Binding Specialization.Name}"
+                                    FontSize="Large"
+                                    VerticalOptions="Center" 
+                                    HorizontalOptions="Center"
+                                    TextColor="{StaticResource FontBasic_2}"/>
 
-                        <Label
-                            Text="{Binding Specialization.Name}"
-                            FontSize="Large"
-                            VerticalOptions="Center" 
-                            HorizontalOptions="Center"
-                            TextColor="{StaticResource FontBasic_2}"/>
+                                    <Label
+                                    Text="{Binding Facility.Name}"
+                                    FontSize="Large"
+                                    VerticalOptions="Center" 
+                                    HorizontalOptions="Center"
+                                    TextColor="{StaticResource FontBasic_2}"
+                                    IsVisible="{Binding DisplayFacilityInfo}"/>
 
-                        <Label
-                            Text="{Binding Facility.Name}"
-                            FontSize="Large"
-                            VerticalOptions="Center" 
-                            HorizontalOptions="Center"
-                            TextColor="{StaticResource FontBasic_2}"
-                            IsVisible="{Binding DisplayFacilityInfo}"/>
+                                </VerticalStackLayout>
 
-                        <HorizontalStackLayout HorizontalOptions="Center" IsVisible="{Binding DisplayFacilityInfo}">
-                            <Label
-                                Text="{Binding Facility.Address.Street}"
-                                FontSize="Medium"
-                                VerticalOptions="Center" 
-                                HorizontalOptions="Center"
-                                TextColor="{StaticResource FontBasic_2}"
-                                Margin="0, 0, 5, 0"/>
+                            <HorizontalStackLayout HorizontalOptions="Center" IsVisible="{Binding DisplayFacilityInfo}">
+                                <Label
+                                    Text="{Binding Facility.Address.Street}"
+                                    FontSize="Medium"
+                                    VerticalOptions="Center" 
+                                    HorizontalOptions="Center"
+                                    TextColor="{StaticResource FontBasic_2}"
+                                    Margin="0, 0, 5, 0"/>
 
-                            <Label
-                                Text="{Binding Facility.Address.StreetNumber}"
-                                FontSize="Medium"
-                                VerticalOptions="Center" 
-                                HorizontalOptions="Center"
-                                TextColor="{StaticResource FontBasic_2}"/>
-                        </HorizontalStackLayout>
-
-                            
+                                <Label
+                                    Text="{Binding Facility.Address.StreetNumber}"
+                                    FontSize="Medium"
+                                    VerticalOptions="Center" 
+                                    HorizontalOptions="Center"
+                                    TextColor="{StaticResource FontBasic_2}"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Frame>
                         
 
 

@@ -41,16 +41,17 @@
     <Color x:Key="Blue200Accent">#72ACF1</Color>
     <Color x:Key="Blue300Accent">#A7CBF6</Color>
 
-    <Color x:Key="ButtonBasic_1">#BD6A64</Color>
-    <Color x:Key="ButtonBasic_2">#87BD64</Color>
-    <Color x:Key="ButtonBasic_3">#BD8864</Color>
-    <Color x:Key="Background">#D9E3BD</Color>
-    <Color x:Key="Accent_1">#64BD8D</Color>
-    <Color x:Key="Accent_2">#64BD7E</Color>
-    <Color x:Key="Accent_3">#919191</Color>
+    <Color x:Key="ButtonBasic_1">#576F72</Color>
+    <Color x:Key="ButtonBasic_2">#7D9D9C</Color>
+    <Color x:Key="ButtonBasic_3">#6B7AA1</Color>
+    <Color x:Key="Background">#F0EBE3</Color>
+    <Color x:Key="Accent_1">#11324D</Color>
+    <Color x:Key="Accent_2">#87A8A4</Color>
+    <Color x:Key="Accent_3">#716F81</Color>
+    <Color x:Key="Accent_4">#cce3de</Color>
     <Color x:Key="FontBasic_1">#03071e</Color>
-    <Color x:Key="FontBasic_2">#cbf3f0</Color>
-    <Color x:Key="FontBasic_3">#5f9ea0</Color>
-    <Color x:Key="BorderColorBasic">#7D65BD</Color>
+    <Color x:Key="FontBasic_2">#ecf39e</Color>
+    <Color x:Key="FontBasic_3">#184E77</Color>
+    <Color x:Key="BorderColorBasic">#081c15</Color>
 
 </ResourceDictionary>

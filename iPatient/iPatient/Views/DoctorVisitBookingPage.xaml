@@ -32,33 +32,38 @@
         <HorizontalStackLayout HorizontalOptions="Center">
             <VerticalStackLayout HorizontalOptions="Center" Margin="5, 5, 5, 5">
 
-            <Label
-                Text="Wybierz termin aby zarezerwować wizytę:"
-                FontSize="Small"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"
-                TextColor="{StaticResource FontBasic_3}"
-                FontAttributes="Bold"
-                Margin="0, 0, 0, 0"/>
+                <Frame CornerRadius="40" Padding="20, 20, 20, 10" Margin="5, 2, 15, 5" BackgroundColor="{StaticResource Accent_4}">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label
+                        Text="Wybierz termin:"
+                        FontSize="Small"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center"
+                        TextColor="{StaticResource FontBasic_3}"
+                        FontAttributes="Bold"
+                        Margin="0, 0, 0, 0"/>
 
-            <DatePicker 
-                Date="{Binding SelectedDate}"
-                MinimumDate="{Binding MinDate}"
-                MaximumDate="{Binding MaxDate}"
-                Margin="0, 0, 0, 0"
-                HorizontalOptions="Center"
-                FontSize="Medium"
-                />
+                         <DatePicker 
+                        Date="{Binding SelectedDate}"
+                        MinimumDate="{Binding MinDate}"
+                        MaximumDate="{Binding MaxDate}"
+                        Margin="0, 0, 0, 0"
+                        HorizontalOptions="Center"
+                        FontSize="Medium"
+                        />
+                    </StackLayout>  
+                </Frame>
+            
 
         </VerticalStackLayout>
 
             <Button x:Name="ShowVisitsButton" Text="Szukaj" BackgroundColor="{StaticResource ButtonBasic_2}"
-                    BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 10" FontSize="Large" CornerRadius="15"
-                    Command="{Binding ShowVisitsCommand}" TextColor="{StaticResource FontBasic_2}"/>
+                    BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 5" FontSize="Large" CornerRadius="15"
+                    Command="{Binding ShowVisitsCommand}" TextColor="{StaticResource FontBasic_2}" HorizontalOptions="Center" VerticalOptions="Center"/>
 
         </HorizontalStackLayout>
 
-        <CollectionView x:DataType="local:DoctorVisitBookingViewModel" x:Name="VisitsCollectionView" ItemsSource="{Binding VisitsTime}" Margin="5, 5, 5, 5" HeightRequest="600">
+        <CollectionView x:DataType="local:DoctorVisitBookingViewModel" x:Name="VisitsCollectionView" ItemsSource="{Binding VisitsTime}" Margin="5, 5, 5, 5" HeightRequest="550">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Visit">
                     <VerticalStackLayout Margin="3, 3, 3, 3" BackgroundColor="{Binding Color}">
@@ -72,7 +77,7 @@
                             FontSize="Large"
                             VerticalOptions="Center"
                             HorizontalTextAlignment="Center"
-                            TextColor="{StaticResource FontBasic_1}"
+                            TextColor="{StaticResource FontBasic_2}"
                             Margin="1, 1, 1, 1"></Label>
 
 
@@ -81,6 +86,8 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
+        <Button HeightRequest="2" WidthRequest="350" HorizontalOptions="CenterAndExpand" IsEnabled="False" Margin="10, 7, 10, 10"></Button>
+        
     </VerticalStackLayout>
 
 </ContentPage>

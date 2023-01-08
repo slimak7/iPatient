@@ -40,7 +40,7 @@ namespace iPatient.ViewModels
                     return true;
 
                 }, () => _viewPage.ShowPopupPage(new ConfirmPopupPage(
-                    _visit.DoctorName + "\nGodzina: " + _visit.Time.Substring(0, 5) + "\nPietro: " + _visit.FloorLevel + ", gabinet nr: " + _visit.OfficeNumber, ConfirmVisit)), null, "Pobieranie danych..."));
+                    _visit.DoctorName + "\nGodzina: " + _visit.Time.Substring(0, 5) + "\nPiętro: " + _visit.FloorLevel + ", gabinet nr: " + _visit.OfficeNumber, ConfirmVisit)), null, "Pobieranie danych..."));
             }
         }
 

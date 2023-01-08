@@ -20,55 +20,61 @@
 
         </HorizontalStackLayout>
 
-        <CollectionView x:DataType="local:FindFacilityViewModel" x:Name="FacilitiesCollectionView" ItemsSource="{Binding Facilities}">
+        <CollectionView x:DataType="local:FindFacilityViewModel" x:Name="FacilitiesCollectionView" ItemsSource="{Binding Facilities}" HeightRequest="550">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Facility">
-                    <VerticalStackLayout Margin="3, 3, 3, 3" BackgroundColor="{StaticResource Accent_1}" MinimumHeightRequest="100">
-                        <VerticalStackLayout.GestureRecognizers>
+                    <Frame CornerRadius="40" BorderColor="Transparent" BackgroundColor="{StaticResource Accent_1}" Margin="2, 2, 2, 2" Padding="10, 10, 10, 10" IsEnabled="True">
+                        <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding 
+                                Source={RelativeSource AncestorType={x:Type local:FindDoctorViewModel}}, Path=DoctorClickedCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout BackgroundColor="Transparent" MinimumHeightRequest="100">
+                            <VerticalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding 
                            Source={RelativeSource AncestorType={x:Type local:FindFacilityViewModel}}, Path=FacilityClickedCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
-                        </VerticalStackLayout.GestureRecognizers>
+                            </VerticalStackLayout.GestureRecognizers>
 
-                        <VerticalStackLayout>
-                            <Label
+                            <VerticalStackLayout>
+                                <Label
                             Text="{Binding Name}"
                             FontSize="Large"
                             VerticalOptions="Center" 
                             HorizontalOptions="Center"
                             TextColor="{StaticResource FontBasic_2}"/>
 
-                            <HorizontalStackLayout HorizontalOptions="Center">
-                                <Label Text="{Binding Address.Street}"
+                                <HorizontalStackLayout HorizontalOptions="Center">
+                                    <Label Text="{Binding Address.Street}"
                                        HorizontalOptions="Center"
                                        FontSize="Medium"
                                        VerticalOptions="Center"
                                        HorizontalTextAlignment="Center"
                                        TextColor="{StaticResource FontBasic_2}"
                                        Margin="0, 0, 5, 0"></Label>
-                                <Label Text="{Binding Address.StreetNumber}"
+                                    <Label Text="{Binding Address.StreetNumber}"
                                        HorizontalOptions="Center"
                                        FontSize="Medium"
                                        VerticalOptions="Center"
                                        HorizontalTextAlignment="Start"
                                        TextColor="{StaticResource FontBasic_2}"></Label>
-                            </HorizontalStackLayout>
+                                </HorizontalStackLayout>
 
-                            <Label Text="{Binding Address.City}"
+                                <Label Text="{Binding Address.City}"
                                        HorizontalOptions="Center"
                                        FontSize="Medium"
                                        VerticalOptions="Center"
                                        HorizontalTextAlignment="Start"
                                        TextColor="{StaticResource FontBasic_2}"></Label>
-                            <Label Text="{Binding Address.PostCode}"
+                                <Label Text="{Binding Address.PostCode}"
                                        HorizontalOptions="Center"
                                        FontSize="Medium"
                                        VerticalOptions="Center"
                                        HorizontalTextAlignment="Start"
                                        TextColor="{StaticResource FontBasic_2}"></Label>
+                            </VerticalStackLayout>
+
+
                         </VerticalStackLayout>
-
-
-                    </VerticalStackLayout>
+                    </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

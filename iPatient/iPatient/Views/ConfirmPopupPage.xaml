@@ -7,22 +7,27 @@
             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
                CanBeDismissedByTappingOutsideOfPopup="False"
                Color="Transparent">
-    <VerticalStackLayout BackgroundColor="{StaticResource Background}">
-        <Label 
+    <Frame BackgroundColor="{StaticResource Accent_3}" CornerRadius="15" HorizontalOptions="Center" VerticalOptions="Center">
+        <StackLayout VerticalOptions="Center">
+
+            <Label 
             Text="{Binding Title}"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
-            FontSize="Large"/>
-        
-        <HorizontalStackLayout HorizontalOptions="Center">
-            <Button x:Name="ConfirmButton" Text="Kontynuuj" BackgroundColor="{StaticResource ButtonBasic_1}"
-                BorderWidth="2" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 5" FontSize="Medium" CornerRadius="15"
-                Command="{Binding ContinueCommand}"/>
+            FontSize="Medium"
+            TextColor="{StaticResource FontBasic_2}"
+            LineBreakMode="WordWrap"
+            HorizontalTextAlignment="Center"/>
 
-            <Button x:Name="CancelButton" Text="Anuluj" BackgroundColor="{StaticResource ButtonBasic_3}"
-                BorderWidth="2" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 5" FontSize="Medium" CornerRadius="15"
-                Command="{Binding CancelCommand}"/>
-        </HorizontalStackLayout>
-        
-    </VerticalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Button x:Name="ConfirmButton" Text="Kontynuuj" BackgroundColor="{StaticResource ButtonBasic_2}"
+                    BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 5" FontSize="Medium" CornerRadius="15"
+                    Command="{Binding ContinueCommand}"/>
+
+                <Button x:Name="CancelButton" Text="Anuluj" BackgroundColor="{StaticResource ButtonBasic_1}"
+                    BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 5" FontSize="Medium" CornerRadius="15"
+                    Command="{Binding CancelCommand}"/>
+            </HorizontalStackLayout>
+        </StackLayout>
+    </Frame>
 </toolkit:Popup>

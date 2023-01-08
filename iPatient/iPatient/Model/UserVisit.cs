@@ -15,6 +15,7 @@ namespace iPatient.Model
         public string SpecializationName { get; set; }
         public DateTime DateAndTime { get; set; }
         public string FacilityName { get; set; }
+        public bool IsReceived { get; set; }
         public string Date
         {
             get { return DateAndTime.ToString("dd-MM-yyyy"); }
@@ -27,7 +28,16 @@ namespace iPatient.Model
 
         public string FacilityInfoToString()
         {
-            return FacilityName + "\n" + Address.City + "\n" + Address.Street + " " + Address.StreetNumber + "\n" + Address.PostCode;
+            string info = FacilityName + "\n" + Address.City +
+                "\n" + Address.Street + " " + Address.StreetNumber + "\n" + Address.PostCode;
+            
+            if (IsReceived)
+            {
+                info += "\n[ODEBRANA]\n" + (FloorLevel == "0" ? "Parter" : "Pietro " + FloorLevel + ".") + ", gabinet nr: " + OfficeNumber;
+            }
+
+            return info;
+            
         }
     }
 }

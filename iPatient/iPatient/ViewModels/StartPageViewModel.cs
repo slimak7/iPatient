@@ -452,6 +452,7 @@ namespace iPatient.ViewModels
         {
             if (_address == null || _address.City == null || _address.City == "")
             {
+                _viewPage.AutoExpandUserInfo();
                 _viewPage.ShowPopupPage(new InfoPopupPage("Uzupełnij informacje"));
                 return;
             }

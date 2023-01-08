@@ -62,7 +62,7 @@ public partial class AccountInfoView : ContentView
 			PeselLabel.BackgroundColor = PhoneLabel.BackgroundColor =
 				StreetLabel.BackgroundColor = StreetNumberLabel.BackgroundColor =
 				CityLabel.BackgroundColor = PostCodeLabel.BackgroundColor =
-				Color.FromHex("cbf3f0");
+				Color.FromHex("D8B384");
 
 			EditButton.BorderWidth = _borderWidthClicked;
 			EditButton.Text = "Anuluj";
@@ -148,6 +148,14 @@ public partial class AccountInfoView : ContentView
 		ExpandCollapseDetails.Text = (!_userInfoCollapsed) ? "Zwiñ" : "Rozwiñ";
 
     }
+
+	public void ExpandUserInfo()
+	{
+		if (!_userInfoCollapsed)
+			return;
+
+		ExpandCollapseUserInfo();
+	}
 
 	public void Reset()
 	{

@@ -13,7 +13,7 @@
                     BorderColor="{StaticResource BorderColorBasic}" FontAttributes="None" FontSize="Medium" Margin="5, 5, 5, 5" CornerRadius="15"
                     Command="{Binding AddNewDoctorCommand}" HorizontalOptions="Center"/>
 
-        <CollectionView x:DataType="local:FacilityDoctorsViewModel" x:Name="FacilityDoctorsCollectionView" ItemsSource="{Binding Doctors}">
+        <CollectionView x:DataType="local:FacilityDoctorsViewModel" x:Name="FacilityDoctorsCollectionView" ItemsSource="{Binding Doctors}" HeightRequest="550">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Doctor">
                     <VerticalStackLayout Margin="3, 3, 3, 3" BackgroundColor="{StaticResource Accent_1}" MinimumHeightRequest="100">

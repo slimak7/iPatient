@@ -13,11 +13,13 @@
                IsEnabled="False"
                Margin="10, 10, 10, 10"
                CornerRadius="20"
-               BackgroundColor="{StaticResource Blue100Accent}"
+               BackgroundColor="{StaticResource Accent_3}"
                LineBreakMode="WordWrap"
                FontAutoScalingEnabled="False"
+               TextColor="{StaticResource FontBasic_2}"
                FontSize="Small"
                WidthRequest="300"
+               HeightRequest="100"
                />
         
     </AbsoluteLayout>

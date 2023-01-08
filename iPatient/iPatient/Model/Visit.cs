@@ -16,7 +16,7 @@ namespace iPatient.Model
         {
             get
             {
-                return isAvailable ? Color.FromHex("#50bf9e") : (isUserVisit ? Color.FromHex("#ff922b") : Color.FromHex("#adc9c1"));
+                return isAvailable ? Color.FromHex("#11324D") : (isUserVisit ? Color.FromHex("#ff922b") : Color.FromHex("#adc9c1"));
             }
         }
     }

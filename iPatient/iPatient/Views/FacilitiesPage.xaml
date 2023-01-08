@@ -13,7 +13,7 @@
                     BorderColor="{StaticResource BorderColorBasic}" FontAttributes="None" FontSize="Medium" Margin="5, 5, 5, 5" CornerRadius="15"
                     Command="{Binding AddNewFacilityCommand}" HorizontalOptions="Center"/>
 
-        <CollectionView x:DataType="local:FacilitiesViewModel" x:Name="FacilitiesCollectionView" ItemsSource="{Binding Facilities}">
+        <CollectionView x:DataType="local:FacilitiesViewModel" x:Name="FacilitiesCollectionView" ItemsSource="{Binding Facilities}" HeightRequest="550">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Facility">
                     <VerticalStackLayout Margin="3, 3, 3, 3" BackgroundColor="{StaticResource Accent_1}" MinimumHeightRequest="100">

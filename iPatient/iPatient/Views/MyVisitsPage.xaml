@@ -7,16 +7,16 @@
              x:DataType="local:MyVisitsViewModel"
              Title="{Binding Title}">
     <VerticalStackLayout>
-        <CollectionView x:DataType="local:MyVisitsViewModel" x:Name="MyVisitsCollectionView" ItemsSource="{Binding Visits}">
+        <CollectionView x:DataType="local:MyVisitsViewModel" x:Name="MyVisitsCollectionView" ItemsSource="{Binding Visits}" HeightRequest="550">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:UserVisit">
-                    <VerticalStackLayout Margin="3, 3, 3, 3" BackgroundColor="{StaticResource Accent_1}" MinimumHeightRequest="100">
-                        <VerticalStackLayout.GestureRecognizers>
+                    <Frame BackgroundColor="{StaticResource Accent_1}" CornerRadius="15" BorderColor="Transparent" Margin="5, 5, 5, 5" Padding="10, 10, 10, 10">
+                        <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding 
                            Source={RelativeSource AncestorType={x:Type local:MyVisitsViewModel}}, Path=VisitClickedCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
-                        </VerticalStackLayout.GestureRecognizers>
-
-                        <VerticalStackLayout>
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout BackgroundColor="Transparent" MinimumHeightRequest="100">
+                            <VerticalStackLayout>
                             <Label
                             Text="{Binding DoctorName}"
                             FontSize="Large"
@@ -46,6 +46,7 @@
 
 
                     </VerticalStackLayout>
+                    </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

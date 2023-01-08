@@ -880,7 +880,8 @@ namespace iPatient.Managers
                                     PostCode = visit.address.postCode,
                                     Street = visit.address.street,
                                     StreetNumber = visit.address.streetNumber
-                                }
+                                },
+                                IsReceived = visit.isReceived
                             });
                         }
                     }

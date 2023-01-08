@@ -7,11 +7,11 @@
              Title="{Binding Title}"
              BackgroundColor="{StaticResource Background}">
     <VerticalStackLayout>
-        <Button x:Name="FindDoctorsButton" Text="Szukaj lekarzy" BackgroundColor="{StaticResource ButtonBasic_1}"
-                BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 10" FontSize="Large" CornerRadius="15"
-                Command="{Binding FindDoctorsCommand}" TextColor="{StaticResource FontBasic_2}" IsVisible="True" IsEnabled="True"/>
-        <Button x:Name="FindDoctorsByFacilityButton" Text="Wybierz placówkę" BackgroundColor="{StaticResource ButtonBasic_1}"
-                BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 5, 5, 10" FontSize="Large" CornerRadius="15"
-                Command="{Binding FindDoctorsByFacilityCommand}" TextColor="{StaticResource FontBasic_2}" IsVisible="True" IsEnabled="True"/>
+        <Button x:Name="FindDoctorsButton" Text="Szukaj lekarzy" BackgroundColor="{StaticResource ButtonBasic_3}"
+                BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="60, 60, 5, 5" FontSize="Large" CornerRadius="15"
+                Command="{Binding FindDoctorsCommand}" TextColor="{StaticResource FontBasic_2}" IsVisible="True" IsEnabled="True" HorizontalOptions="Start" HeightRequest="80"/>
+        <Button x:Name="FindDoctorsByFacilityButton" Text="Wybierz placówkę" BackgroundColor="{StaticResource ButtonBasic_3}"
+                BorderWidth="0" BorderColor="{StaticResource BorderColorBasic}" FontAttributes="Bold" Margin="5, 50, 60, 5" FontSize="Large" CornerRadius="15"
+                Command="{Binding FindDoctorsByFacilityCommand}" TextColor="{StaticResource FontBasic_2}" IsVisible="True" IsEnabled="True" HorizontalOptions="End" HeightRequest="80"/>
     </VerticalStackLayout>
 </ContentPage>
