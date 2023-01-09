@@ -16,16 +16,17 @@
         <CollectionView x:DataType="local:FacilityDoctorsViewModel" x:Name="FacilityDoctorsCollectionView" ItemsSource="{Binding Doctors}" HeightRequest="550">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Doctor">
-                    <VerticalStackLayout Margin="3, 3, 3, 3" BackgroundColor="{StaticResource Accent_1}" MinimumHeightRequest="100">
-                        <VerticalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding 
+                    <Frame CornerRadius="40" BorderColor="Transparent" BackgroundColor="{StaticResource Accent_1}" Margin="2, 2, 2, 2" Padding="10, 10, 10, 10" IsEnabled="True">
+                        <VerticalStackLayout BackgroundColor="Transparent" MinimumHeightRequest="100">
+                            <VerticalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding 
                            Source={RelativeSource AncestorType={x:Type local:FacilityDoctorsViewModel}}, Path=DoctorClickedCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
-                        </VerticalStackLayout.GestureRecognizers>
-                        <VerticalStackLayout>
+                            </VerticalStackLayout.GestureRecognizers>
+                            <VerticalStackLayout>
 
-                            <HorizontalStackLayout HorizontalOptions="Center">
+                                <HorizontalStackLayout HorizontalOptions="Center">
 
-                                <Label
+                                    <Label
                                 Text="{Binding FirstName}"
                                 FontSize="Large"
                                 VerticalOptions="Center" 
@@ -33,17 +34,17 @@
                                 TextColor="{StaticResource FontBasic_2}"
                                 Margin="0, 0, 5, 0"/>
 
-                                <Label
+                                    <Label
                                 Text="{Binding LastName}"
                                 FontSize="Large"
                                 VerticalOptions="Center" 
                                 HorizontalOptions="Center"
                                 TextColor="{StaticResource FontBasic_2}"/>
 
-                            </HorizontalStackLayout>
+                                </HorizontalStackLayout>
 
 
-                            <Label Text="{Binding Specialization.Name}"
+                                <Label Text="{Binding Specialization.Name}"
                                     HorizontalOptions="Center"
                                     FontSize="Medium"
                                     VerticalOptions="Center"
@@ -52,22 +53,23 @@
                                     Margin="0, 0, 5, 0"></Label>
 
 
-                            <Label Text="{Binding OfficeNumberToString}"
+                                <Label Text="{Binding OfficeNumberToString}"
                                        HorizontalOptions="Center"
                                        FontSize="Medium"
                                        VerticalOptions="Center"
                                        HorizontalTextAlignment="Start"
                                        TextColor="{StaticResource FontBasic_2}"></Label>
-                            <Label Text="{Binding FloorNumberToString}"
+                                <Label Text="{Binding FloorNumberToString}"
                                        HorizontalOptions="Center"
                                        FontSize="Medium"
                                        VerticalOptions="Center"
                                        HorizontalTextAlignment="Start"
                                        TextColor="{StaticResource FontBasic_2}"></Label>
+                            </VerticalStackLayout>
+
+
                         </VerticalStackLayout>
-
-
-                    </VerticalStackLayout>
+                    </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

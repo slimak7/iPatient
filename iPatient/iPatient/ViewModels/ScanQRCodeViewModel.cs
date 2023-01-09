@@ -40,7 +40,7 @@ namespace iPatient.ViewModels
                     return true;
 
                 }, () => _viewPage.ShowPopupPage(new ConfirmPopupPage(
-                    _visit.DoctorName + "\nGodzina: " + _visit.Time.Substring(0, 5) + "\nPiętro: " + _visit.FloorLevel + ", gabinet nr: " + _visit.OfficeNumber, ConfirmVisit)), null, "Pobieranie danych..."));
+                    _visit.DoctorName + "\nGodzina: " + _visit.Time.Substring(0, 5), ConfirmVisit)), null, "Pobieranie danych..."));
             }
         }
 
@@ -58,12 +58,12 @@ namespace iPatient.ViewModels
                 }
                 else
                 {
-                    _viewPage.ShowPopupPage(new InfoPopupPage("Potwierdzono ;)"));
+                    _viewPage.ShowPopupPage(new InfoPopupPage("Potwierdzono odebranie wizyty\nGabinet nr: " + _visit.OfficeNumber + ", " + (_visit.FloorLevel != "0" ? "piętro: " + _visit.FloorLevel + "." : "parter")));
                     return true;
                 }
 
 
-            }, null, null, "Potwierdzanie odebrania wizyty"));
+            }, null, null, "Czekaj..."));
         }
     } 
 }
