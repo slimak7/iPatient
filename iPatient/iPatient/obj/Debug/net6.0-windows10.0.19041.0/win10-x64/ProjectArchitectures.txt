@@ -1,1 +1,0 @@
-D:\iPatientAPP\iPatient\iPatient\iPatient.csproj;x64
