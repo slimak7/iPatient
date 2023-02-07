@@ -61,7 +61,7 @@
 
         </HorizontalStackLayout>
 
-        <CollectionView x:DataType="local:FindDoctorViewModel" x:Name="FindDoctorsCollectionView" ItemsSource="{Binding Doctors}" HeightRequest="550">
+        <CollectionView x:DataType="local:FindDoctorViewModel" x:Name="FindDoctorsCollectionView" ItemsSource="{Binding Doctors}" HeightRequest="500">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:DoctorExtended">
                     <VerticalStackLayout Margin="3, 3, 3, 3" BackgroundColor="Transparent" MinimumHeightRequest="10" CompressedLayout.IsHeadless="False">

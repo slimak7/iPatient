@@ -724,10 +724,10 @@
     <AppxPackagedFile Include="C:\Users\SzymonKlewicki\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.19041.27\lib\net6.0\WinRT.Runtime.dll">
       <PackagePath>WinRT.Runtime.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\SzymonKlewicki\.nuget\packages\communitytoolkit.maui\1.3.0\lib\net6.0-windows10.0.19041\CommunityToolkit.Maui.dll">
+    <AppxPackagedFile Include="C:\Users\SzymonKlewicki\.nuget\packages\communitytoolkit.maui\2.0.0\lib\net6.0-windows10.0.19041\CommunityToolkit.Maui.dll">
       <PackagePath>CommunityToolkit.Maui.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\SzymonKlewicki\.nuget\packages\communitytoolkit.maui.core\1.3.0\lib\net6.0-windows10.0.19041\CommunityToolkit.Maui.Core.dll">
+    <AppxPackagedFile Include="C:\Users\SzymonKlewicki\.nuget\packages\communitytoolkit.maui.core\2.0.0\lib\net6.0-windows10.0.19041\CommunityToolkit.Maui.Core.dll">
       <PackagePath>CommunityToolkit.Maui.Core.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\SzymonKlewicki\.nuget\packages\microsoft.extensions.configuration\6.0.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll">
@@ -801,6 +801,12 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\SzymonKlewicki\.nuget\packages\xamarin.essentials\1.7.3\lib\netstandard2.0\Xamarin.Essentials.dll">
       <PackagePath>Xamarin.Essentials.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\SzymonKlewicki\.nuget\packages\zxing.net\0.16.8\lib\net6.0\zxing.dll">
+      <PackagePath>zxing.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\SzymonKlewicki\.nuget\packages\zxing.net.maui\0.1.0-preview.7\lib\net6.0-windows10.0.19041\ZXing.Net.MAUI.dll">
+      <PackagePath>ZXing.Net.MAUI.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\SzymonKlewicki\.nuget\packages\microsoft.graphics.win2d\1.0.3.1\runtimes\win10-x64\native\Microsoft.Graphics.Canvas.dll">
       <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>

@@ -6,8 +6,6 @@ using System.Text;
 using iPatient.Model;
 using System.Net.Http.Headers;
 using System.Collections.ObjectModel;
-using System.Net;
-using System.Numerics;
 
 namespace iPatient.Managers
 {

@@ -1,17 +1,11 @@
-﻿using iPatient.Views;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace iPatient.ViewModels
 {
     public abstract class BaseViewModel<M> : INotifyPropertyChanged
     {
-        string _title;
+        protected string _title;
         protected M _viewPage;
 
         public event PropertyChangedEventHandler PropertyChanged;

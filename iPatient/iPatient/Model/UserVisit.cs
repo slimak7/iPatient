@@ -33,7 +33,7 @@ namespace iPatient.Model
             
             if (IsReceived)
             {
-                info += "\n[ODEBRANA]\n" + (FloorLevel == "0" ? "Parter" : "Piętro " + FloorLevel + ".") + ", gabinet nr: " + OfficeNumber;
+                info += "\n[ODEBRANA]\n" + (FloorLevel == "0" ? "Parter" : "Piętro nr: " + FloorLevel) + ", gabinet nr: " + OfficeNumber;
             }
 
             return info;

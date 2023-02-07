@@ -2,7 +2,6 @@ using CommunityToolkit.Maui.Views;
 using iPatient.Managers;
 using iPatient.Model;
 using iPatient.ViewModels;
-using System.Net;
 
 namespace iPatient.Views;
 

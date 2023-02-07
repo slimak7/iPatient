@@ -1,10 +1,8 @@
-﻿
-using iPatient.Helpers;
+﻿using iPatient.Helpers;
 using iPatient.Managers;
 using iPatient.Model;
 using iPatient.ReqModels;
 using iPatient.Views;
-
 
 namespace iPatient.ViewModels
 {

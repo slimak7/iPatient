@@ -20,7 +20,7 @@
 
         </HorizontalStackLayout>
 
-        <CollectionView x:DataType="local:FindFacilityViewModel" x:Name="FacilitiesCollectionView" ItemsSource="{Binding Facilities}" HeightRequest="550">
+        <CollectionView x:DataType="local:FindFacilityViewModel" x:Name="FacilitiesCollectionView" ItemsSource="{Binding Facilities}" HeightRequest="500">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Facility">
                     <Frame CornerRadius="40" BorderColor="Transparent" BackgroundColor="{StaticResource Accent_1}" Margin="2, 2, 2, 2" Padding="10, 10, 10, 10" IsEnabled="True">

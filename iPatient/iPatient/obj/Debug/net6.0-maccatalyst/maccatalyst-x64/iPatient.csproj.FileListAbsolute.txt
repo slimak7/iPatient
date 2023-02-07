@@ -258,3 +258,5 @@ D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-maccatalyst\maccatalyst-x64\re
 D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-maccatalyst\maccatalyst-x64\iPatient.pdb
 D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-maccatalyst\maccatalyst-x64\iPatient.genruntimeconfig.cache
 D:\iPatientAPP\iPatient\iPatient\obj\Debug\net6.0-maccatalyst\maccatalyst-x64\ref\iPatient.dll
+D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-maccatalyst\maccatalyst-x64\zxing.dll
+D:\iPatientAPP\iPatient\iPatient\bin\Debug\net6.0-maccatalyst\maccatalyst-x64\ZXing.Net.MAUI.dll

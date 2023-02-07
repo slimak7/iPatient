@@ -1,4 +1,3 @@
-using CommunityToolkit.Maui.Animations;
 using CommunityToolkit.Maui.Views;
 using iPatient.Animations;
 using iPatient.ViewModels;

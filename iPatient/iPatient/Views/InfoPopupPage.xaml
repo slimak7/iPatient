@@ -19,7 +19,7 @@
                TextColor="{StaticResource FontBasic_2}"
                FontSize="Small"
                WidthRequest="300"
-               HeightRequest="100"
+               HeightRequest="200"
                />
         
     </AbsoluteLayout>
